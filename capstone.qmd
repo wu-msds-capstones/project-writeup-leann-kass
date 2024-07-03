@@ -1,9 +1,8 @@
 ---
-title: "Capstone Project"
+title: "Generational Differences in Student Loan Debt and the Implications on Homeownership Trends"
 subtitle: Subtitle
 authors:
-  - Bob
-  - Jane
+  - Leann Kim and Kass Traieh
 title-block-banner: true
 format: 
   html:

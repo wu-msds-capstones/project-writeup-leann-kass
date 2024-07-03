@@ -1,1 +1,2 @@
 # Conclusions
+what does it all mean? What should the main takeaways be, and where could the project be extended in the future?

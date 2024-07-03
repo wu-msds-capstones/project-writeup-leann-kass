@@ -1,1 +1,2 @@
 # Background
+what is the current state of research in this area? What has other work done, and how does your work fit within that work? What general knowledge would a reader need to have in this area to understand the rest of your document? Sometimes this blends with the introduction.
