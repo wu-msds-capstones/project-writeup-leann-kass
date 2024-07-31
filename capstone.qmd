@@ -1,6 +1,6 @@
 ---
 title: "Generational Differences in Student Loan Debt and the Implications on Homeownership Trends"
-subtitle: Subtitle
+subtitle: MSDS Capstone 2024
 authors:
   - Leann Kim and Kass Traieh
 title-block-banner: true
