@@ -2,6 +2,53 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To perform our analysis, we utilized the data from the Federal Reserve and Census surveys within the 1989-2022 time frame. The Federal Reserve survey consisted of age groups, the percentage of those who had a mortgage and the percentage of those with education loans, and was stored in various tabs in an excel spreadsheet. The Census survey, also stored in various tabs in an excel spreadsheet, included age groups, total number of people who were surveyed and the number of homeowners within each age group. To further explore our research question and to supplement our existing tables, we found data on the amount of debt students had at the time of their graduation. This table included graduation year, amount of debt at graduation, average starting salary out of college and the debt to income ratio. 
 
+#### Original Tables
+
+::: {.callout-note collapse="true"}
+#### Data Dictionary - Features, Descriptions, and Sources (Click to Expand) 
+| Feature              	 | Description                                                                                                                                                                                                 	 |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `year`               	 | Survey year from 1989-2022 in ncrements of 3 years                                                                                                                                                                                               	 |
+| `age_group`                 	 | Age groups: 18-34, 35-44, 45-54, 55-64, 65-74, 75+                                                                                                                                                                                      |
+| `percent_mortgage`            	 | Percent of mortgage debt an individual within the age group holds on average                                                                                                                            	 |
+| `percent_education_loan`    	 | Percent of education loan debt an indiviudual within the age groups holds on average                                                                                                           	 |
+:Table 1 - Survey of Consumer Finances 1989-2022: a normally triennial cross-sectional survey of U.S. families showcasing family holdings of debt by selected characteristics of families and type of debt. 
+
+<br><br>
+
+| Feature              	 | Description                                                                                                                                                                                                 	 |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `year`               	 | Survey year from 1989-2022 in increments of 3 years                                                                                                                                                                                               	 |
+| `age_group`                 	 | Age groups: 18-24, 25-29, 30-34, 35-39, 40-44, 45-49, 50-54, 55-59, 60-64, 65-69, 70-74, 75+                                                                                                                                                                                      |
+| `total_surveyed`            	 | Total number of homes surveyed                                                                                                                            	 |
+| `total_owner`    	 | Total number of homes surveyed that were owned                                                                                                           	 |
+:Table 2 - Census 
+Housing Vacancy Survey: historical data on rental and homeowner vacancy rates in the U.S.
+
+
+
+Table 3: Student Debt 
+Student Loan Debt by Year: average debt by year of graduation for students who graduated with a bachelor’s degree 
+Graduating year
+Average student loan debt
+Average starting salary after graduation
+Average debt to income ratio 
+
+<br><br>
+
+| Feature              	 | Description                                                                                                                                                                                                 	 |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `grad_year`               	 | Graduation year from 1970-2021 in varying increments                                                                                                                                                                                             	 |
+| `debt_at_grad`                 	 | Average student loan debt at graduation                                                                                                                                                                                      |
+| `avg_start_salary`            	 | Average starting salary after graduation                                                                                                                            	 |
+| `avg_debt_to_income`    	 | Average debt to average income ratio                                                                                                            	 |
+:Table 3: Student Loan Debt by Year: average debt by year of graduation for students who graduated with a bachelor’s degree 
+
+:::
+
+
+### Data Cleaning
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The data preparation process involved extensive cleaning and manipulation in Excel and PostgreSQL. It is crucial to emphasize that all data was aggregated, ensuring no sensitive information was included within the datasets. For the Federal Reserve data, we extracted variables such as the survey year, age groups, the percentage of families in that age groups with a mortgage loan, and the percentage of families in that age group with an education loan. Similarly, for the Census data, we extracted the survey year, age groups, the total number of homes surveyed, and the total number of homes that were owned. All these variables were organized in a structured manner to facilitate analysis. It is important to note that the age groups from the Federal Reserve and Census data exhibited overlap, although they were categorized differently. The Federal Reserve data utilized broader age categories, while the Census data employed more granular age bins. Specifically, the Federal Reserve age groups were: less than 35, 35-44, 45-54, 55-64, 65-74, and 75+. In contrast, the Census data age groups were segmented as follows: less than 25, 25-29, 30-34, 35-39, ..., 70-74, and 75+. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once we created these two tables in PostgreSQL, we split each table’s age groups into a minimum age and a maximum age for ease of joining the two tables together. Once we created those new columns in both the Federal Reserve and Census tables, we joined our data on survey year, minimum age, and maximum age, which we treated as primary composite keys. In the join, we ensured that the broader Federal Reserve age ranges were matched with the more granular Census age ranges. Although the join conditions account for overlapping age ranges, there may still be mismatches where age groups did not perfectly align. Additionally, overlaps or gaps in age ranges might lead to duplication of data, which would affect the overall quality and reliability of the dataset.
@@ -12,3 +59,32 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As mentioned previously, all the data from the Federal Reserve and Census surveys were anonymized to protect individual privacy, preventing the identification of specific individuals. Additionally, the data was presented in aggregated forms such as percentages and averages, rather than detailed individual records, to further safeguard privacy. However, despite these measures, the potential for bias remains a concern, as survey respondents may not fully represent the entire population, with certain demographics potentially being underrepresented. Additionally, working with aggregated data can weaken the statistical power of analyses and increase the likelihood of Type II errors (failing to detect a true effect) or result in misleading statistics. Regarding data integrity, while the Federal Reserve and Census data were sourced from reputable institutions, our dataset for student debt was obtained from a less reliable source. We acknowledge the limitations of this dataset but feel that its inclusion was crucial for providing a more comprehensive analysis. We advise readers to consider the findings from this source alongside the more robust datasets and to be mindful of the potential impact on our study’s overall conclusions.
 
+
+#### Final Dataset
+
+
+::: {.callout-note collapse="true"}
+#### Data Dictionary - Features and Descriptions (Click to Expand) 
+| Feature              	 | Description                                                                                                                                                                                                 	 |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `year`| year of survey, in increments of 3 |
+|`census_min_birth_year`|  minimum birth year calculated from `year` and `census_min_age` |
+|`census_max_birth_year`| maximum birth year calculated from `year` and `census_max_age` |
+|`census_generation_name`| generation name derived from `census_min_birth_year` and `census_max_birth_year`|
+|`census_min_grad_year`| minimum graduation year derived from `census_min_birth_year` + 21 years|
+|`census_max_grad_year`| maximum graduation year derived from `census_max_birth_year` + 21 years |
+|`debt_at_grad`| average debt at year of graduation |
+|`avg_start_salary`| average starting salary post graduation|
+|`avg_debt_to_income`| average debt to income ratio |
+|`census_min_age`| minimum age derived from age group|
+|`census_max_age`| maximum age derived from age group|
+|`total_surveyed`| total number of those surveyed|
+|`total_owner`| total number of those surveyed who own a home|
+|`federal_min_age`| minimum age derived from age group|
+|`federal_max_age`| maximum age derived from age group|
+|`percent_mortgage`| percentage of those surveyed with mortgages|
+|`percent_education_loan`| percentage of those surveyed with education loans|
+|`generation_order`| generations encoded (Baby Boomer = 1, Generation X = 2, Millennial = 3) |
+:Table 1 - Survey of Consumer Finances 1989-2022: a normally triennial cross-sectional survey of U.S. families showcasing family holdings of debt by selected characteristics of families and type of debt. 
+
+:::
