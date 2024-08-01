@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Generational Differences in Student Loan Debt and the Implications on Homeownership Trends</h1>
-            <p class="subtitle lead">Subtitle</p>
+            <p class="subtitle lead">MSDS Capstone 2024</p>
                       </div>
   </div>
     
@@ -72,7 +72,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
-  <li><a href="#data-methods" id="toc-data-methods" class="nav-link" data-scroll-target="#data-methods">Data &amp; Methods</a></li>
+  <li><a href="#data-methods" id="toc-data-methods" class="nav-link" data-scroll-target="#data-methods">Data &amp; Methods</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  </ul></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
   <ul class="collapse">
   <li><a href="#linear-regression-model" id="toc-linear-regression-model" class="nav-link" data-scroll-target="#linear-regression-model">Linear Regression Model</a></li>
@@ -106,15 +109,237 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-methods" class="level1">
 <h1>Data &amp; Methods</h1>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To perform our analysis, we utilized the data from the Federal Reserve and Census surveys within the 1989-2022 time frame. The Federal Reserve survey consisted of age groups, the percentage of those who had a mortgage and the percentage of those with education loans, and was stored in various tabs in an excel spreadsheet. The Census survey, also stored in various tabs in an excel spreadsheet, included age groups, total number of people who were surveyed and the number of homeowners within each age group. To further explore our research question and to supplement our existing tables, we found data on the amount of debt students had at the time of their graduation. This table included graduation year, amount of debt at graduation, average starting salary out of college and the debt to income ratio.</p>
+<section id="original-tables" class="level4">
+<h4 class="anchored" data-anchor-id="original-tables">Original Tables</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Data Dictionary - Features, Descriptions, and Sources (Click to Expand)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<caption>Table 1 - Survey of Consumer Finances 1989-2022: a normally triennial cross-sectional survey of U.S. families showcasing family holdings of debt by selected characteristics of families and type of debt.</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>year</code></td>
+<td>Survey year from 1989-2022 in ncrements of 3 years</td>
+</tr>
+<tr class="even">
+<td><code>age_group</code></td>
+<td>Age groups: 18-34, 35-44, 45-54, 55-64, 65-74, 75+</td>
+</tr>
+<tr class="odd">
+<td><code>percent_mortgage</code></td>
+<td>Percent of mortgage debt an individual within the age group holds on average</td>
+</tr>
+<tr class="even">
+<td><code>percent_education_loan</code></td>
+<td>Percent of education loan debt an indiviudual within the age groups holds on average</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<table class="caption-top table">
+<caption>Table 2 - Census Housing Vacancy Survey: historical data on rental and homeowner vacancy rates in the U.S.</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>year</code></td>
+<td>Survey year from 1989-2022 in increments of 3 years</td>
+</tr>
+<tr class="even">
+<td><code>age_group</code></td>
+<td>Age groups: 18-24, 25-29, 30-34, 35-39, 40-44, 45-49, 50-54, 55-59, 60-64, 65-69, 70-74, 75+</td>
+</tr>
+<tr class="odd">
+<td><code>total_surveyed</code></td>
+<td>Total number of homes surveyed</td>
+</tr>
+<tr class="even">
+<td><code>total_owner</code></td>
+<td>Total number of homes surveyed that were owned</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3: Student Debt Student Loan Debt by Year: average debt by year of graduation for students who graduated with a bachelor’s degree Graduating year Average student loan debt Average starting salary after graduation Average debt to income ratio</p>
+<p><br><br></p>
+<table class="caption-top table">
+<caption>Table 3: Student Loan Debt by Year: average debt by year of graduation for students who graduated with a bachelor’s degree</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>grad_year</code></td>
+<td>Graduation year from 1970-2021 in varying increments</td>
+</tr>
+<tr class="even">
+<td><code>debt_at_grad</code></td>
+<td>Average student loan debt at graduation</td>
+</tr>
+<tr class="odd">
+<td><code>avg_start_salary</code></td>
+<td>Average starting salary after graduation</td>
+</tr>
+<tr class="even">
+<td><code>avg_debt_to_income</code></td>
+<td>Average debt to average income ratio</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="data-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The data preparation process involved extensive cleaning and manipulation in Excel and PostgreSQL. It is crucial to emphasize that all data was aggregated, ensuring no sensitive information was included within the datasets. For the Federal Reserve data, we extracted variables such as the survey year, age groups, the percentage of families in that age groups with a mortgage loan, and the percentage of families in that age group with an education loan. Similarly, for the Census data, we extracted the survey year, age groups, the total number of homes surveyed, and the total number of homes that were owned. All these variables were organized in a structured manner to facilitate analysis. It is important to note that the age groups from the Federal Reserve and Census data exhibited overlap, although they were categorized differently. The Federal Reserve data utilized broader age categories, while the Census data employed more granular age bins. Specifically, the Federal Reserve age groups were: less than 35, 35-44, 45-54, 55-64, 65-74, and 75+. In contrast, the Census data age groups were segmented as follows: less than 25, 25-29, 30-34, 35-39, …, 70-74, and 75+.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once we created these two tables in PostgreSQL, we split each table’s age groups into a minimum age and a maximum age for ease of joining the two tables together. Once we created those new columns in both the Federal Reserve and Census tables, we joined our data on survey year, minimum age, and maximum age, which we treated as primary composite keys. In the join, we ensured that the broader Federal Reserve age ranges were matched with the more granular Census age ranges. Although the join conditions account for overlapping age ranges, there may still be mismatches where age groups did not perfectly align. Additionally, overlaps or gaps in age ranges might lead to duplication of data, which would affect the overall quality and reliability of the dataset.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upon joining our two tables, we proceeded to integrate generation names for each age range. This involved calculating the minimum and maximum birth years using the survey year along with the minimum and maximum ages. To classify each row into a generational cohort (Traditionalist, Baby Boomer, Generation X, Millennial, or Gen Z), we created a formula to manage overlaps by comparing the minimum and maximum birth years to determine the closest generational boundary alignment for each row. We also created new columns for minimum and maximum graduation years. This was done by assuming the average college graduation age to be 21 and adding this to the minimum and maximum birth years. It’s important to note that using a single average age may lead to inaccuracies in calculating the minimum and maximum graduation years, which could affect subsequent analyses and the classification of individuals into generational cohorts.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, we integrated our student debt dataset, which included variables such as debt at graduation, average starting salary, and debt-to-income ratio by graduation year. The data source did not provide a downloadable file. Consequently, the values were manually entered into Excel and subsequently imported into PostgreSQL for analysis. We aligned each row of our joined dataset to the corresponding debt figures by comparing the minimum and maximum graduation years to determine the closest match to the graduation year in our debt dataset. Although the assignments were done as carefully as possible, there is a chance that some inaccuracies may remain due to variations in actual graduation ages and the potential misalignment of graduation years within the dataset.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As mentioned previously, all the data from the Federal Reserve and Census surveys were anonymized to protect individual privacy, preventing the identification of specific individuals. Additionally, the data was presented in aggregated forms such as percentages and averages, rather than detailed individual records, to further safeguard privacy. However, despite these measures, the potential for bias remains a concern, as survey respondents may not fully represent the entire population, with certain demographics potentially being underrepresented. Additionally, working with aggregated data can weaken the statistical power of analyses and increase the likelihood of Type II errors (failing to detect a true effect) or result in misleading statistics. Regarding data integrity, while the Federal Reserve and Census data were sourced from reputable institutions, our dataset for student debt was obtained from a less reliable source. We acknowledge the limitations of this dataset but feel that its inclusion was crucial for providing a more comprehensive analysis. We advise readers to consider the findings from this source alongside the more robust datasets and to be mindful of the potential impact on our study’s overall conclusions.</p>
+<section id="final-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="final-dataset">Final Dataset</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Data Dictionary - Features and Descriptions (Click to Expand)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<caption>Table 1 - Survey of Consumer Finances 1989-2022: a normally triennial cross-sectional survey of U.S. families showcasing family holdings of debt by selected characteristics of families and type of debt.</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>year</code></td>
+<td>year of survey, in increments of 3</td>
+</tr>
+<tr class="even">
+<td><code>census_min_birth_year</code></td>
+<td>minimum birth year calculated from <code>year</code> and <code>census_min_age</code></td>
+</tr>
+<tr class="odd">
+<td><code>census_max_birth_year</code></td>
+<td>maximum birth year calculated from <code>year</code> and <code>census_max_age</code></td>
+</tr>
+<tr class="even">
+<td><code>census_generation_name</code></td>
+<td>generation name derived from <code>census_min_birth_year</code> and <code>census_max_birth_year</code></td>
+</tr>
+<tr class="odd">
+<td><code>census_min_grad_year</code></td>
+<td>minimum graduation year derived from <code>census_min_birth_year</code> + 21 years</td>
+</tr>
+<tr class="even">
+<td><code>census_max_grad_year</code></td>
+<td>maximum graduation year derived from <code>census_max_birth_year</code> + 21 years</td>
+</tr>
+<tr class="odd">
+<td><code>debt_at_grad</code></td>
+<td>average debt at year of graduation</td>
+</tr>
+<tr class="even">
+<td><code>avg_start_salary</code></td>
+<td>average starting salary post graduation</td>
+</tr>
+<tr class="odd">
+<td><code>avg_debt_to_income</code></td>
+<td>average debt to income ratio</td>
+</tr>
+<tr class="even">
+<td><code>census_min_age</code></td>
+<td>minimum age derived from age group</td>
+</tr>
+<tr class="odd">
+<td><code>census_max_age</code></td>
+<td>maximum age derived from age group</td>
+</tr>
+<tr class="even">
+<td><code>total_surveyed</code></td>
+<td>total number of those surveyed</td>
+</tr>
+<tr class="odd">
+<td><code>total_owner</code></td>
+<td>total number of those surveyed who own a home</td>
+</tr>
+<tr class="even">
+<td><code>federal_min_age</code></td>
+<td>minimum age derived from age group</td>
+</tr>
+<tr class="odd">
+<td><code>federal_max_age</code></td>
+<td>maximum age derived from age group</td>
+</tr>
+<tr class="even">
+<td><code>percent_mortgage</code></td>
+<td>percentage of those surveyed with mortgages</td>
+</tr>
+<tr class="odd">
+<td><code>percent_education_loan</code></td>
+<td>percentage of those surveyed with education loans</td>
+</tr>
+<tr class="even">
+<td><code>generation_order</code></td>
+<td>generations encoded (Baby Boomer = 1, Generation X = 2, Millennial = 3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="analysis" class="level1">
 <h1>Analysis</h1>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To determine how differences in student loan debt between older and current generations affect homeownership trends, we focused on several key variables. Firstly, we examine the debt at graduation (<em>debt_at_grad</em>), which quantifies the amount of student loan debt individuals had upon completing their studies. Additionally, we considered the average debt to income (<em>avg_debt_to_income</em>), which identifies the debt to income ratio for new graduates, and average start salary (<em>avg_start_salary</em>), which identifies the average start salary for new graduates. We also included the generational order (generation_order), identifying whether individuals belong to the Baby Boomers, Generation X, or Millennials. Due to the lack of data compiled for Gen Z, we chose to exclude this generation from our comparative analysis. Two other important variables are the percent of education loans (<em>percent_education_loan</em>) and percent of mortgage loans (<em>percent_mortgage</em>), which represents the proportion of total debt an individual has attributed to education loans and mortgage loans, respectively. Finally, we analyze the homeownership rate (<em>homeownership_rate</em>), calculated by dividing the total number of homes surveyed by the total number of homes owned and multiplying by 100, to determine the proportion of the population that owns a home.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To determine how differences in student loan debt between older and current generations affect homeownership trends, we focused on several key variables. Firstly, we examine the debt at graduation (<code>debt_at_grad</code>), which quantifies the amount of student loan debt individuals had upon completing their studies. Additionally, we considered the average debt to income (<code>avg_debt_to_income</code>), which identifies the debt to income ratio for new graduates, and average start salary (<code>avg_start_salary</code>), which identifies the average start salary for new graduates. We also included the generational order (generation_order), identifying whether individuals belong to the Baby Boomers, Generation X, or Millennials. Due to the lack of data compiled for Gen Z, we chose to exclude this generation from our comparative analysis. Two other important variables are the percent of education loans (<code>percent_education_loan</code>) and percent of mortgage loans (<code>percent_mortgage</code>), which represents the proportion of total debt an individual has attributed to education loans and mortgage loans, respectively. Finally, we analyze the homeownership rate (<code>homeownership_rate</code>), calculated by dividing the total number of homes surveyed by the total number of homes owned and multiplying by 100, to determine the proportion of the population that owns a home.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First, we first focused on analyzing the overall trend of student loan debt at graduation by generation. We calculated the average graduation year for each row within our dataset in order to conduct this analysis. Our analysis revealed a clear upward trajectory in graduation debt levels over time for each successive generation, shown in Figure 1. For the Baby Boomers, graduates had relatively low levels of student loan debt, which remained stable and below $5,000 through the 1970s and early 1980s. In contrast, Generation X experienced a noticeable increase in debt levels starting in the late 1980s, with a steady rise through the 1990s, peaking around $15,000 by the early 2000s. This trend continues with Millennials, who faced the highest levels of debt at graduation. Starting in the early 2000s, the average debt for this generation saw a steep increase, surpassing $20,000 and reaching nearly $30,000 by 2015. This escalation in student loan debt across generations highlights a growing financial burden on recent graduates, with Millennials bearing the highest debt load. The data suggests significant changes in higher education financing, economic conditions, and possibly policy impacts over the decades.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -154,12 +379,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="linear-regression-coefficient-results" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression-coefficient-results">Linear Regression Coefficient Results</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debt at Graduation (<em>debt_at_grad</em>): The coefficient for debt at graduation is 0.0015 with a p-value of 0.073. Although this coefficient indicates a positive relationship between debt at graduation and the homeownership rate, the p-value exceeds the conventional significance level of 0.05. This suggests that the effect of debt at graduation on homeownership rates is not statistically significant, and therefore, its impact may be minimal or uncertain.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Start Salary (<em>avg_start_salar</em>): The coefficient for average starting salary is -0.0013 with a p-value of 0.015. This result is statistically significant, as evidenced by the p-value being less than 0.05. The negative coefficient indicates that higher average starting salaries are associated with a slight decrease in the homeownership rate. This suggests that, contrary to what might be expected, higher starting salaries could be linked to lower homeownership rates, though the magnitude of this effect is relatively small.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Debt to Income (<em>avg_debt_to_income</em>): The coefficient for average debt to income is -0.6644 with a p-value of 0.136. The negative coefficient implies that higher debt-to-income ratios are associated with a lower homeownership rate. However, the p-value indicates that this result is not statistically significant at the 0.05 level, suggesting that the observed relationship may not be strong or reliable and could be influenced by other factors not captured by this model.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Mortgage (<em>percent_mortgage</em>): The coefficient for the percentage mortgage is 0.7176 with a p-value less than 0.001. This result is both positive and statistically significant, indicating a robust relationship between a higher percentage of mortgage debt an individual holds and an increased homeownership rate. From a practical standpoint, this result is logical since mortgage debt is a fundamental component of homeownership. Therefore, it is not surprising that an increase in mortgage debt is associated with a higher rate of homeownership. By incorporating this predictor, we aimed to better capture the relationship between mortgage debt and homeownership rates, thereby improving the model’s ability to explain variability in the dependent variable.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Education Loan (<em>percent_education_loan</em>): The coefficient for the percent education loan varaible is 0.6885 with a p-value of 0.046. This positive coefficient, coupled with a p-value less than 0.05, signifies a statistically significant relationship. It suggests that a higher percentage of education loan debt is associated with an increase in the homeownership rate. This result indicates that education loan debt may play a meaningful role in influencing homeownership rates, though the exact nature of this relationship warrants further investigation.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generation Order (<em>generation_order</em>): The coefficient for generation order is -3.9232 with a p-value of 0.429. This result is not statistically significant, as indicated by the p-value exceeding 0.05. The negative coefficient suggests that the generation order may be inversely related to homeownership rates, but the lack of statistical significance implies that this effect is not robust or meaningful in the context of this model.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debt at Graduation (<code>debt_at_grad</code>): The coefficient for debt at graduation is 0.0015 with a p-value of 0.073. Although this coefficient indicates a positive relationship between debt at graduation and the homeownership rate, the p-value exceeds the conventional significance level of 0.05. This suggests that the effect of debt at graduation on homeownership rates is not statistically significant, and therefore, its impact may be minimal or uncertain.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Start Salary (<code>avg_start_salar</code>): The coefficient for average starting salary is -0.0013 with a p-value of 0.015. This result is statistically significant, as evidenced by the p-value being less than 0.05. The negative coefficient indicates that higher average starting salaries are associated with a slight decrease in the homeownership rate. This suggests that, contrary to what might be expected, higher starting salaries could be linked to lower homeownership rates, though the magnitude of this effect is relatively small.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Debt to Income (<code>avg_debt_to_income</code>): The coefficient for average debt to income is -0.6644 with a p-value of 0.136. The negative coefficient implies that higher debt-to-income ratios are associated with a lower homeownership rate. However, the p-value indicates that this result is not statistically significant at the 0.05 level, suggesting that the observed relationship may not be strong or reliable and could be influenced by other factors not captured by this model.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Mortgage (<code>percent_mortgage</code>): The coefficient for the percentage mortgage is 0.7176 with a p-value less than 0.001. This result is both positive and statistically significant, indicating a robust relationship between a higher percentage of mortgage debt an individual holds and an increased homeownership rate. From a practical standpoint, this result is logical since mortgage debt is a fundamental component of homeownership. Therefore, it is not surprising that an increase in mortgage debt is associated with a higher rate of homeownership. By incorporating this predictor, we aimed to better capture the relationship between mortgage debt and homeownership rates, thereby improving the model’s ability to explain variability in the dependent variable.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Education Loan (<code>percent_education_loan</code>): The coefficient for the percent education loan varaible is 0.6885 with a p-value of 0.046. This positive coefficient, coupled with a p-value less than 0.05, signifies a statistically significant relationship. It suggests that a higher percentage of education loan debt is associated with an increase in the homeownership rate. This result indicates that education loan debt may play a meaningful role in influencing homeownership rates, though the exact nature of this relationship warrants further investigation.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generation Order (<code>generation_order</code>): The coefficient for generation order is -3.9232 with a p-value of 0.429. This result is not statistically significant, as indicated by the p-value exceeding 0.05. The negative coefficient suggests that the generation order may be inversely related to homeownership rates, but the lack of statistical significance implies that this effect is not robust or meaningful in the context of this model.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The above coefficients offer a nuanced view of how differences in student loan debt between older and current generations affect, homeownership trends, but they do not provide a definitive answer.</p>
 </section>
 <section id="random-forest-model" class="level2">
@@ -169,13 +394,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="random-forest-feature-importance-results" class="level2">
 <h2 class="anchored" data-anchor-id="random-forest-feature-importance-results">Random Forest Feature Importance Results</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debt at Graduation (<em>debt_at_grad</em>): With an importance score of 0.094, debt at graduation has a relatively low impact on the model’s predictions compared to other features. This indicates that debt at graduation has a relatively low impact on predicting homeownership rates compared to other features. This suggests that while student loan debt at graduation does play a role, its contribution to explaining homeownership trends is not very significant. Therefore, differences in debt at graduation between generations may not be a major driver of variations in homeownership rates.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Start Salary (<em>avg_start_salary</em>): The importance score for average start salary is 0.073, suggesting that this feature has a modest influence on the model. Its impact on predicting homeownership rates is lower compared to some other features.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Debt to Income (<em>avg_debt_to_income</em>): The importance score of 0.089 for average debt to income indicates a relatively minor contribution to the model’s predictive power. This feature provides some value, but its effect is not as pronounced as other predictors.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Mortgage (<em>percent_mortgage</em>): With an importance score of 0.590, percent mortgage debt is the most influential feature in the model. As mentioned previously in our linear regression coefficient analysis, this result is to be expected.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Education Loan (<em>percent_education_loan</em>): The importance score of 0.116 suggests that percent education loan debt has a moderate effect on the model. Percent education loan debt has a moderate effect on the model. While it is not as influential as mortgage debt, it still contributes notably to predicting homeownership rates. This suggests that differences in education loan debt between generations may influence homeownership trends to a certain degree, though it is not the primary driver.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generation Order (<em>generation_order</em>): The importance score of 0.038 indicates that generation order has the least impact on the model’s predictions. Generation order has the least impact on the model’s predictions. This low importance score indicates that the order of generations (or the generational cohort) contributes minimally to explaining variations in homeownership rates. This result suggests that generational differences alone, without considering other factors, have a limited effect on homeownership trends.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded the percent_mortgage variable from this visualization due to its dominance as the most significant feature. As illustrated in Figure 5, the variable <em>debt_at_grad</em> emerges as the second most influential factor in predicting the homeownership rate. This suggests that the amount of student loan debt individuals have when they graduate plays a substantial role in determining their likelihood of owning a home. Higher student loan debt could be a barrier to homeownership, possibly due to the financial burden it places on individuals. Conversely, <em>generation_order</em> ranks as the least significant feature. This implies that, according to the model, the generational sequence (e.g., Baby Boomer, Gen X, Millennials) is not a major factor in predicting homeownership rates compared to the direct financial impacts like student loan debt.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debt at Graduation (<code>debt_at_grad</code>): With an importance score of 0.094, debt at graduation has a relatively low impact on the model’s predictions compared to other features. This indicates that debt at graduation has a relatively low impact on predicting homeownership rates compared to other features. This suggests that while student loan debt at graduation does play a role, its contribution to explaining homeownership trends is not very significant. Therefore, differences in debt at graduation between generations may not be a major driver of variations in homeownership rates.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Start Salary (<code>avg_start_salary</code>): The importance score for average start salary is 0.073, suggesting that this feature has a modest influence on the model. Its impact on predicting homeownership rates is lower compared to some other features.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average Debt to Income (<code>avg_debt_to_income</code>): The importance score of 0.089 for average debt to income indicates a relatively minor contribution to the model’s predictive power. This feature provides some value, but its effect is not as pronounced as other predictors.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Mortgage (<code>percent_mortgage</code>): With an importance score of 0.590, percent mortgage debt is the most influential feature in the model. As mentioned previously in our linear regression coefficient analysis, this result is to be expected.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Education Loan (<code>percent_education_loan</code>): The importance score of 0.116 suggests that percent education loan debt has a moderate effect on the model. Percent education loan debt has a moderate effect on the model. While it is not as influential as mortgage debt, it still contributes notably to predicting homeownership rates. This suggests that differences in education loan debt between generations may influence homeownership trends to a certain degree, though it is not the primary driver.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generation Order (<code>generation_order</code>): The importance score of 0.038 indicates that generation order has the least impact on the model’s predictions. Generation order has the least impact on the model’s predictions. This low importance score indicates that the order of generations (or the generational cohort) contributes minimally to explaining variations in homeownership rates. This result suggests that generational differences alone, without considering other factors, have a limited effect on homeownership trends.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded the percent_mortgage variable from this visualization due to its dominance as the most significant feature. As illustrated in Figure 5, the variable <code>debt_at_grad</code> emerges as the second most influential factor in predicting the homeownership rate. This suggests that the amount of student loan debt individuals have when they graduate plays a substantial role in determining their likelihood of owning a home. Higher student loan debt could be a barrier to homeownership, possibly due to the financial burden it places on individuals. Conversely, <code>generation_order</code> ranks as the least significant feature. This implies that, according to the model, the generational sequence (e.g., Baby Boomer, Gen X, Millennials) is not a major factor in predicting homeownership rates compared to the direct financial impacts like student loan debt.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/features.png" class="img-fluid figure-img"></p>
