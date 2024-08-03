@@ -6,10 +6,10 @@
 
 ![Figure 5: Rising Debt Levels at Graduation Across Successive Generations.](images/debt_over_time.png){#figure-5}
 
+Bla [Figure 6](#figure-6)
 
 
-
-![Figure 6: Homeownership Trends.](images/homeownership_over_time.png)
+![Figure 6: Homeownership Trends.](images/homeownership_over_time.png){#figure-6}
 
 ## Linear Regression Model
 
@@ -92,6 +92,6 @@ In this model analysis, we utilized the same dependent and independent variables
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generation Order (`generation_order`): The importance score of 0.038 indicates that generation order has the least impact on the model’s predictions. Generation order has the least impact on the model’s predictions. This low importance score indicates that the order of generations (or the generational cohort) contributes minimally to explaining variations in homeownership rates. This result suggests that generational differences alone, without considering other factors, have a limited effect on homeownership trends.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded the percent_mortgage variable from this visualization due to its dominance as the most significant feature. As illustrated in Figure 5, the variable `debt_at_grad` emerges as the second most influential factor in predicting the homeownership rate. This suggests that the amount of student loan debt individuals have when they graduate plays a substantial role in determining their likelihood of owning a home. Higher student loan debt could be a barrier to homeownership, possibly due to the financial burden it places on individuals. Conversely, `generation_order` ranks as the least significant feature. This implies that, according to the model, the generational sequence (e.g., Baby Boomer, Gen X, Millennials) is not a major factor in predicting homeownership rates compared to the direct financial impacts like student loan debt. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded the percent_mortgage variable from this visualization due to its dominance as the most significant feature. As illustrated in [Figure 7](#figure-7), the variable `debt_at_grad` emerges as the second most influential factor in predicting the homeownership rate. This suggests that the amount of student loan debt individuals have when they graduate plays a substantial role in determining their likelihood of owning a home. Higher student loan debt could be a barrier to homeownership, possibly due to the financial burden it places on individuals. Conversely, `generation_order` ranks as the least significant feature. This implies that, according to the model, the generational sequence (e.g., Baby Boomer, Gen X, Millennials) is not a major factor in predicting homeownership rates compared to the direct financial impacts like student loan debt. 
 
-![Figure 5: Generation_order is the least significant feature in predicting homeownership rate.](images/features.png)
+![Figure 7: Generation_order is the least significant feature in predicting homeownership rate.](images/features.png){#figure-7}

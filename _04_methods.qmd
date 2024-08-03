@@ -54,9 +54,10 @@ Where:<br>
 #### 4a. Testing for Linearity
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linearity assumption requires that the relationship between the independent variables and the dependent variable is linear. To assess this, we plotted the residuals (errors) against the predicted values to check for any patterns. By plotting residuals versus fitted values (or predictors), we checked for any systematic patterns. If the residuals display a clear pattern or trend, it suggests that the linear relationship assumption might be violated. Ideally, residuals should scatter randomly around zero, indicating that the linear model is appropriate.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs. fitted values plot in Figure 2 shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.
 
-![Figure 2: Linearity Assumption Satisfied: Residuals vs. Fitted Plot Shows No Strong Curvature of Patterns](images/residuals.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs. fitted values plot in [Figure 2](#figure-2) shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.
+
+![Figure 2: Linearity Assumption Satisfied: Residuals vs. Fitted Plot Shows No Strong Curvature of Patterns](images/residuals.png){#figure-2}
 
 #### 4b. Testing for Independence
 
@@ -68,15 +69,15 @@ Where:<br>
 
 #### 4c. Testing for Homoscedasticity
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable.  Although we noted a minor curvature in the linearity assumption, Figure 3 shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable.  Although we noted a minor curvature in the linearity assumption, [Figure 3](#figure-3) shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.
 
-![Figure 3: Homoscedasticity Assumption Satisfied: Residuals are Generally Well-Dsipered Around the Horizontal Line](images/homosced.png)
+![Figure 3: Homoscedasticity Assumption Satisfied: Residuals are Generally Well-Dsipered Around the Horizontal Line](images/homosced.png){#figure-3}
 
 #### 4d. Testing for Normality
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in Figure 4. The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in [Figure 4](#figure-4). The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.
 
-![Figure 4: Normality Assumption Satisfied: Residuals Generally Align with the the 45-Degree Line](images/normality.png)
+![Figure 4: Normality Assumption Satisfied: Residuals Generally Align with the the 45-Degree Line](images/normality.png){#figure-4}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We also performed the Shapiro-Wilk test for normality and got a test statistics of 0.99 and a p-value of 0.86 which suggest that the residuals are approximately normally distributed. Since the p-value is well above the conventional significance level of 0.05, there is no significant evidence to reject the null hypothesis of normality. This supports the assumption that the residuals follow a normal distribution.
 
