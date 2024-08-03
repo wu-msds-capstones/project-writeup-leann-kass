@@ -18,4 +18,4 @@ toc: true
 {{< include _04_methods.qmd >}} 
 {{< include _05_results.qmd >}}
 {{< include _06_conclusions.qmd >}}
-{{< include _07_citations.qmd >}}
+{{< include _07_references.qmd >}}
