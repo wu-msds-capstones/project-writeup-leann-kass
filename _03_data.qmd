@@ -46,9 +46,9 @@ Housing Vacancy Survey: historical data on rental and homeowner vacancy rates in
 :::
 
 
-## Data Cleaning
+## Data Cleaning & Feature Engineering
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The data preparation process involved extensive cleaning and manipulation in Excel and PostgreSQL. It is crucial to emphasize that all data was aggregated, ensuring no sensitive information was included within the datasets. For the Federal Reserve data, we extracted variables such as the survey year, age groups, the percentage of families in that age groups with a mortgage loan, and the percentage of families in that age group with an education loan. Similarly, for the Census data, we extracted the survey year, age groups, the total number of homes surveyed, and the total number of homes that were owned. All these variables were organized in a structured manner to facilitate analysis. It is important to note that the age groups from the Federal Reserve and Census data exhibited overlap, although they were categorized differently. The Federal Reserve data utilized broader age categories, while the Census data employed more granular age bins. Specifically, the Federal Reserve age groups were: less than 35, 35-44, 45-54, 55-64, 65-74, and 75+. In contrast, the Census data age groups were segmented as follows: less than 25, 25-29, 30-34, 35-39, ..., 70-74, and 75+. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The data preparation process involved extensive cleaning and manipulation in Excel and PostgreSQL. It is crucial to emphasize that all data was aggregated, ensuring no sensitive information was included within the datasets. For the Federal Reserve data, we extracted variables such as the survey year, age groups, the percentage of families in that age groups with a mortgage loan, and the percentage of families in that age group with an education loan. Similarly, for the Census data, we extracted the survey year, age groups, the total number of homes surveyed, and the total number of homes that were owned. All these variables were organized in a structured manner to facilitate analysis. It is important to note that the age groups from the Federal Reserve and Census data exhibited overlap, although they were categorized differently. The Federal Reserve data utilized broader age categories, while the Census data employed more granular age bins. Specifically, the Federal Reserve age groups were: less than 35, 35-44, 45-54, 55-64, 65-74, and 75+. In contrast, the Census data age groups were segmented as follows: less than 25, 25-29, 30-34, 35-39, ..., 70-74, and 75+.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once we created these two tables in PostgreSQL, we split each table’s age groups into a minimum age and a maximum age for ease of joining the two tables together. Once we created those new columns in both the Federal Reserve and Census tables, we joined our data on survey year, minimum age, and maximum age, which we treated as primary composite keys. In the join, we ensured that the broader Federal Reserve age ranges were matched with the more granular Census age ranges. Although the join conditions account for overlapping age ranges, there may still be mismatches where age groups did not perfectly align. Additionally, overlaps or gaps in age ranges might lead to duplication of data, which would affect the overall quality and reliability of the dataset.
 
@@ -58,7 +58,7 @@ Housing Vacancy Survey: historical data on rental and homeowner vacancy rates in
 
 
 
-### Final Dataset
+### Final Data Dictionary
 
 
 ::: {.callout-note collapse="true"}
