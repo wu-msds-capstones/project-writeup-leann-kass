@@ -165,10 +165,10 @@ window.Quarto = {
 <section id="data-acquisition" class="level2">
 <h2 class="anchored" data-anchor-id="data-acquisition">Data Acquisition</h2>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The acquisition of student loan data and homeownership data proved challenging due to several factors. There was a significant lack of publicly available data, particularly data on student loans dating back to 1990. This scarcity was exacerbated by the fact that the raw data needed for our analysis was not available on any of the websites we consulted, including government portals and academic repositories. The data we encountered was predominantly aggregated, with limited access to detailed, disaggregated datasets that would allow for more granular analysis. Furthermore, many of the existing studies and reports that addressed related topics did not provide explicit citations or source details for their data, making it difficult to trace the origins and verify the reliability of the information used in previous research. This lack of transparency and accessibility posed significant obstacles to obtaining the comprehensive and historical data required for our study.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To perform our analysis, we utilized the data from the Federal Reserve and Census surveys within the 1989-2022 time frame. The Federal Reserve survey consisted of age groups, the percentage of those who had a mortgage and the percentage of those with education loans, and was stored in various tabs in an excel spreadsheet. The Census survey, also stored in various tabs in an excel spreadsheet, included age groups, total number of people who were surveyed and the number of homeowners within each age group. To further explore our research question and to supplement our existing tables, we found data on the amount of debt students had at the time of their graduation. This table included graduation year, amount of debt at graduation, average starting salary out of college and the debt to income ratio.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To perform our analysis, we utilized the data from the Federal Reserve and Census surveys within the 1989-2022 time frame. The Federal Reserve survey consisted of age groups, the percentage of those who had a mortgage and the percentage of those with education loans, and was stored in various tabs in an excel spreadsheet. The Census survey, also stored in various tabs in an excel spreadsheet, included age groups, total number of people who were surveyed and the number of homeowners within each age group. To further explore our research question and to supplement our existing tables, we found data on the amount of debt students had at the time of their graduation. This table included graduation year, amount of debt at graduation, average starting salary out of college and the debt to income ratio. The original data structure can be seen in <a href="#figure-1">Figure 1</a></p>
 <section id="original-tables" class="level3">
 <h3 class="anchored" data-anchor-id="original-tables">Original Tables</h3>
-<div class="quarto-figure quarto-figure-center">
+<div id="figure-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/erd.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 1: Original Tables</figcaption>
@@ -449,8 +449,9 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the results of a linear regression analysis to be valid, certain assumptions about the data must be met. These assumptions include linearity, independence, homoscedasticity, normality, and lack of multicollinearity.</p>
 <section id="a.-testing-for-linearity" class="level4">
 <h4 class="anchored" data-anchor-id="a.-testing-for-linearity">4a. Testing for Linearity</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linearity assumption requires that the relationship between the independent variables and the dependent variable is linear. To assess this, we plotted the residuals (errors) against the predicted values to check for any patterns. By plotting residuals versus fitted values (or predictors), we checked for any systematic patterns. If the residuals display a clear pattern or trend, it suggests that the linear relationship assumption might be violated. Ideally, residuals should scatter randomly around zero, indicating that the linear model is appropriate. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs.&nbsp;fitted values plot in Figure 2 shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linearity assumption requires that the relationship between the independent variables and the dependent variable is linear. To assess this, we plotted the residuals (errors) against the predicted values to check for any patterns. By plotting residuals versus fitted values (or predictors), we checked for any systematic patterns. If the residuals display a clear pattern or trend, it suggests that the linear relationship assumption might be violated. Ideally, residuals should scatter randomly around zero, indicating that the linear model is appropriate.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs.&nbsp;fitted values plot in <a href="#figure-2">Figure 2</a> shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.</p>
+<div id="figure-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/residuals.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 2: Linearity Assumption Satisfied: Residuals vs.&nbsp;Fitted Plot Shows No Strong Curvature of Patterns</figcaption>
@@ -465,8 +466,8 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </section>
 <section id="c.-testing-for-homoscedasticity" class="level4">
 <h4 class="anchored" data-anchor-id="c.-testing-for-homoscedasticity">4c. Testing for Homoscedasticity</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable. Although we noted a minor curvature in the linearity assumption, Figure 3 shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable. Although we noted a minor curvature in the linearity assumption, <a href="#figure-3">Figure 3</a> shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.</p>
+<div id="figure-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/homosced.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 3: Homoscedasticity Assumption Satisfied: Residuals are Generally Well-Dsipered Around the Horizontal Line</figcaption>
@@ -475,8 +476,8 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </section>
 <section id="d.-testing-for-normality" class="level4">
 <h4 class="anchored" data-anchor-id="d.-testing-for-normality">4d. Testing for Normality</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in Figure 4. The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in <a href="#figure-4">Figure 4</a>. The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.</p>
+<div id="figure-4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/normality.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 4: Normality Assumption Satisfied: Residuals Generally Align with the the 45-Degree Line</figcaption>
@@ -559,7 +560,8 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <figcaption>Figure 5: Rising Debt Levels at Graduation Across Successive Generations.</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
+<p>Bla <a href="#figure-6">Figure 6</a></p>
+<div id="figure-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/homeownership_over_time.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 6: Homeownership Trends.</figcaption>
@@ -712,11 +714,11 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Mortgage (<code>percent_mortgage</code>): With an importance score of 0.590, percent mortgage debt is the most influential feature in the model. As mentioned previously in our linear regression coefficient analysis, this result is to be expected.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percent Education Loan (<code>percent_education_loan</code>): The importance score of 0.116 suggests that percent education loan debt has a moderate effect on the model. Percent education loan debt has a moderate effect on the model. While it is not as influential as mortgage debt, it still contributes notably to predicting homeownership rates. This suggests that differences in education loan debt between generations may influence homeownership trends to a certain degree, though it is not the primary driver.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generation Order (<code>generation_order</code>): The importance score of 0.038 indicates that generation order has the least impact on the model’s predictions. Generation order has the least impact on the model’s predictions. This low importance score indicates that the order of generations (or the generational cohort) contributes minimally to explaining variations in homeownership rates. This result suggests that generational differences alone, without considering other factors, have a limited effect on homeownership trends.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded the percent_mortgage variable from this visualization due to its dominance as the most significant feature. As illustrated in Figure 5, the variable <code>debt_at_grad</code> emerges as the second most influential factor in predicting the homeownership rate. This suggests that the amount of student loan debt individuals have when they graduate plays a substantial role in determining their likelihood of owning a home. Higher student loan debt could be a barrier to homeownership, possibly due to the financial burden it places on individuals. Conversely, <code>generation_order</code> ranks as the least significant feature. This implies that, according to the model, the generational sequence (e.g., Baby Boomer, Gen X, Millennials) is not a major factor in predicting homeownership rates compared to the direct financial impacts like student loan debt.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded the percent_mortgage variable from this visualization due to its dominance as the most significant feature. As illustrated in <a href="#figure-7">Figure 7</a>, the variable <code>debt_at_grad</code> emerges as the second most influential factor in predicting the homeownership rate. This suggests that the amount of student loan debt individuals have when they graduate plays a substantial role in determining their likelihood of owning a home. Higher student loan debt could be a barrier to homeownership, possibly due to the financial burden it places on individuals. Conversely, <code>generation_order</code> ranks as the least significant feature. This implies that, according to the model, the generational sequence (e.g., Baby Boomer, Gen X, Millennials) is not a major factor in predicting homeownership rates compared to the direct financial impacts like student loan debt.</p>
+<div id="figure-7" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/features.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 5: Generation_order is the least significant feature in predicting homeownership rate.</figcaption>
+<figcaption>Figure 7: Generation_order is the least significant feature in predicting homeownership rate.</figcaption>
 </figure>
 </div>
 </section>
