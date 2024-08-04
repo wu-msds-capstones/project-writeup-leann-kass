@@ -22,7 +22,8 @@
 
 #### Analyzing Trends Over Time
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, we concentrated on examining the overall trend of student loan debt at graduation across different generations, specifically Baby Boomers, Generation X, and Millennials. To facilitate this analysis, we calculated the average graduation year for each entry in our dataset, covering graduates as far back as 1967. Additionally, we assessed the general trend in homeownership rates over the years. However, since our homeownership data only dates back to 1989, it presents a challenge in directly comparing the homeownership rates of Baby Boomers with our graduation debt trend.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, we concentrated on examining the overall trend of student loan debt at graduation across different generations, specifically Baby Boomers, Generation X, and Millennials. To facilitate this analysis, we calculated the average graduation year for each entry in our dataset, covering graduates as far back as 1967 and calulcated the slope values of each generation. Additionally, we assessed the general trend in homeownership rates over the years. However, since our homeownership data only dates back to 1989, it presents a challenge in directly comparing the homeownership rates of Baby Boomers with our graduation debt trend.
+
 
 #### Choosing an Analysis Dataset
 

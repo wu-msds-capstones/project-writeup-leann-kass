@@ -2,13 +2,25 @@
 
 ## Trends Over Time
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis of graduation debt revealed a clear upward trajectory in average graduation debt levels over time for each successive generation, shown in [Figure 5](#figure-5). For the Baby Boomers, graduates had relatively low levels of student loan debt, which remained stable and below $5,000 through the 1970s and early 1980s. In contrast, Generation X experienced a noticeable increase in debt levels starting in the late 1980s, with a steady rise through the 1990s, peaking around $15,000 by the early 2000s. This trend continues with Millennials, who faced the highest levels of debt at graduation. Starting in the early 2000s, the average debt for this generation saw a steep increase, surpassing $20,000 and reaching nearly $30,000 by 2015. This escalation in average student loan debt across generations highlights a growing financial burden on recent graduates, with Millennials bearing the highest debt load. The data suggests significant changes in higher education financing, economic conditions, and possibly policy impacts over the decades.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis of graduation debt reveals a clear upward trajectory in average graduation debt levels over time for each successive generation, as shown in [Figure 5](#figure-5). For the Baby Boomers, graduates had relatively low levels of student loan debt, which remained stable and below $5,000 through the 1970s and early 1980s. In contrast, Generation X experienced a noticeable increase in debt levels starting in the late 1980s, with a steady rise through the 1990s, peaking around $15,000 by the early 2000s. This trend continues with Millennials, who faced the highest levels of debt at graduation. Starting in the early 2000s, the average debt for this generation saw a steep increase, surpassing $20,000 and reaching nearly $30,000 by 2015. This escalation in average student loan debt across generations highlights a growing financial burden on recent graduates, with Millennials bearing the highest debt load. The data suggest significant changes in higher education financing, economic conditions, and possibly policy impacts over the decades. 
+
 
 ![Figure 5: Rising Average Debt Levels at Graduation Across Successive Generations.](images/debt_over_time.png){#figure-5}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The plot in [Figure 6](#figure-6) illustrates the homeownership rates from 1989 to 2022. The initial rate starts at around 47.5% and experiences a slight dip shortly after. From the early 1990s, there is a significant upward trend, pearking at around 62.5% by the mid-2000s. This was a significant decade for mortgage rates because of the 2008 financial crisis (Campisi, 2022). After reaching its peak, there is a noticeable decline starting in the late 2000s, likely influenced by the housing market crash and the global financial crisis around 2007-2008. From the mid-2010s onwards, there is a noticeable upward trend, with homeownership rate climbing steadily to approximately 65% by 2022. This recent increase might be due to various factors, including economic recovery and an increase in housing demand.
 
-![Figure 6: Fluctuations in Homeownership Rates from 1989 to 2023: A Reflection of Economic Conditions and Financial Barriers.](images/homeownership_over_time.png){#figure-6}
+| Generation  | Slope         |
+|------------|-----------|
+| Baby Boomer      | 296.62     |
+| Generation X       | 858.02    |
+| Millennial   | 768.13    |
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The plot in [Figure 6](#figure-6)  illustrates homeownership rates from 1989 to 2022. The initial rate starts at around 47.5% and experiences a slight dip shortly after. From the early 1990s, there is a significant upward trend, peaking at around 62.5% by the mid-2000s. This peak occurred during a significant decade for mortgage rates, particularly influenced by the 2008 financial crisis [(Campisi, 2022)](#ref5). After reaching its peak, there is a noticeable decline starting in the late 2000s, likely influenced by the housing market crash and the global financial crisis around 2007-2008. From the mid-2010s onwards, there is a noticeable upward trend, with the homeownership rate climbing steadily to approximately 65% by 2022. This recent increase might be due to various factors, including economic recovery and an increase in housing demand.
+
+![Figure 6: Fluctuations in Homeownership Rates from 1989 to 2022: A Reflection of Economic Conditions and Financial Barriers.](images/homeownership_over_time.png){#figure-6}
 
 
 
@@ -18,7 +30,7 @@
 
 ### Model Fit
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear regression model demonstrated a relatively good fit, with an R-squared value of 0.708, indicating that 70.8% of the variability in homeownership rates is explained by the predictors. The adjusted R-squared of 0.681 suggests that after accounting for the number of predictors in the model, about 68.1% of the variance is explained, which is still substantial. The F-statistic for the model is 26.67 with a p-value of 6.99e-16, indicating that the model as a whole is statistically significant and provides a good fit for the data.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear regression model demonstrates a relatively good fit, with an R-squared value of 0.708, indicating that 70.8% of the variability in homeownership rates is explained by the predictors. The adjusted R-squared of 0.681 suggests that after accounting for the number of predictors in the model, about 68.1% of the variance is explained, which is still substantial. The F-statistic for the model is 26.67 with a p-value of 6.99e-16, indicating that the model as a whole is statistically significant and provides a good fit for the data.
 
 ##### Model test statistics:
 
@@ -44,21 +56,20 @@
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We anticipated that `debt_at_grad`, `percent_education_loan`, and `generation_order` would be the most influential features. However, the relationships observed were not as straightforward as expected.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We anticipated that `debt_at_grad`, `percent_education_loan`, and `generation_order` would be the most influential features. However, the observed relationships were not as straightforward as expected.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient for `debt_at_grad` indicates a modest positive relationship with homeownership rate, suggesting that increased graduation debt is associated with higher homeownership rates. However, the p-value for this coefficient exceeds conventional significance levels, casting uncertainty on the precise impact.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient for `debt_at_grad` indicates a modest positive relationship with homeownership rate, suggesting that increased graduation debt is associated with higher homeownership rates. However, the p-value for this coefficient exceeds conventional significance levels, casting uncertainty on its precise impact.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, the coefficient for   `percent_education_loan` suggests an unexpected positive association between education loan debt and homeownership rate. This counterintuitive finding may be attributable to factors such as high multicollinearity, sampling issues, or specific economic conditions that could influence the observed relationship.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, the coefficient for `percent_education_loan` suggests an unexpected positive association between education loan debt and homeownership rate. This counterintuitive finding may be attributable to factors such as high multicollinearity, sampling issues, or specific economic conditions that could influence the observed relationship.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, the coefficient for `generation_order` exhibited a negative relationship, indicating that the generational cohort to which an individual belongs may be inversely related to homeownership rates. Despite being the largest negative coefficient, the lack of statistical significance suggests that this effect is not robust within the framework of this model. This result could be influenced by various factors, including the high multicollinearity among the features included in the regression model.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Finally, the coefficient for `generation_order` exhibits a negative relationship, indicating that the generational cohort to which an individual belongs may be inversely related to homeownership rates. Despite being the largest negative coefficient, the lack of statistical significance suggests that this effect is not robust within the framework of this model. This result could be influenced by various factors, including high multicollinearity among the features included in the regression model.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient analysis reveals that `percent_mortgage` exhibits the highest positive and statistically significant effect, with a coefficient of 0.7176 and a p-value of 0. This finding aligns with practical expectations, as mortgage debt is a critical determinant of homeownership.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient analysis reveals that `percent_mortgage` exhibits the highest positive and statistically significant effect, with a coefficient of 0.7176 and a p-value of 0. This finding aligns with practical expectations, as mortgage debt is a critical determinant of homeownership.   
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The variables `avg_start_salary` and `avg_debt_to_income` were included to refine the model. Notably, `avg_start_salary` has a slight negative association with homeownership rates, suggesting that higher starting salaries might correlate with lower homeownership, though this effect is minor. Additionally, while `avg_debt_to_income` shows a negative trend, its p-value indicates that this relationship is not statistically significant at the 0.05 level, suggesting potential weakness or confounding factors.
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The above coefficients offer a nuanced view of how differences in student loan debt between older and current generations affect, homeownership trends, but they do not provide a definitive answer. 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficients offer a nuanced view of how differences in student loan debt between older and current generations affect, homeownership trends, but they do not provide a definitive answer. 
 
 
 
@@ -67,7 +78,7 @@
 
 ### Model Fit
 
-In this model analysis, we utilized the same dependent and independent variables as our linear regression model. The Mean Squared Error was 88.46, far better than our linear regression MSE score of 139.78. Although an MSE of 88.46 suggests some level of error in the predictions, it is a useful benchmark for comparing the model’s performance with our linear regression model. The R-squared value was 0.726, which signifies that approximately 72.6% of the variability in homeownership rates can be explained by the model. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this model analysis, we utilized the same dependent and independent variables as our linear regression model. The Mean Squared Error was 88.46, far better than our linear regression MSE score of 139.78. Although an MSE of 88.46 suggests some level of error in the predictions, it is a useful benchmark for comparing the model’s performance with our linear regression model. The R-squared value was 0.726, which signifies that approximately 72.6% of the variability in homeownership rates can be explained by the model. 
 
 
 ##### Model test statistics:
@@ -104,5 +115,5 @@ In this model analysis, we utilized the same dependent and independent variables
 
 ![Figure 7: Generational cohort is the least significant predictor of homeownership rate.](images/features.png){#figure-7}
 
-Other features, like `average_start_salary` and `avg_debt_to_income`, indicate that although starting salary and average debt-to-income ratios plays a role in determining homeownership, they are not as significant a predictor as other variables such as education loan debt.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other features, like `average_start_salary` and `avg_debt_to_income`, indicate that although starting salary and average debt-to-income ratios plays a role in determining homeownership, they are not as significant a predictor as other variables such as education loan debt.
 

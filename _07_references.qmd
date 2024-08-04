@@ -1,11 +1,16 @@
 # References
 
+<a id="ref1"></a> 
 1. Board of Governors of the Federal Reserve System (2024). https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html 
 
+<a id="ref2"></a> 
 2. Survey of consumer finances (SCF). Federal Reserve Board - Survey of Consumer Finances (SCF). (n.d.-b). https://www.federalreserve.gov/econres/scfindex.html 
 
+<a id="ref3"></a> 
 3. Bureau, U. C. (2019, April 15). Housing vacancies and homeownership - historical tables. United States Census Bureau. https://www.census.gov/housing/hvs/data/histtabs.html 
 
+<a id="ref4"></a> 
 4. McLoughlin, D. (2023, May 5). Student loan debt by year. https://wordsrated.com/student-loan-debt-by-year/
 
+<a id="ref5"></a> 
 5. Campisi, N. (2022, December 29). Mortgage rates history. Forbes Advisor. https://www.forbes.com/advisor/mortgages/mortgage-rates-history/
