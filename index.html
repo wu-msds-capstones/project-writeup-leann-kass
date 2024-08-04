@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="capstone_files/libs/clipboard/clipboard.min.js"></script>
@@ -142,7 +162,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#random-forest-conclusion" id="toc-random-forest-conclusion" class="nav-link" data-scroll-target="#random-forest-conclusion">Random Forest Conclusion</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
 </div>
@@ -158,7 +177,7 @@ window.Quarto = {
 </section>
 <section id="background" class="level1">
 <h1>Background</h1>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Historically, homeownership has been a cornerstone of wealth accumulation for American families as it provides stability and financial security across generations. However, in the aftermath of the Great Recession and amidst rising costs of higher education, younger generations are increasingly burdened by substantial student loan debt. According to recent data, outstanding student loan debt in the United States has surpassed $1.75 trillion, which is a 67% increase from the previous decade <a href="#ref1">(Board of Governors of the Federal Reserve System, 2024)</a>. Research has shown that high levels of student debt can delay or reduce the likelihood of homeownership. By comparing older generations (Baby Boomers and Gen X) with younger generations (Millennials), we can better understand how the landscape of student debt has evolved and its implications on long-term financial decisions such as homeownership for younger generations.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Historically, homeownership has been a cornerstone of wealth accumulation for American families as it provides stability and financial security across generations. However, in the aftermath of the Great Recession and amidst rising costs of higher education, younger generations are increasingly burdened by substantial student loan debt. According to recent data, outstanding student loan debt in the United States has surpassed $1.75 trillion, which is a 67% increase from the previous decade <span class="citation" data-cites="federal2024">(<a href="#ref-federal2024" role="doc-biblioref">Governors of the Federal Reserve System, 2024</a>)</span>. Research has shown that high levels of student debt can delay or reduce the likelihood of homeownership. By comparing older generations (Baby Boomers and Gen X) with younger generations (Millennials), we can better understand how the landscape of student debt has evolved and its implications on long-term financial decisions such as homeownership for younger generations.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Understanding the difference in student loan debt composition across different generations holds personal significance to us as members of the current generations facing the burden of student loans. It speaks to the experiences of students navigating the complexities of higher education financing and the challenges they face in achieving future financial stability, including homeownership. By examining these dynamics, our research aims to empower individuals with knowledge to make informed financial decisions and advocate for systemic reforms.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This study also reflects on the evolving societal norms and expectations surrounding higher education and homeownership. It highlights the shift towards higher education attendance and the resulting increase in student loan debt, which affects traditional milestones such as home ownership. Ultimately, our research contributes to building a more inclusive and resilient society by addressing systemic barriers to economic opportunity and wealth accumulation.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In summary, the proposed research holds significant merit, with the potential to drive positive societal change. A better understanding of generational differences in student loan debt and its implications on homeownership rates can lead to more informed policies, enhanced educational programs, and a more equitable and prosperous future.</p>
@@ -585,7 +604,7 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </tr>
 </tbody>
 </table>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The plot in <a href="#figure-6">Figure 6</a> illustrates homeownership rates from 1989 to 2022. The initial rate starts at around 47.5% and experiences a slight dip shortly after. From the early 1990s, there is a significant upward trend, peaking at around 62.5% by the mid-2000s. This peak occurred during a significant decade for mortgage rates, particularly influenced by the 2008 financial crisis <a href="#ref5">(Campisi, 2022)</a>. After reaching its peak, there is a noticeable decline starting in the late 2000s, likely influenced by the housing market crash and the global financial crisis around 2007-2008. From the mid-2010s onwards, there is a noticeable upward trend, with the homeownership rate climbing steadily to approximately 65% by 2022. This recent increase might be due to various factors, including economic recovery and an increase in housing demand.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The plot in <a href="#figure-6">Figure 6</a> illustrates homeownership rates from 1989 to 2022. The initial rate starts at around 47.5% and experiences a slight dip shortly after. From the early 1990s, there is a significant upward trend, peaking at around 62.5% by the mid-2000s. This peak occurred during a significant decade for mortgage rates, particularly influenced by the 2008 financial crisis <span class="citation" data-cites="mortgagerates2022">(<a href="#ref-mortgagerates2022" role="doc-biblioref">Campisi, 2022</a>)</span>. After reaching its peak, there is a noticeable decline starting in the late 2000s, likely influenced by the housing market crash and the global financial crisis around 2007-2008. From the mid-2010s onwards, there is a noticeable upward trend, with the homeownership rate climbing steadily to approximately 65% by 2022. This recent increase might be due to various factors, including economic recovery and an increase in housing demand.</p>
 <div id="figure-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/homeownership_over_time.png" class="img-fluid figure-img"></p>
@@ -795,18 +814,18 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <p>In addressing our research question—how do differences in student loan debt between older and current generations affect homeownership trends?—our study offers both insightful and nuanced perspectives. The historical context and the analysis reveal a complex relationship between student loan debt and homeownership rates. Our findings indicate that student loan debt at graduation (<code>debt_at_grad</code>) is a significant factor influencing homeownership rates. The data shows a clear increase in student loan debt across generations, with Millennials bearing the highest levels, which is likely contributing to the challenges they face in achieving homeownership. Despite the substantial debt load carried by recent graduates, the impact of debt at graduation on homeownership is relatively moderate. Through linear regression and Random Forest analyses, we confirmed that <code>debt_at_grad</code> has a less pronounced but still notable effect. <code>Percent_education_loan</code>, while less influential than mortgage debt, also plays a role, suggesting that education loan debt does impact homeownership trends to a degree. Interestingly, <code>generation_order</code>, representing the sequence of generations, was found to be the least significant predictor of homeownership rates. This indicates that, within the context of our model, generational cohort alone does not substantially explain variations in homeownership rates compared to the financial burden of student loans and mortgages. It is crucial to acknowledge that student loan debt is not the sole determinant of homeownership trends. Inflation, for instance, has affected purchasing power and contributed to rising housing costs, which can make homeownership more challenging for many. Additionally, extensive evidence highlights how student loan debt creates barriers in mortgage eligibility and credit scores. According to a study by the Federal Reserve Board, a $1,000 increase in student loan debt is associated with a 1.8 percent decrease in the homeownership rate for public four-year college graduates, resulting in a delay in purchasing a home. Furthermore and as addressed above, despite our efforts to mitigate bias, the potential for underrepresentation of certain demographics in the survey samples remains a concern. Student loan debt can exacerbate racial disparities. Racial wealth and income gaps are rooted in historical discriminatory housing policies - meaning that Black students, in particular, may face greater financial risks in pursuing higher education. Not adequately capturing the experiences of these underrepresented groups can affect our research and must be taken into consideration when evaluating our results. In summary, while student loan debt does impact homeownership trends, it is just one of several factors contributing to the complexity of financial decisions related to homeownership. The rising debt levels faced by Millennials and Gen Z are significant but must be considered alongside other financial elements. Our research underscores the need for a holistic view when analyzing homeownership trends and suggests that addressing the broader financial challenges faced by younger generations may be crucial in facilitating increased homeownership rates.</p>
 <p>We can reference this in our conclusion/limitations: https://housingmatters.urban.org/articles/how-student-loan-debt-affects-racial-homeownership-gap</p>
 <p>“Extensive evidence underscores how debt affects mortgage eligibility and credit score, erecting clear barriers to homeownership. A study by the Federal Reserve Board found that a $1,000 increase in student loan debt lowers the homeownership rate by about 1.8 percent for public four-year college goers; this amounts to an average delay in about four months for attaining homeownership. Student loan debt may reproduce and exacerbate the racial homeownership gap. Enduring racial disparities in wealth and income—which were, in part, created through decades of racist and discriminatory housing policies that blocked wealth building for many families—mean a greater proportion of Black students need to take on a greater and more enduring financial risk to pursue higher education. Therefore, reducing the impact of student loans on mortgage eligibility could be a critical component of ensuring a more equitable housing landscape.”</p>
+
 </section>
-</section>
-<section id="references" class="level1">
-<h1>References</h1>
-<p><a id="ref1" href=""></a> 1. Board of Governors of the Federal Reserve System (2024). https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html</p>
-<p><a id="ref2" href=""></a> 2. Survey of consumer finances (SCF). Federal Reserve Board - Survey of Consumer Finances (SCF). (n.d.-b). https://www.federalreserve.gov/econres/scfindex.html</p>
-<p><a id="ref3" href=""></a> 3. Bureau, U. C. (2019, April 15). Housing vacancies and homeownership - historical tables. United States Census Bureau. https://www.census.gov/housing/hvs/data/histtabs.html</p>
-<p><a id="ref4" href=""></a> 4. McLoughlin, D. (2023, May 5). Student loan debt by year. https://wordsrated.com/student-loan-debt-by-year/</p>
-<p><a id="ref5" href=""></a> 5. Campisi, N. (2022, December 29). Mortgage rates history. Forbes Advisor. https://www.forbes.com/advisor/mortgages/mortgage-rates-history/</p>
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-mortgagerates2022" class="csl-entry" role="listitem">
+Campisi, N. (2022). Mortgage Rates History. <em>Forbes Advisor</em>. <a href="https://www.forbes.com/advisor/mortgages/mortgage-rates-history/">https://www.forbes.com/advisor/mortgages/mortgage-rates-history/</a>
+</div>
+<div id="ref-federal2024" class="csl-entry" role="listitem">
+Governors of the Federal Reserve System, B. of. (2024). <a href="https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html">https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html</a>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
