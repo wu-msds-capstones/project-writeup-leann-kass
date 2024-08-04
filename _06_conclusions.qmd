@@ -7,6 +7,52 @@ The rise in debt at graduation over the generations suggests that newer graduate
 
 
 
+### Random Forest Conclusion
+
+As illustrated in Figure 7, the variables percent_education_loan and debt_at_grad emerge as the most influential factors in predicting the homeownership rate. This highlights the significant role that student loan debt plays in determining an individual's likelihood of owning a home. The substantial impact of percent_education_loan suggests that the proportion of education-related debt an individual carries is a critical determinant of homeownership. Similarly, debt_at_grad indicates that the amount of debt incurred by graduation also significantly affects homeownership prospects.
+
+The prominence of these variables implies that higher levels of student loan debt could be a considerable barrier to homeownership. This financial burden may limit individuals' ability to save for a down payment, manage monthly mortgage payments, or qualify for favorable loan terms. Consequently, the burden of student loans may hinder long-term financial stability and reduce the likelihood of achieving homeownership.
+
+Addressing the challenges associated with student loan debt could be pivotal in improving homeownership rates. Policy interventions aimed at reducing education-related debt or providing targeted financial assistance might alleviate some of the barriers identified in this analysis and promote greater access to homeownership.
+
+
+
+
+
+
+
+
+
+Conversely, generation_order ranks as the least significant feature in predicting homeownership rates. This finding suggests that the generational cohort to which an individual belongs—whether Baby Boomer, Gen X, Millennials, or another group—has minimal impact on their likelihood of owning a home when compared to more direct financial factors, such as student loan debt.
+
+This result indicates that, according to the model, the generational sequence alone does not substantially influence homeownership rates. While generational trends and experiences might shape broader economic and social patterns, the specific cohort to which an individual belongs appears less relevant in this context than the tangible financial burdens they face.
+
+The minimal significance of generation_order highlights the importance of focusing on financial factors that more directly affect homeownership, such as debt levels, income, and savings. It underscores that while generational trends might provide context, the financial challenges individuals face are more decisive in determining their ability to achieve homeownership.
+
+This insight emphasizes the need for targeted policies and interventions that address financial barriers directly, rather than focusing solely on generational characteristics. By prioritizing measures that alleviate student loan debt and improve financial stability, stakeholders can more effectively support homeownership aspirations across different generational cohorts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addressing our research question—how do differences in student loan debt between older and current generations affect homeownership trends?—our study offers both insightful and nuanced perspectives. The historical context and the analysis reveal a complex relationship between student loan debt and homeownership rates. Our findings indicate that student loan debt at graduation (*debt_at_grad*) is a significant factor influencing homeownership rates. The data shows a clear increase in student loan debt across generations, with Millennials bearing the highest levels, which is likely contributing to the challenges they face in achieving homeownership. Despite the substantial debt load carried by recent graduates, the impact of debt at graduation on homeownership is relatively moderate.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through linear regression and Random Forest analyses, we confirmed that *debt_at_grad* has a less pronounced but still notable effect. *Percent_education_loan*, while less influential than mortgage debt, also plays a role, suggesting that education loan debt does impact homeownership trends to a degree. Interestingly, *generation_order*, representing the sequence of generations, was found to be the least significant predictor of homeownership rates. This indicates that, within the context of our model, generational cohort alone does not substantially explain variations in homeownership rates compared to the financial burden of student loans and mortgages.
