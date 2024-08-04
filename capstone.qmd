@@ -10,6 +10,8 @@ format:
       light: lightly
       dark: darkly
 toc: true
+bibliography: _07_references.bib
+csl: apa.csl
 ---
 
 {{< include _01_intro.qmd >}}
@@ -18,4 +20,4 @@ toc: true
 {{< include _04_methods.qmd >}} 
 {{< include _05_results.qmd >}}
 {{< include _06_conclusions.qmd >}}
-{{< include _07_references.qmd >}}
+
