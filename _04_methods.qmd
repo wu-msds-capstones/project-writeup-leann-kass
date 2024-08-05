@@ -110,7 +110,7 @@ Where:<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given the limitations identified in the linear regression model, we opted to perform a Random Forest analysis to further investigate the relationship between homeownership rates and various predictor variables. The primary motivation for this choice was to address some of the challenges and assumptions inherent in linear regression that may impact the robustness and interpretability of the results. Random Forest models, being ensemble methods based on decision trees, are less sensitive to multicollinearity and do not require the assumptions of linearity, homoscedasticity, or normality of residuals. This makes them a more flexible and robust alternative when dealing with correlated predictors. Overall, the Random Forest model provides an opportunity to validate and complement the findings from our linear regression analysis, offering a more comprehensive approach to analyzing the predictors of homeownership rates and mitigating some of the limitations observed in the linear model.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We utilized Scikit-learn’s RandomForest library to train and test the dataset. Additionally, we employed the permutation importance function from the sklearn library to determin the importance of the various features.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We utilized Scikit-learn’s RandomForest library to train and test the dataset. Additionally, we plotted the features to determine the importance of the various features.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To ensure the validity of our model and compare the fit with our linear regression model, we measure the following values:
 
