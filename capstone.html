@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Generational Differences in Student Loan Debt and the Implications on Homeownership Trends</title>
+<title>Generational Differences in Student Loan Debt and Implications on Homeownership Trends</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Generational Differences in Student Loan Debt and the Implications on Homeownership Trends</h1>
+      <h1 class="title">Generational Differences in Student Loan Debt and Implications on Homeownership Trends</h1>
             <p class="subtitle lead">MSDS Capstone 2024</p>
                       </div>
   </div>
@@ -102,9 +102,10 @@ window.Quarto = {
   <div class="quarto-title-meta">
 
       <div>
-      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-heading">Authors</div>
       <div class="quarto-title-meta-contents">
-               <p>Leann Kim and Kass Traieh </p>
+               <p>Leann Kim </p>
+               <p>Kassandra Traieh </p>
             </div>
     </div>
       
@@ -120,29 +121,18 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
   <ul class="collapse">
-  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition">Data Acquisition</a>
-  <ul class="collapse">
-  <li><a href="#original-tables" id="toc-original-tables" class="nav-link" data-scroll-target="#original-tables">Original Tables</a></li>
-  </ul></li>
-  <li><a href="#data-cleaning-feature-engineering" id="toc-data-cleaning-feature-engineering" class="nav-link" data-scroll-target="#data-cleaning-feature-engineering">Data Cleaning &amp; Feature Engineering</a>
-  <ul class="collapse">
-  <li><a href="#final-data-dictionary" id="toc-final-data-dictionary" class="nav-link" data-scroll-target="#final-data-dictionary">Final Data Dictionary</a></li>
-  </ul></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition">Data Acquisition</a></li>
+  <li><a href="#data-cleaning-feature-engineering" id="toc-data-cleaning-feature-engineering" class="nav-link" data-scroll-target="#data-cleaning-feature-engineering">Data Cleaning &amp; Feature Engineering</a></li>
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
   <ul class="collapse">
-  <li><a href="#project-design" id="toc-project-design" class="nav-link" data-scroll-target="#project-design">Project Design</a>
-  <ul class="collapse">
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#materials-list-software-used" id="toc-materials-list-software-used" class="nav-link" data-scroll-target="#materials-list-software-used">1. Materials List (Software used)</a></li>
   <li><a href="#data-exploration-and-initial-analysis" id="toc-data-exploration-and-initial-analysis" class="nav-link" data-scroll-target="#data-exploration-and-initial-analysis">2. Data Exploration and Initial Analysis</a></li>
   <li><a href="#identification-of-significant-features" id="toc-identification-of-significant-features" class="nav-link" data-scroll-target="#identification-of-significant-features">3. Identification of Significant Features</a></li>
   <li><a href="#building-a-linear-regression-model" id="toc-building-a-linear-regression-model" class="nav-link" data-scroll-target="#building-a-linear-regression-model">4. Building a Linear Regression Model</a></li>
   <li><a href="#building-a-random-forest-model" id="toc-building-a-random-forest-model" class="nav-link" data-scroll-target="#building-a-random-forest-model">5. Building a Random Forest Model</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
@@ -150,12 +140,10 @@ window.Quarto = {
   <li><a href="#linear-regression-model" id="toc-linear-regression-model" class="nav-link" data-scroll-target="#linear-regression-model">Linear Regression Model</a>
   <ul class="collapse">
   <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit">Model Fit</a></li>
-  <li><a href="#coefficient-results" id="toc-coefficient-results" class="nav-link" data-scroll-target="#coefficient-results">Coefficient Results</a></li>
   </ul></li>
   <li><a href="#random-forest-model" id="toc-random-forest-model" class="nav-link" data-scroll-target="#random-forest-model">Random Forest Model</a>
   <ul class="collapse">
   <li><a href="#model-fit-1" id="toc-model-fit-1" class="nav-link" data-scroll-target="#model-fit-1">Model Fit</a></li>
-  <li><a href="#feature-importance-results" id="toc-feature-importance-results" class="nav-link" data-scroll-target="#feature-importance-results">Feature Importance Results</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a>
@@ -173,27 +161,22 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As current students, student loans are at the forefront of our minds and loom over us as we juggle the stress of financial burdens and the need for education to grow and succeed in life. Societal pressures push us to graduate college, start our careers, buy a house and start a family. But are Millennials and Gen Z’ers able to fall into place and follow the footsteps of the generations before them? Or are they facing additional challenges with the outstanding debt they’re accumulating with student loans? This project aims to shed light on our research question: how do differences in student loan debt between older and current generations affect homeownership trends?</p>
-</section>
-<section id="background" class="level1">
-<h1>Background</h1>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Historically, homeownership has been a cornerstone of wealth accumulation for American families as it provides stability and financial security across generations. However, in the aftermath of the Great Recession and amidst rising costs of higher education, younger generations are increasingly burdened by substantial student loan debt. According to recent data, outstanding student loan debt in the United States has surpassed $1.75 trillion, which is a 67% increase from the previous decade <span class="citation" data-cites="federal2024">(<a href="#ref-federal2024" role="doc-biblioref">Governors of the Federal Reserve System, 2024</a>)</span>. Research has shown that high levels of student debt can delay or reduce the likelihood of homeownership. By comparing older generations (Baby Boomers and Gen X) with younger generations (Millennials), we can better understand how the landscape of student debt has evolved and its implications on long-term financial decisions such as homeownership for younger generations.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As current students, student loans are at the forefront of our minds and loom over us as we juggle the stress of financial burdens and the need for education to grow and succeed in life. Societal pressures push us to graduate college, start our careers, buy a house and start a family. But are Millennials and Gen Z’ers able to fall into place and follow the footsteps of the generations before them? Or are they facing additional challenges with the outstanding debt they’re accumulating with student loans? This project aims to shed light on how differences in student loan debt between older and current generations influence homeownership trends.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Historically, homeownership has been a cornerstone of wealth accumulation for American families as it provides stability and financial security across generations <span class="citation" data-cites="homeownership2024">(<a href="#ref-homeownership2024" role="doc-biblioref">Association, 2024</a>)</span>. However, in the aftermath of the Great Recession and amidst rising costs of higher education, younger generations are increasingly burdened by substantial student loan debt <span class="citation" data-cites="NIH CFR equitablegrowth">(<a href="#ref-CFR" role="doc-biblioref">Editors, 2024</a>; <a href="#ref-equitablegrowth" role="doc-biblioref">Kopparam &amp; Clemens, 2020</a>; <a href="#ref-NIH" role="doc-biblioref">Martin &amp; E., 2021</a>)</span>. According to 2024 data, outstanding student loan debt in the United States has surpassed $1.75 trillion, which is a 67% increase from the previous decade <span class="citation" data-cites="federal2024">(<a href="#ref-federal2024" role="doc-biblioref">Governors of the Federal Reserve System, 2020</a>)</span>. Research has shown that high levels of student debt can delay or reduce the likelihood of homeownership <span class="citation" data-cites="ChicagoJournal FederalReserveBoston Upjohn">(<a href="#ref-FederalReserveBoston" role="doc-biblioref">Cooper &amp; Wang, 2014</a>; <a href="#ref-Upjohn" role="doc-biblioref">Gicheva &amp; Thompson, 2015</a>; <a href="#ref-ChicagoJournal" role="doc-biblioref">Mezza et al., 2020</a>)</span>. By comparing older generations (Baby Boomers and Gen X) with younger generations (Millennials), we can better understand how the landscape of student debt has evolved and its implications on long-term financial decisions such as homeownership for younger generations.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Understanding the difference in student loan debt composition across different generations holds personal significance to us as members of the current generations facing the burden of student loans. It speaks to the experiences of students navigating the complexities of higher education financing and the challenges they face in achieving future financial stability, including homeownership. By examining these dynamics, our research aims to empower individuals with knowledge to make informed financial decisions and advocate for systemic reforms.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This study also reflects on the evolving societal norms and expectations surrounding higher education and homeownership. It highlights the shift towards higher education attendance and the resulting increase in student loan debt, which affects traditional milestones such as home ownership. Ultimately, our research contributes to building a more inclusive and resilient society by addressing systemic barriers to economic opportunity and wealth accumulation.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In summary, the proposed research holds significant merit, with the potential to drive positive societal change. A better understanding of generational differences in student loan debt and its implications on homeownership rates can lead to more informed policies, enhanced educational programs, and a more equitable and prosperous future.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In summary, our research holds significant merit, with the potential to drive positive societal change. A better understanding of generational differences in student loan debt and its implications on homeownership rates can lead to more informed policies, such as targeted student loan forgiveness programs or tailored financial assistance for first-time homebuyers burdened by educational debt. It can also enhance educational programs by promoting financial literacy initiatives that help students make informed borrowing decisions. Furthermore, this understanding can contribute to a more equitable and prosperous future by addressing disparities in debt accumulation across generations and fostering greater economic mobility for younger individuals.</p>
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
 <section id="data-acquisition" class="level2">
 <h2 class="anchored" data-anchor-id="data-acquisition">Data Acquisition</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The acquisition of student loan data and homeownership data proved challenging due to several factors. There was a significant lack of publicly available data, particularly data on student loans dating back to 1990. This scarcity was exacerbated by the fact that the raw data needed for our analysis was not available on any of the websites we consulted, including government portals and academic repositories. The data we encountered was predominantly aggregated, with limited access to detailed, disaggregated datasets that would allow for more granular analysis. Furthermore, many of the existing studies and reports that addressed related topics did not provide explicit citations or source details for their data, making it difficult to trace the origins and verify the reliability of the information used in previous research. This lack of transparency and accessibility posed significant obstacles to obtaining the comprehensive and historical data required for our study.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To perform our analysis, we utilized the data from the Federal Reserve and Census surveys within the 1989-2022 time frame. The Federal Reserve survey <span class="citation" data-cites="federal2024">(<a href="#ref-federal2024" role="doc-biblioref">Governors of the Federal Reserve System, 2024</a>)</span> consisted of age groups, the percentage of those who had a mortgage and the percentage of those with education loans, and was stored in various tabs in an excel spreadsheet. The Census survey <span class="citation" data-cites="Census2019">(<a href="#ref-Census2019" role="doc-biblioref">Bureau, 2019</a>)</span>, also stored in various tabs in an excel spreadsheet, included age groups, total number of people who were surveyed and the number of homeowners within each age group. To further explore our research question and to supplement our existing tables, we found data on the amount of debt students had at the time of their graduation <span class="citation" data-cites="Studentdebt2023">(<a href="#ref-Studentdebt2023" role="doc-biblioref">McLoughlin, 2023</a>)</span>. This table included graduation year, amount of debt at graduation, average starting salary out of college and the debt to income ratio. The original data structure can be seen in <a href="#figure-1">Figure 1</a>.</p>
-<section id="original-tables" class="level3">
-<h3 class="anchored" data-anchor-id="original-tables">Original Tables</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The acquisition of student loan data and homeownership data proved challenging due to several factors. A significant lack of publicly available data, especially on student loans dating back to 1990, was compounded by the unavailability of the necessary raw data on government portals and academic repositories. The data we encountered was predominantly aggregated by age group, with limited access to detailed, disaggregated datasets that would allow for more granular analysis. Furthermore, many of the existing studies that addressed related topics did not provide explicit citations or source details for their data, making it difficult to trace the origins and verify the reliability of the information used in previous research. This lack of transparency and accessibility posed significant obstacles to obtaining the comprehensive and historical data required for our study.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To perform our analysis, we utilized the data from the Federal Reserve and Census surveys within the 1989-2022 time frame. The Federal Reserve survey <span class="citation" data-cites="federal2024">(<a href="#ref-federal2024" role="doc-biblioref">Governors of the Federal Reserve System, 2020</a>)</span> consisted of age groups, the percentage of those who had a mortgage and the percentage of those with education loans, and was stored in various tabs in an excel spreadsheet. The Census survey <span class="citation" data-cites="Census2019">(<a href="#ref-Census2019" role="doc-biblioref">Bureau, 2024</a>)</span>, also stored in various tabs in an excel spreadsheet, included age groups, total number of people who were surveyed and the number of homeowners within each age group. To further explore our research question and to supplement our existing tables, we found data on the amount of debt students had at the time of their graduation <span class="citation" data-cites="Studentdebt2023">(<a href="#ref-Studentdebt2023" role="doc-biblioref">McLoughlin, 2023</a>)</span>. This table included graduation year, amount of debt at graduation, average starting salary out of college and the debt to income ratio. The original data structure can be seen in <a href="#figure-1">Figure 1</a> with explanation of the features in the Data Dictionary below.</p>
 <div id="figure-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/erd.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 1: Original Tables</figcaption>
+<p><img src="images/erd1.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Entity-Relationship Diagram showing original features extracted from survey and student debt datasets</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -202,13 +185,13 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Data Dictionary - Features, Descriptions, and Sources (Click to Expand)
+Original Data Dictionary - Features, Descriptions, and Sources (Click to Expand)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
+<table class="table">
 <caption>Table 1 - Survey of Consumer Finances 1989-2022: a normally triennial cross-sectional survey of U.S. families showcasing family holdings of debt by selected characteristics of families and type of debt.</caption>
 <colgroup>
 <col style="width: 17%">
@@ -240,7 +223,7 @@ Data Dictionary - Features, Descriptions, and Sources (Click to Expand)
 </tbody>
 </table>
 <p><br><br></p>
-<table class="caption-top table">
+<table class="table">
 <caption>Table 2 - Census Housing Vacancy Survey: historical data on rental and homeowner vacancy rates in the U.S.</caption>
 <colgroup>
 <col style="width: 10%">
@@ -272,7 +255,7 @@ Data Dictionary - Features, Descriptions, and Sources (Click to Expand)
 </tbody>
 </table>
 <p><br><br></p>
-<table class="caption-top table">
+<table class="table">
 <caption>Table 3: Student Loan Debt by Year: average debt by year of graduation for students who graduated with a bachelor’s degree</caption>
 <colgroup>
 <col style="width: 10%">
@@ -307,28 +290,26 @@ Data Dictionary - Features, Descriptions, and Sources (Click to Expand)
 </div>
 </div>
 </section>
-</section>
 <section id="data-cleaning-feature-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning-feature-engineering">Data Cleaning &amp; Feature Engineering</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The data preparation process involved extensive cleaning and manipulation in Excel and PostgreSQL. It is crucial to emphasize that all data was aggregated, ensuring no sensitive information was included within the datasets. For the Federal Reserve data, we extracted variables such as the survey year, age groups, the percentage of families in that age groups with a mortgage loan, and the percentage of families in that age group with an education loan. Similarly, for the Census data, we extracted the survey year, age groups, the total number of homes surveyed, and the total number of homes that were owned. All these variables were organized in a structured manner to facilitate analysis. It is important to note that the age groups from the Federal Reserve and Census data exhibited overlap, although they were categorized differently. The Federal Reserve data utilized broader age categories, while the Census data employed more granular age bins. Specifically, the Federal Reserve age groups were: less than 35, 35-44, 45-54, 55-64, 65-74, and 75+. In contrast, the Census data age groups were segmented as follows: less than 25, 25-29, 30-34, 35-39, …, 70-74, and 75+.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once we created these two tables in PostgreSQL, we split each table’s age groups into a minimum age and a maximum age for ease of joining the two tables together. Once we created those new columns in both the Federal Reserve and Census tables, we joined our data on survey year, minimum age, and maximum age, which we treated as primary composite keys. In the join, we ensured that the broader Federal Reserve age ranges were matched with the more granular Census age ranges. Although the join conditions account for overlapping age ranges, there may still be mismatches where age groups did not perfectly align. Additionally, overlaps or gaps in age ranges might lead to duplication of data, which would affect the overall quality and reliability of the dataset.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upon joining our two tables, we proceeded to integrate generation names for each age range. This involved calculating the minimum and maximum birth years using the survey year along with the minimum and maximum ages. To classify each row into a generational cohort (Traditionalist, Baby Boomer, Generation X, Millennial, or Gen Z), we created a formula to manage overlaps by comparing the minimum and maximum birth years to determine the closest generational boundary alignment for each row. We also created new columns for minimum and maximum graduation years. This was done by assuming the average college graduation age to be 21 and adding this to the minimum and maximum birth years. It’s important to note that using a single average age may lead to inaccuracies in calculating the minimum and maximum graduation years, which could affect subsequent analyses and the classification of individuals into generational cohorts.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The data preparation process involved extensive cleaning and manipulation in Excel and PostgreSQL. It is crucial to emphasize that all data was aggregated, ensuring that no personally identifying information was included within the datasets. For the Federal Reserve data, we extracted variables such as the survey year, age groups, the percentage of families in that age groups with a mortgage loan, and the percentage of families in that age group with an education loan. Similarly, for the Census data, we extracted the survey year, age groups, the total number of homes surveyed, and the total number of homes that were owned. All these variables were organized in a structured manner to facilitate analysis. It is important to note that the age groups from the Federal Reserve and Census data exhibited overlap, although they were categorized differently. The Federal Reserve data utilized broader age categories, while the Census data employed more granular age bins. Specifically, the Federal Reserve age groups were: less than 35, 35-44, 45-54, 55-64, 65-74, and 75+. In contrast, the Census data age groups were segmented as follows: less than 25, 25-29, 30-34, 35-39, …, 70-74, and 75+.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once we created these two tables in PostgreSQL, we split each table’s age groups into a minimum age and a maximum age for ease of joining the two tables together. Once we created those new columns in both the Federal Reserve and Census tables, we joined our data on survey year, minimum age, and maximum age, which we treated as primary composite keys. In the join, we ensured that the broader Federal Reserve age ranges were matched with the more granular Census age ranges. Although the join conditions account for overlapping age ranges, there may still be mismatches where age groups did not perfectly align.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upon joining our two tables, we proceeded to assign generation names for each age range. This involved calculating the minimum and maximum birth years using the survey year along with the minimum and maximum ages. To classify each row into a generational cohort (Traditionalist, Baby Boomer, Generation X, Millennial, or Gen Z), we created a formula to manage overlaps by comparing the minimum and maximum birth years to determine the closest generational boundary alignment for each row. We also created new columns for minimum and maximum graduation years. This was done by assuming the average college graduation age to be 21 and adding this to the minimum and maximum birth years. It’s important to note that using a single average age may lead to inaccuracies in calculating the minimum and maximum graduation years, which could affect subsequent analyses and the classification of individuals into generational cohorts.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, we integrated our student debt dataset, which included variables such as debt at graduation, average starting salary, and debt-to-income percentage by graduation year. The data source did not provide a downloadable file. Consequently, the values were manually entered into Excel and subsequently imported into PostgreSQL for analysis. We aligned each row of our joined dataset to the corresponding debt figures by comparing the minimum and maximum graduation years to determine the closest match to the graduation year in our debt dataset. Although the assignments were done as carefully as possible, there is a chance that some inaccuracies may remain due to variations in actual graduation ages and the potential misalignment of graduation years within the dataset.</p>
-<section id="final-data-dictionary" class="level3">
-<h3 class="anchored" data-anchor-id="final-data-dictionary">Final Data Dictionary</h3>
+<p>The below Data Dictionary detail the dataset and features.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Data Dictionary - Features and Descriptions (Click to Expand)
+Final Data Dictionary - Features and Descriptions (Click to Expand)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
+<table class="table">
 <caption>Table 1 - Survey of Consumer Finances 1989-2022: a normally triennial cross-sectional survey of U.S. families showcasing family holdings of debt by selected characteristics of families and type of debt.</caption>
 <colgroup>
 <col style="width: 10%">
@@ -418,42 +399,32 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </div>
 </div>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As mentioned previously, all the data from the Federal Reserve and Census surveys were anonymized to protect individual privacy, preventing the identification of specific individuals. Additionally, the data was presented in aggregated forms such as percentages and averages, rather than detailed individual records, to further safeguard privacy. However, despite these measures, the potential for bias remains a concern, as survey respondents may not fully represent the entire population, with certain demographics potentially being underrepresented. Additionally, working with aggregated data can weaken the statistical power of analyses and increase the likelihood of Type II errors (failing to detect a true effect) or result in misleading statistics. Regarding data integrity, while the Federal Reserve and Census data were sourced from reputable institutions, our dataset for student debt was obtained from a less reliable source. We acknowledge the limitations of this dataset but feel that its inclusion was crucial for providing a more comprehensive analysis. We advise readers to consider the findings from this source alongside the more robust datasets and to be mindful of the potential impact on our study’s overall conclusions.</p>
-</section>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As mentioned previously, all the data from the Federal Reserve and Census surveys were anonymized to protect individual privacy, preventing the identification of specific individuals. Additionally, the data was presented in aggregated forms such as percentages and averages, rather than detailed individual records, to further safeguard privacy. However, despite these measures, the potential for bias remains a concern, as survey respondents may not fully represent the entire population, with certain demographics potentially being underrepresented. Additionally, working with aggregated data can weaken the statistical power of analyses and increase the likelihood of Type II errors (failing to detect a true effect) or result in misleading statistics. Furthermore, although the Federal Reserve and Census data were obtained from reputable institutions, we were unable to verify the source of the student debt data. Consequently, we must depend on this analyst as a credible source for student debt information. We acknowledge the limitations of this dataset but feel that its inclusion was crucial for providing a more comprehensive analysis. We advise readers to consider the findings from this source alongside the more robust datasets and to be mindful of the potential impact on our study’s overall conclusions.</p>
 </section>
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
-<section id="project-design" class="level2">
-<h2 class="anchored" data-anchor-id="project-design">Project Design</h2>
-<section id="summary" class="level3">
-<h3 class="anchored" data-anchor-id="summary">Summary</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due to the limitations of our dataset, there were relatively few features to choose from that could be associated with homeownership and student debt. Initially, we selected specific features and employed linear regression models to evaluate the influence of each feature on homeownership rates. To explore more intricate, non-linear relationships among the features, we then applied a Random Forest machine learning model. This approach allowed us to build upon the findings from our linear regression analysis and assess the relative importance of each feature. These methodologies together provide a comprehensive framework for understanding the potential impact of student loan debt and generational factors on homeownership rates.</p>
-</section>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In our dataset, there were relatively few features to choose from that could be associated with homeownership and student debt. Initially, we selected specific features and employed linear regression models to evaluate the influence of each feature on homeownership rates. To explore more intricate, non-linear relationships among the features, we then applied a Random Forest machine learning model. This approach allowed us to build upon the findings from our linear regression analysis and assess the relative importance of each feature. These methodologies together provide a comprehensive framework for understanding the potential impact of student loan debt and generational factors on homeownership rates.</p>
 <section id="materials-list-software-used" class="level3">
 <h3 class="anchored" data-anchor-id="materials-list-software-used">1. Materials List (Software used)</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following section details the software and libraries utilized in our analysis. The tools listed were instrumental in processing data, performing statistical analyses, and generating visualizations. The specific software and versions used are as follows:</p>
 <pre><code>1. python v3.11.5
 2. pandas v2.0.3
 3. numpy v1.24.3
 4. statsmodels v0.14.0 for ordinary least squares (linear regression) model
 5. scikit-learn v1.3.0 for random forest model
 6. scipy v1.11.1for statistical analysis
-7. matplotlib v3.7.2 and seaborn v0.12.2 for visualizations </code></pre>
+7. matplotlib v3.7.2 and seaborn v0.12.2 for visualizations 
+8. R-Studio for visualizations</code></pre>
 </section>
 <section id="data-exploration-and-initial-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="data-exploration-and-initial-analysis">2. Data Exploration and Initial Analysis</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, our dataset comprised 144 rows. Following preliminary data cleaning and the focus on specific generational cohorts, the dataset was refined to 92 rows, which were subsequently used for analysis. This reduction was essential to ensure the relevance and accuracy of the data in examining the targeted generational groups. While analyzing a small dataset can be manageable and insightful, it also comes with significant limitations related to statistical power, model complexity, and generalizability.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, our dataset comprised of 144 rows, covering Traditionalist, Baby Boomer, Generation X, Millennials, and Gen Z data. Initially, we intended to incorporate trends for Generation Z into our analysis. However, upon integrating all our datasets, we discovered that the available data for Generation Z was insufficient for a robust analysis of their student debt and homeownership rates. Including Generation Z data would have risked distorting the analysis of Baby Boomers, Generation X, and Millennials. Consequently, we decided to exclude data for Generation Z from our analysis.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, while our survey datasets from the Census and Federal Reserve included detailed trends for Traditionalists, our student debt dataset only covered graduation years from 1970 onward. Since Traditionalists were born in 1945 or earlier and since we assumed the average college graduation age of 21, they were not included in the student debt data. Given that the available dataset did not capture their college graduation years, we had to exclude Traditionalists from our analysis.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Following preliminary data cleaning and the focus on the Baby Boomer, Millennial, and Gen Z cohorts, the dataset was refined to 92 rows, which were subsequently used for analysis. This reduction was essential to ensure the relevance and accuracy of the data in examining the targeted generational groups. While analyzing a small dataset can be manageable and insightful, it also comes with significant limitations related to statistical power, model complexity, and generalizability.</p>
 <section id="analyzing-trends-over-time" class="level4">
 <h4 class="anchored" data-anchor-id="analyzing-trends-over-time">Analyzing Trends Over Time</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, we concentrated on examining the overall trend of student loan debt at graduation across different generations, specifically Baby Boomers, Generation X, and Millennials. To facilitate this analysis, we calculated the average graduation year for each entry in our dataset, covering graduates as far back as 1967 and calulcated the slope values of each generation. Additionally, we assessed the general trend in homeownership rates over the years. However, since our homeownership data only dates back to 1989, it presents a challenge in directly comparing the homeownership rates of Baby Boomers with our graduation debt trend.</p>
-</section>
-<section id="choosing-an-analysis-dataset" class="level4">
-<h4 class="anchored" data-anchor-id="choosing-an-analysis-dataset">Choosing an Analysis Dataset</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, we intended to incorporate trends for Generation Z into our analysis. However, upon integrating all our datasets, we discovered that the available data for Generation Z was insufficient for a robust analysis of their student debt and homeownership rates. Including Generation Z data would have risked distorting the analysis of Baby Boomers, Generation X, and Millennials. Consequently, we decided to exclude data for Generation Z from our analysis.</p>
-</section>
-<section id="handling-missing-data" class="level4">
-<h4 class="anchored" data-anchor-id="handling-missing-data">Handling Missing Data</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While our survey datasets from the Census and Federal Reserve included detailed trends for Traditionalists, our student debt dataset only covered graduation years from 1970 onward. Since Traditionalists were born in 1945 or earlier and since we assumed the average college graduation age of 21, they were not included in the student debt data. Given that the available dataset did not capture their college graduation years, we had to exclude Traditionalists from our analysis.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, we concentrated on examining the overall trend of student loan debt at graduation across different generations, specifically Baby Boomers, Generation X, and Millennials. To facilitate this analysis, we calculated the average graduation year for each entry in our dataset, covering graduates as far back as 1967. Additionally, we assessed the general trend in homeownership rates over the years. However, since our homeownership data only dates back to 1989, it presents a challenge in directly comparing the homeownership rates of Baby Boomers with our graduation debt trend.</p>
 </section>
 </section>
 <section id="identification-of-significant-features" class="level3">
@@ -468,22 +439,22 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <section id="building-a-linear-regression-model" class="level3">
 <h3 class="anchored" data-anchor-id="building-a-linear-regression-model">4. Building a Linear Regression Model</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To examine the relationship between homeownership rates and average debt at graduation across generations, we utilized a linear regression model. While our primary focus is to shed light on the impact of student loan debt by generation on homeownership rates, we included additional features, mentioned above, in our model to enhance its robustness and accuracy. We then created training and testing datasets with a 70%/30% split and utilized the statsmodel library to perform Ordinary Least Squares (OLS) regression to evaluate the performance of the model.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the results of a linear regression analysis to be valid, certain assumptions about the data must be met. These assumptions include linearity, independence, homoscedasticity, normality, and lack of multicollinearity.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the results of a linear regression analysis to be valid, certain assumptions about the data must be met. These assumptions include linearity, independence, homoscedasticity, normality, and lack of multicollinearity. We investigate each in the following sections.</p>
 <section id="a.-testing-for-linearity" class="level4">
 <h4 class="anchored" data-anchor-id="a.-testing-for-linearity">4a. Testing for Linearity</h4>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linearity assumption requires that the relationship between the independent variables and the dependent variable is linear. To assess this, we plotted the residuals (errors) against the predicted values to check for any patterns. By plotting residuals versus fitted values (or predictors), we checked for any systematic patterns. If the residuals display a clear pattern or trend, it suggests that the linear relationship assumption might be violated. Ideally, residuals should scatter randomly around zero, indicating that the linear model is appropriate.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs.&nbsp;fitted values plot in <a href="#figure-2">Figure 2</a> shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.</p>
 <div id="figure-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/residuals.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 2: Linearity Assumption Satisfied: Residuals vs.&nbsp;Fitted Plot Shows No Strong Curvature of Patterns</figcaption>
+<p><img src="images/residuals1.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: Linearity Assumption Satisfied: Residuals vs.&nbsp;Fitted Plot shows no strong curvature of patterns</figcaption>
 </figure>
 </div>
 </section>
 <section id="b.-testing-for-independence" class="level4">
 <h4 class="anchored" data-anchor-id="b.-testing-for-independence">4b. Testing for Independence</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The independence assumption stipulates that the residuals are independent of each other. To test for independent, we used the Durbin-Watson statistics, which tests for autocorrelation in the residuals. The Durbin-Watson statistic ranges from 0 to 4. A value close to 2 suggests no autocorrelation. If the value is significantly less than 2, it indicates positive autocorrelation, while a value significantly greater than 2 indicates negative autocorrelation.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis yield a Durbin-Watson statistic of 1.77. This value is somewhat close to 2, suggesting that while there is a tendency towards positive autocorrelation, it is not extreme. In practice, DW values close to 2 (within a range of about 1.5 to 2.5) are often considered acceptable.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The independence assumption stipulates that the residuals are independent of each other. To test for independence, we used the Durbin-Watson statistic, which tests for autocorrelation in the residuals. The Durbin-Watson statistic ranges from 0 to 4. A value close to 2 suggests no autocorrelation. If the value is significantly less than 2, it indicates positive autocorrelation, while a value significantly greater than 2 indicates negative autocorrelation.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis yield a Durbin-Watson statistic of 1.77. This value is somewhat close to 2, suggesting that while there is a tendency towards positive autocorrelation, it is not extreme. In practice, DW values close to 2 (within a range of about 1.5 to 2.5) are often considered acceptable <span class="citation" data-cites="durbinwatson">(<a href="#ref-durbinwatson" role="doc-biblioref">Datalab, 2021</a>)</span>.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given that the Durbin-Watson statistic indicated some positive correlation, we conducted the Breusch-Godfrey test to confirm and assess the extent of autocorrelation. The test yielded a statistic of 0.948 and a p-value of 0.330. Since this p-value exceeds the conventional significance threshold of 0.05, we conclude that there is no statistically significant evidence of autocorrelation in the residuals. This suggests that the residuals are likely independent, supporting the assumption of independence.</p>
 </section>
 <section id="c.-testing-for-homoscedasticity" class="level4">
@@ -491,8 +462,8 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable. Although we noted a minor curvature in the linearity assumption, <a href="#figure-3">Figure 3</a> shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.</p>
 <div id="figure-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/homosced.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 3: Homoscedasticity Assumption Satisfied: Residuals are Generally Well-Dsipered Around the Horizontal Line</figcaption>
+<p><img src="images/homosced1.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3: Homoscedasticity Assumption Satisfied: Residuals are generally well-dispersed around the horizontal line</figcaption>
 </figure>
 </div>
 </section>
@@ -501,16 +472,17 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in <a href="#figure-4">Figure 4</a>. The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.</p>
 <div id="figure-4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/normality.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 4: Normality Assumption Satisfied: Residuals Generally Align with the the 45-Degree Line</figcaption>
+<p><img src="images/normality2.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 4: Normality Assumption Satisfied: Residuals generally align with the 45-degree reference line</figcaption>
 </figure>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We also performed the Shapiro-Wilk test for normality and got a test statistics of 0.99 and a p-value of 0.86 which suggest that the residuals are approximately normally distributed. Since the p-value is well above the conventional significance level of 0.05, there is no significant evidence to reject the null hypothesis of normality. This supports the assumption that the residuals follow a normal distribution.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We also performed the Shapiro-Wilk test for normality and got a test statistics of 0.99 and a p-value of 0.86 which suggest that the residuals are approximately normally distributed <span class="citation" data-cites="shapiro">(<a href="#ref-shapiro" role="doc-biblioref">Statistics, 2018</a>)</span>. Since the p-value is well above the conventional significance level of 0.05, there is no significant evidence to reject the null hypothesis of normality. This supports the assumption that the residuals follow a normal distribution.</p>
 </section>
 <section id="e.-testing-for-multicollinearity" class="level4">
 <h4 class="anchored" data-anchor-id="e.-testing-for-multicollinearity">4e. Testing for Multicollinearity</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multicollinearity occurs when independent variables are highly correlated, which can distort the estimation of regression coefficients. We evaluated multicollinearity using the Variance Inflation Factor (VIF) from the statsmodel library.</p>
-<table class="caption-top table">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multicollinearity occurs when independent variables are highly correlated, which can distort the estimation of regression coefficients <span class="citation" data-cites="multicollinearity">(<a href="#ref-multicollinearity" role="doc-biblioref">Data Science, 2018</a>)</span>. We evaluated multicollinearity using the Variance Inflation Factor (VIF) from the statsmodel library.</p>
+<table class="table-striped table-hover table">
+<caption>Table 1: Variance Inflations Factors for half of the selected features exceed 10, signaling high multicollinearity</caption>
 <thead>
 <tr class="header">
 <th>Feature</th>
@@ -544,7 +516,16 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </tr>
 </tbody>
 </table>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Half of our features had a VIF value exceeding 10, signaling a significant concern. To further test this, we analyzed the condition number, which resulted in 2.41e+05, which is relatively high. This issue can compromise the reliability and interpretability of our linear regression model by leading to unstable coefficient estimates and inflated standard errors. Although the other assumptions of the model are satisfied, the presence of multicollinearity necessitates cautious interpretation of our results.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Half of our features had a VIF value exceeding 10, signaling a significant concern <span class="citation" data-cites="VIF">(<a href="#ref-VIF" role="doc-biblioref">University, 2018a</a>)</span>. To further test this, we analyzed the condition number, which resulted in 241,000. There isn’t a simple definition of what counts as a small and large condition number, however, a condition value larger than 1,000 generally indicates strong multicollinearity <span class="citation" data-cites="conditionnumber">(<a href="#ref-conditionnumber" role="doc-biblioref">Chen, 2024</a>)</span>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As we can see in <a href="#figure-5">Figure 5</a>, the correlation matrix reveals that <code>percent_mortgage</code> exhibits a moderate negative correlation of approximately -0.50 with the other variables. In contrast, the correlations among the remaining variables are notably higher, with values of 0.88 or above. This pattern suggests that while <code>percent_mortgage</code> is somewhat inversely related to the other variables, the high correlations among the latter indicate substantial multicollinearity within the dataset.</p>
+<div id="figure-5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/correlationmatrix.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 5: Correlation Matrix of Explanatory Variables: Displays strong pairwise correlations</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This high multicollinearity is a common issue in survey-based observational studies, where variables are often interrelated due to underlying socio-economic factors <span class="citation" data-cites="observational">(<a href="#ref-observational" role="doc-biblioref">University, 2018b</a>)</span>. Such interdependencies reflect the inherent complexity of real-world data, where variables may be influenced by common factors or may capture overlapping aspects of the phenomena being studied. Despite efforts to mitigate multicollinearity by experimenting with different subsets of variables and dropping some from the analysis, these adjustments did not substantially reduce the multicollinearity problem. This persistent issue suggests that the high degree of correlation among the variables is an inherent characteristic of the data, making it difficult to isolate and interpret the individual effects of each variable.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consequently, disentangling the unique contributions of each variable becomes challenging, as their high correlations obscure the individual effects and complicate the interpretation of their relationships. This issue can compromise the reliability and interpretability of our linear regression model by leading to unstable coefficient estimates and inflated standard errors. Although the other assumptions of the model are satisfied, the presence of multicollinearity necessitates cautious interpretation of our results.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, to ensure the validity of our model, we measure the following values:</p>
 <ul>
 <li>R-squared</li>
@@ -559,7 +540,7 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <section id="building-a-random-forest-model" class="level3">
 <h3 class="anchored" data-anchor-id="building-a-random-forest-model">5. Building a Random Forest Model</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given the limitations identified in the linear regression model, we opted to perform a Random Forest analysis to further investigate the relationship between homeownership rates and various predictor variables. The primary motivation for this choice was to address some of the challenges and assumptions inherent in linear regression that may impact the robustness and interpretability of the results. Random Forest models, being ensemble methods based on decision trees, are less sensitive to multicollinearity and do not require the assumptions of linearity, homoscedasticity, or normality of residuals. This makes them a more flexible and robust alternative when dealing with correlated predictors. Overall, the Random Forest model provides an opportunity to validate and complement the findings from our linear regression analysis, offering a more comprehensive approach to analyzing the predictors of homeownership rates and mitigating some of the limitations observed in the linear model.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We utilized Scikit-learn’s RandomForest library to train and test the dataset. Additionally, we plotted the features to determine the importance of the various features.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We utilized Scikit-learn’s RandomForest library to train and test the dataset on a 70%/30% split. Additionally, we plotted the features to determine the importance of the various features.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To ensure the validity of our model and compare the fit with our linear regression model, we measure the following values:</p>
 <ul>
 <li>R-squared</li>
@@ -570,7 +551,6 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </ul>
 </section>
 </section>
-</section>
 <section id="results" class="level1">
 <h1>Results</h1>
 <section id="trends-over-time" class="level2">
@@ -579,36 +559,14 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <div id="figure-5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/debt_over_time.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 5: Rising Average Debt Levels at Graduation Across Successive Generations.</figcaption>
+<figcaption>Figure 5: Millennials faced the highest levels of debt at graduation compared to Baby Boomers and Generation X.</figcaption>
 </figure>
 </div>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Generation</th>
-<th>Slope</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Baby Boomer</td>
-<td>296.62</td>
-</tr>
-<tr class="even">
-<td>Generation X</td>
-<td>858.02</td>
-</tr>
-<tr class="odd">
-<td>Millennial</td>
-<td>768.13</td>
-</tr>
-</tbody>
-</table>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The plot in <a href="#figure-6">Figure 6</a> illustrates homeownership rates from 1989 to 2022. The initial rate starts at around 47.5% and experiences a slight dip shortly after. From the early 1990s, there is a significant upward trend, peaking at around 62.5% by the mid-2000s. This peak occurred during a significant decade for mortgage rates, particularly influenced by the 2008 financial crisis <span class="citation" data-cites="mortgagerates2022">(<a href="#ref-mortgagerates2022" role="doc-biblioref">Campisi, 2022</a>)</span>. After reaching its peak, there is a noticeable decline starting in the late 2000s, likely influenced by the housing market crash and the global financial crisis around 2007-2008. From the mid-2010s onwards, there is a noticeable upward trend, with the homeownership rate climbing steadily to approximately 65% by 2022. This recent increase might be due to various factors, including economic recovery and an increase in housing demand.</p>
 <div id="figure-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/homeownership_over_time.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 6: Fluctuations in Homeownership Rates from 1989 to 2022: A Reflection of Economic Conditions and Financial Barriers.</figcaption>
+<figcaption>Figure 6: Fluctuations in Homeownership Rates from 1989 to 2022: Homeownership rate has increased steadily since 1989, with a decline in the late 2000s, and an upward trend from the mid-2010s onwards</figcaption>
 </figure>
 </div>
 </section>
@@ -616,10 +574,11 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <h2 class="anchored" data-anchor-id="linear-regression-model">Linear Regression Model</h2>
 <section id="model-fit" class="level3">
 <h3 class="anchored" data-anchor-id="model-fit">Model Fit</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear regression model demonstrates a relatively good fit, with an R-squared value of 0.708, indicating that 70.8% of the variability in homeownership rates is explained by the predictors. The adjusted R-squared of 0.681 suggests that after accounting for the number of predictors in the model, about 68.1% of the variance is explained, which is still substantial. The F-statistic for the model is 26.67 with a p-value of 6.99e-16, indicating that the model as a whole is statistically significant and provides a good fit for the data.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To evaluate the effectiveness of the Linear Regression model in predicting the target variable, we examined several key performance metrics. These metrics provide insight into the model’s accuracy, fit, and overall statistical significance.</p>
 <section id="model-test-statistics" class="level5">
 <h5 class="anchored" data-anchor-id="model-test-statistics">Model test statistics:</h5>
-<table class="caption-top table">
+<table class="table-striped table-hover table">
+<caption>Table 2: Linear Regression model demonstrates a relatively good fit</caption>
 <thead>
 <tr class="header">
 <th>Metric</th>
@@ -629,7 +588,7 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 <tbody>
 <tr class="odd">
 <td>R-squared</td>
-<td>0.708</td>
+<td>0.712</td>
 </tr>
 <tr class="even">
 <td>Adjusted R-squared</td>
@@ -641,27 +600,36 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </tr>
 <tr class="even">
 <td>Mean Squared Error (MSE)</td>
-<td>139.7864</td>
+<td>130.3077</td>
 </tr>
 <tr class="odd">
-<td>Root Mean Sqaured Error (RMSE)</td>
-<td>11.8231</td>
+<td>Root Mean Squared Error (RMSE)</td>
+<td>11.4152</td>
 </tr>
 <tr class="even">
 <td>F-statistic</td>
-<td>26.67</td>
+<td>23.43</td>
 </tr>
 <tr class="odd">
 <td>P-value (F-statistic)</td>
-<td>6.99e-16</td>
+<td>9.63e-14</td>
 </tr>
 </tbody>
 </table>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The metrics displayed in Table 2 indicate the performance of the linear regression model. It demonstrates a relatively good fit, with an R-squared value of 0.712, indicating that 71.2% of the variability in homeownership rates is explained by the predictors. The Adjusted R-squared of 0.681 accounts for the number of predictors and indicates that the model remains robust even when adjusted for predictor complexity.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Mean Absolute Error (MAE) of 10.5018 represents the average magnitude of prediction errors, providing a straightforward measure of prediction accuracy. The Mean Squared Error (MSE) of 130.3077 and Root Mean Squared Error (RMSE) of 11.4152 further quantify the error magnitude, with RMSE being particularly useful for understanding error in the units of the target variable. Additionally, the F-statistic of 23.43, with a p-value of 9.63e-14, indicates that the overall model is statistically significant, meaning the predictors collectively contribute meaningfully to explaining the variability in the target variable.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These metrics collectively demonstrate that the Linear Regression model has a good fit and effectively captures the relationship between the predictors and the target variable, though there may still be room for improvement in model performance by addressing multicollinearity.</p>
 </section>
-</section>
-<section id="coefficient-results" class="level3">
-<h3 class="anchored" data-anchor-id="coefficient-results">Coefficient Results</h3>
-<table class="caption-top table">
+<section id="coefficient-results" class="level5">
+<h5 class="anchored" data-anchor-id="coefficient-results">Coefficient Results</h5>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To understand the influence of each feature on homeownership rate, we examined the coefficients and corresponding p-values of the Linear Regression model. The coefficients indicate the strength and direction of the relationship between each feature and homeownership rate, while the p-values assess the statistical significance of these relationships.</p>
+<table class="table-striped table-hover table">
+<caption>Table 3: Linear regression coefficients ranked from least to most statistically significant</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 45%">
+<col style="width: 20%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Feature</th>
@@ -671,54 +639,54 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>debt_at_grad</code></td>
-<td>0.0015</td>
-<td>0.073</td>
+<td><code>generation_order</code></td>
+<td>-5.4525</td>
+<td>0.317</td>
 </tr>
 <tr class="even">
-<td><code>avg_start_salary</code></td>
-<td>-0.0013</td>
-<td>0.015</td>
+<td><code>avg_debt_to_income</code></td>
+<td>-0.7455</td>
+<td>0.124</td>
 </tr>
 <tr class="odd">
-<td><code>avg_debt_to_income</code></td>
-<td>-0.6644</td>
-<td>0.136</td>
+<td><code>debt_at_grad</code></td>
+<td>0.0016</td>
+<td>0.063</td>
+</tr>
+<tr class="even">
+<td><code>percent_education_loan</code></td>
+<td>0.7697</td>
+<td>0.054</td>
+</tr>
+<tr class="odd">
+<td><code>avg_start_salary</code></td>
+<td>-0.0013</td>
+<td>0.025</td>
 </tr>
 <tr class="even">
 <td><code>percent_mortgage</code></td>
-<td>0.7176</td>
+<td>0.6844</td>
 <td>0.000</td>
-</tr>
-<tr class="odd">
-<td><code>percent_education_loan</code></td>
-<td>0.6885</td>
-<td>0.046</td>
-</tr>
-<tr class="even">
-<td><code>generation_order</code></td>
-<td>-3.9232</td>
-<td>0.429</td>
 </tr>
 </tbody>
 </table>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We anticipated that <code>debt_at_grad</code>, <code>percent_education_loan</code>, and <code>generation_order</code> would be the most influential features. However, the observed relationships were not as straightforward as expected.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient for <code>debt_at_grad</code> indicates a modest positive relationship with homeownership rate, suggesting that increased graduation debt is associated with higher homeownership rates. However, the p-value for this coefficient exceeds conventional significance levels, casting uncertainty on its precise impact.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, the coefficient for <code>percent_education_loan</code> suggests an unexpected positive association between education loan debt and homeownership rate. This counterintuitive finding may be attributable to factors such as high multicollinearity, sampling issues, or specific economic conditions that could influence the observed relationship.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, the coefficient for <code>generation_order</code> exhibits a negative relationship, indicating that the generational cohort to which an individual belongs may be inversely related to homeownership rates. Despite being the largest negative coefficient, the lack of statistical significance suggests that this effect is not robust within the framework of this model. This result could be influenced by various factors, including high multicollinearity among the features included in the regression model.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient analysis reveals that <code>percent_mortgage</code> exhibits the highest positive and statistically significant effect, with a coefficient of 0.7176 and a p-value of 0. This finding aligns with practical expectations, as mortgage debt is a critical determinant of homeownership.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The variables <code>avg_start_salary</code> and <code>avg_debt_to_income</code> were included to refine the model. Notably, <code>avg_start_salary</code> has a slight negative association with homeownership rates, suggesting that higher starting salaries might correlate with lower homeownership, though this effect is minor. Additionally, while <code>avg_debt_to_income</code> shows a negative trend, its p-value indicates that this relationship is not statistically significant at the 0.05 level, suggesting potential weakness or confounding factors.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficients offer a nuanced view of how differences in student loan debt between older and current generations affect, homeownership trends, but they do not provide a definitive answer.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient for <code>debt_at_grad</code> indicates a modest positive relationship with homeownership rate, suggesting that increased graduation debt is associated with higher homeownership rates. However, the p-value for this coefficient exceeds conventional significance levels, casting uncertainty on its precise impact. Similarly, the coefficient for <code>percent_education_loan</code> indicates an unexpected positive association between education loan debt and homeownership rates. This counterintuitive result may be due to several factors, including high multicollinearity, sampling issues, or specific economic conditions influencing the observed relationship. For instance, it may suggest that individuals with higher education debt, despite the financial burden, could achieve higher earning potential, enabling them to afford homeownership.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In contrast, the coefficient for <code>generation_order</code> exhibits a negative relationship, indicating that the generational cohort to which an individual belongs may be inversely related to homeownership rates. Despite being the largest negative coefficient, the lack of statistical significance suggests that this effect is not robust within the framework of this model. This result could be influenced by various factors, including high multicollinearity among the features included in the regression model.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient analysis reveals that <code>percent_mortgage</code> exhibits the highest positive and statistically significant effect, with a coefficient of 0.6844 and a p-value of 0. This finding aligns with practical expectations, as mortgage debt is a critical determinant of homeownership. The variables <code>avg_start_salary</code> and <code>avg_debt_to_income</code> were included to refine the model. Notably, <code>avg_start_salary</code> has a slight negative association with homeownership rates, suggesting that higher starting salaries might correlate with lower homeownership, though this effect is minor. Additionally, while <code>avg_debt_to_income</code> shows a negative trend, its p-value indicates that this relationship is not statistically significant at the 0.05 level, suggesting potential weakness or confounding factors.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overall, the coefficients offer a nuanced view of how differences in student loan debt between older and current generations affect, homeownership trends, but they do not provide a definitive answer. To achieve a more definitive understanding of the impact of student loan debt on homeownership trends, several methodological improvements could be employed. Longitudinal studies, which track individuals over time, would allow for a clearer examination of how changes in student loan debt influence homeownership. Additionally, addressing multicollinearity through variable selection or principal component analysis, enhancing data quality, and incorporating larger, more diverse samples would strengthen the reliability of findings.</p>
+</section>
 </section>
 </section>
 <section id="random-forest-model" class="level2">
 <h2 class="anchored" data-anchor-id="random-forest-model">Random Forest Model</h2>
 <section id="model-fit-1" class="level3">
 <h3 class="anchored" data-anchor-id="model-fit-1">Model Fit</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this model analysis, we utilized the same dependent and independent variables as our linear regression model. The Mean Squared Error was 88.46, far better than our linear regression MSE score of 139.78. Although an MSE of 88.46 suggests some level of error in the predictions, it is a useful benchmark for comparing the model’s performance with our linear regression model. The R-squared value was 0.726, which signifies that approximately 72.6% of the variability in homeownership rates can be explained by the model.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this model analysis, we utilized the same dependent and independent variables as our linear regression model, and a similar 70% training and 30% testing split.</p>
 <section id="model-test-statistics-1" class="level5">
 <h5 class="anchored" data-anchor-id="model-test-statistics-1">Model test statistics:</h5>
-<table class="caption-top table">
+<table class="table-striped table-hover table">
+<caption>Table 4: Random Forest model demonstrates a better fit than linear regression model</caption>
 <thead>
 <tr class="header">
 <th>Metric</th>
@@ -727,32 +695,34 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </thead>
 <tbody>
 <tr class="odd">
-<td>R-squared</td>
-<td>0.7262</td>
-</tr>
-<tr class="even">
-<td>Adjusted R-squared</td>
-<td>0.5893</td>
-</tr>
-<tr class="odd">
-<td>Mean Absolute Error (MAE)</td>
-<td>6.4070</td>
-</tr>
-<tr class="even">
 <td>Mean Squared Error (MSE)</td>
-<td>88.4552</td>
+<td>75.7782</td>
+</tr>
+<tr class="even">
+<td>R-squared</td>
+<td>0.7452</td>
 </tr>
 <tr class="odd">
-<td>Root Mean Sqaured Error (RMSE)</td>
-<td>9.4051</td>
+<td>Adjusted R-squared</td>
+<td>0.6724</td>
+</tr>
+<tr class="even">
+<td>Mean Absolute Error (MAE)</td>
+<td>6.5159</td>
+</tr>
+<tr class="odd">
+<td>Root Mean Squared Error (RMSE)</td>
+<td>8.7051</td>
 </tr>
 </tbody>
 </table>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Mean Squared Error was 75.78, far better than our linear regression MSE score of 130.30. Although an MSE of 77.78 suggests some level of error in the predictions, it is a useful benchmark for comparing the model’s performance with our linear regression model. The R-squared value was 0.745, which signifies that approximately 74.5% of the variability in homeownership rates can be explained by the model. The adjusted R-squared is slightly lower than the R-squared, reflecting the adjustment for the number of predictors. This suggests that while the model is still strong, the inclusion of additional variables has not significantly improved the model’s explanatory power. Overall, the Random Forest model outperforms the Linear Regression model in terms of R-squared, MAE, MSE, and RMSE, indicating better prediction accuracy and fit to the data.</p>
 </section>
-</section>
-<section id="feature-importance-results" class="level3">
-<h3 class="anchored" data-anchor-id="feature-importance-results">Feature Importance Results</h3>
-<table class="caption-top table">
+<section id="feature-importance-results" class="level5">
+<h5 class="anchored" data-anchor-id="feature-importance-results">Feature Importance Results</h5>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To better understand the factors influencing homeownership rates, we analyzed the importance of various features using a Random Forest model. The feature importance table below provides a quantitative measure of how much each feature contributes to the prediction of homeownership rates.</p>
+<table class="table-striped table-hover table">
+<caption>Random forest feature importance statistics</caption>
 <thead>
 <tr class="header">
 <th>Feature</th>
@@ -787,20 +757,34 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </tbody>
 </table>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded <code>percent_mortgage</code> from this visualization due to its dominance as the most significant feature.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As illustrated in <a href="#figure-7">Figure 7</a>, the variables <code>percent_education_loan</code> and <code>debt_at_grad</code> emerge as the top most influential factors in predicting the homeownership rate. This suggests that the amount of student loan debt individuals have plays a substantial role in determining their likelihood of owning a home. Higher student loan debt could be a barrier to homeownership, possibly due to the financial burden it places on individuals.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conversely, <code>generation_order</code> ranks as the least significant feature. This implies that, according to the model, the generational sequence (e.g., Baby Boomer, Gen X, Millennials) is not a major factor in predicting homeownership rates compared to the direct financial impacts like student loan debt.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As illustrated in <a href="#figure-7">Figure 7</a>, the variables <code>percent_education_loan</code> and <code>debt_at_grad</code> emerge as the top most influential factors in predicting the homeownership rate. The importance of <code>percent_education_loan</code> (0.1162) and <code>debt_at_grad</code> (0.0936) indicates that the amount of student loan debt significantly affects an individual’s likelihood of owning a home. This finding suggests that high levels of student loan debt can be a substantial barrier to homeownership, likely due to the financial strain it imposes on individuals, thereby limiting their ability to save for or afford a home.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In contrast, <code>generation_order</code> has the lowest importance score (0.0385) among the features analyzed. This result implies that the generational cohort of an individual—such as Baby Boomer, Gen X, or Millennials—has minimal influence on predicting homeownership rates in comparison to more direct financial factors. The features <code>average_start_salary</code> (0.0727) and <code>avg_debt_to_income</code> (0.0891) also contribute to the model, though their impact is less pronounced than that of student loan-related variables. This suggests that while starting salary and debt-to-income ratios are relevant factors in homeownership decisions, they are not as significant as the financial burden imposed by student loans.</p>
 <div id="figure-7" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/features.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 7: Generational cohort is the least significant predictor of homeownership rate.</figcaption>
 </figure>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other features, like <code>average_start_salary</code> and <code>avg_debt_to_income</code>, indicate that although starting salary and average debt-to-income ratios plays a role in determining homeownership, they are not as significant a predictor as other variables such as education loan debt.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overall, the feature importance analysis underscores the dominant role of student loan debt in influencing homeownership likelihood. The results highlight that financial factors, particularly those related to student loans and debt, are critical in understanding and predicting homeownership trends.</p>
+</section>
 </section>
 </section>
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
+<p>In this study, we sought to illuminate how differences in student loan debt between older and current generations impact homeownership trends, a question of growing importance given the escalating student debt crisis. Our investigation has provided valuable insights into the evolving landscape of student debt and its implications for homeownership.</p>
+<p>Final Results:</p>
+<p>Our analysis revealed a marked increase in average graduation debt from Baby Boomers to Millennials, with Millennials bearing the highest levels of debt. This rise in debt aligns with a trend of increasing financial burden on recent graduates. Our examination of homeownership rates indicated significant fluctuations influenced by economic events, such as the 2008 financial crisis, yet an overall upward trend in recent years.</p>
+<p>The Linear Regression model provided a good fit with an R-squared value of 0.712 and significant predictors such as mortgage debt, though the results were tempered by issues such as multicollinearity and the limitations of aggregated data. The Random Forest model outperformed the linear regression model in predictive accuracy, with an R-squared value of 0.745 and demonstrated that student loan-related variables, particularly debt_at_grad and percent_education_loan, were the most influential factors affecting homeownership rates.</p>
+<p>Confidence in Results:</p>
+<p>While the Random Forest model provided more robust results, the linear regression model’s findings were also valuable, highlighting the complexity of the relationships between debt and homeownership. The models collectively suggest that high levels of student loan debt are a significant barrier to homeownership, though challenges like multicollinearity and data limitations need to be addressed. The confidence in our results is bolstered by the consistency between the two modeling approaches, despite the inherent limitations of the data.</p>
+<p>Contribution to Existing Research:</p>
+<p>Our research contributes to the existing body of knowledge by highlighting the increasing burden of student loan debt on Millennials and its implications for homeownership. This study aligns with and extends previous findings that student debt affects financial stability and homeownership. By employing both linear regression and Random Forest models, we offer a comprehensive view of how debt influences homeownership and provide a nuanced understanding of this relationship in the context of evolving generational financial pressures.</p>
+<p>Future Directions:</p>
+<p>Future research could benefit from longitudinal studies to track the impact of student loan debt on homeownership over time, which would provide clearer insights into causal relationships. Addressing data limitations by incorporating more granular and diverse datasets, and employing advanced techniques like Principal Component Analysis to handle multicollinearity, could enhance the robustness of future analyses. Additionally, exploring the impact of other financial variables, such as housing market trends and changes in loan policies, could provide a more holistic understanding of homeownership dynamics.</p>
+<p>Conclusion and Recommendations:</p>
+<p>This research highlights the growing financial challenges faced by younger generations and their impact on traditional financial milestones like homeownership. While the findings underscore the significant role of student loan debt, they also suggest areas for policy intervention and further research. Targeted student loan relief programs, improved financial literacy initiatives, and more robust data collection efforts are recommended to address these challenges and support future generations in achieving homeownership and financial stability.</p>
+<p>In summary, our study provides critical insights into the financial pressures on Millennials compared to previous generations and contributes to ongoing discussions about student loan debt and economic stability. Future research in this area should focus on longitudinal data and advanced analytical techniques to further refine our understanding and guide effective policy solutions.</p>
 <p>The rise in debt at graduation over the generations suggests that newer graduates are starting their post-college lives with heavier financial burdens. Higher student loan debt can directly impact their ability to save for a down payment and secure mortgages, potentially delaying their entry into homeownership.</p>
 <section id="random-forest-conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="random-forest-conclusion">Random Forest Conclusion</h3>
@@ -819,17 +803,56 @@ Data Dictionary - Features and Descriptions (Click to Expand)
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-homeownership2024" class="csl-entry" role="listitem">
+Association, N. B. M. (2024). <em>Homeownership Month with City National Bank</em>. <a href="https://www.labmba.org/blog/homeownership-month-with-city-national-bank">https://www.labmba.org/blog/homeownership-month-with-city-national-bank</a>
+</div>
 <div id="ref-Census2019" class="csl-entry" role="listitem">
-Bureau, U. S. C. (2019). <a href="https://www.census.gov/housing/hvs/data/histtabs.html">https://www.census.gov/housing/hvs/data/histtabs.html</a>
+Bureau, U. S. C. (2024). <em>Housing Vacancies and Homeownership (CPS/HVS)</em>. <a href="https://www.census.gov/housing/hvs/data/histtabs.html">https://www.census.gov/housing/hvs/data/histtabs.html</a>
 </div>
 <div id="ref-mortgagerates2022" class="csl-entry" role="listitem">
-Campisi, N. (2022). Mortgage Rates History. <em>Forbes Advisor</em>. <a href="https://www.forbes.com/advisor/mortgages/mortgage-rates-history/">https://www.forbes.com/advisor/mortgages/mortgage-rates-history/</a>
+Campisi, N. (2022). <em>Mortgage Rates History</em>. <a href="https://www.forbes.com/advisor/mortgages/mortgage-rates-history/">https://www.forbes.com/advisor/mortgages/mortgage-rates-history/</a>
+</div>
+<div id="ref-conditionnumber" class="csl-entry" role="listitem">
+Chen, G. (2024). <em>Multicollinearity (and Model Validation</em>. <a href="https://www.sjsu.edu/faculty/guangliang.chen/Math261a/Ch9slides-multicollinearity.pdf">https://www.sjsu.edu/faculty/guangliang.chen/Math261a/Ch9slides-multicollinearity.pdf</a>
+</div>
+<div id="ref-FederalReserveBoston" class="csl-entry" role="listitem">
+Cooper, D. H., &amp; Wang, J. C. (2014). <em>Student Loan Debt and Economic Outcomes</em>. <a href="https://www.bostonfed.org/publications/current-policy-perspectives/2014/student-loan-debt-and-economic-outcomes.aspx">https://www.bostonfed.org/publications/current-policy-perspectives/2014/student-loan-debt-and-economic-outcomes.aspx</a>
+</div>
+<div id="ref-multicollinearity" class="csl-entry" role="listitem">
+Data Science, P. for. (2018). <em>Linear Regression</em>. <a href="https://www.pythonfordatascience.org/linear-regression-python/">https://www.pythonfordatascience.org/linear-regression-python/</a>
+</div>
+<div id="ref-durbinwatson" class="csl-entry" role="listitem">
+Datalab, A. (2021). <em>Understanding Durbin-Watson Test</em>. <a href="https://medium.com/@analyttica/durbin-watson-test-fde429f79203">https://medium.com/@analyttica/durbin-watson-test-fde429f79203</a>
+</div>
+<div id="ref-CFR" class="csl-entry" role="listitem">
+Editors, CFR. org. (2024). <em>Is Rising Student Debt Harming the u.s. Economy?</em> <a href="https://www.cfr.org/backgrounder/us-student-loan-debt-trends-economic-impact">https://www.cfr.org/backgrounder/us-student-loan-debt-trends-economic-impact</a>
+</div>
+<div id="ref-Upjohn" class="csl-entry" role="listitem">
+Gicheva, D., &amp; Thompson, J. (2015). <em>The Effects of Student Loans on Long-Term Household Financial Stability</em>. <a href="https://research.upjohn.org/cgi/viewcontent.cgi?filename=8&amp;article=1249&amp;context=up_press&amp;type=additional">https://research.upjohn.org/cgi/viewcontent.cgi?filename=8&amp;article=1249&amp;context=up_press&amp;type=additional</a>
 </div>
 <div id="ref-federal2024" class="csl-entry" role="listitem">
-Governors of the Federal Reserve System, B. of. (2024). <a href="https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html">https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html</a>
+Governors of the Federal Reserve System, B. of. (2020). <em>Consumer Credit Outstanding</em>. <a href="https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html">https://www.federalreserve.gov/releases/g19/HIST/cc_hist_memo_levels.html</a>
+</div>
+<div id="ref-equitablegrowth" class="csl-entry" role="listitem">
+Kopparam, R., &amp; Clemens, A. (2020). <em>The Rising Number of u.s. Households with Burdensome Student Debt Calls for a Federal Response</em>. <a href="https://equitablegrowth.org/the-rising-number-of-u-s-households-with-burdensome-student-debt-calls-for-a-federal-response/">https://equitablegrowth.org/the-rising-number-of-u-s-households-with-burdensome-student-debt-calls-for-a-federal-response/</a>
+</div>
+<div id="ref-NIH" class="csl-entry" role="listitem">
+Martin, E. C., &amp; E., Dwyer. R. (2021). <em>Financial Stress, Race, and Student Debt During the Great Recession</em>. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10373449/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10373449/</a>
 </div>
 <div id="ref-Studentdebt2023" class="csl-entry" role="listitem">
-McLoughlin, D. (2023). <em>Student Loan Debt by Year</em>. <a href="https://wordsrated.com/student-loan-debt-by-year/">https://wordsrated.com/student-loan-debt-by-year/</a>
+McLoughlin, D. (2023). <em>Student Loan Debt Statistics by Year</em>. <a href="https://wordsrated.com/student-loan-debt-by-year/">https://wordsrated.com/student-loan-debt-by-year/</a>
+</div>
+<div id="ref-ChicagoJournal" class="csl-entry" role="listitem">
+Mezza, A., Ringo, D., Sherlund, S., &amp; Sommer, K. (2020). Student Loans and Homeownership. <em>Journal of Labor Economics</em>, <em>38</em>(1).
+</div>
+<div id="ref-shapiro" class="csl-entry" role="listitem">
+Statistics, L. (2018). <em>Testing for Normality Using SPSS Statistics</em>. <a href="https://statistics.laerd.com/spss-tutorials/testing-for-normality-using-spss-statistics.php#:~:text=If%20the%20Sig.,deviate%20from%20a%20normal%20distribution">https://statistics.laerd.com/spss-tutorials/testing-for-normality-using-spss-statistics.php#:~:text=If%20the%20Sig.,deviate%20from%20a%20normal%20distribution</a>
+</div>
+<div id="ref-VIF" class="csl-entry" role="listitem">
+University, T. P. S. (2018a). <em>Detecting Multicollinearity Using Variance Inflation Factors</em>. <a href="https://online.stat.psu.edu/stat462/node/180/#:~:text=The%20general%20rule%20of%20thumb,of%20serious%20multicollinearity%20requiring%20correction">https://online.stat.psu.edu/stat462/node/180/#:~:text=The%20general%20rule%20of%20thumb,of%20serious%20multicollinearity%20requiring%20correction</a>
+</div>
+<div id="ref-observational" class="csl-entry" role="listitem">
+University, T. P. S. (2018b). <em>What Is Multicollinearity?</em> <a href="https://online.stat.psu.edu/stat501/lesson/12/12.1">https://online.stat.psu.edu/stat501/lesson/12/12.1</a>
 </div>
 </div></section></div></main>
 <!-- /main column -->
