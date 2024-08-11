@@ -1,3 +1,3 @@
 # Quarto
 
-https://wu-msds-capstones.github.io/student_loan_and_homeownership/
+https://wu-msds-capstones.github.io/student_loans_and_homeownership/
