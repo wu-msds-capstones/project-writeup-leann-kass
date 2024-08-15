@@ -1,3 +1,8 @@
+---
+lightbox: true
+---
+
+
 # Methods
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In our dataset, there were relatively few features to choose from that could be associated with homeownership and student debt. Initially, we selected specific features and employed linear regression models to evaluate the influence of each feature on homeownership rates. To explore more intricate, non-linear relationships among the features, we then applied a Random Forest machine learning model. This approach allowed us to build upon the findings from our linear regression analysis and assess the relative importance of each feature. These methodologies together provide a comprehensive framework for understanding the potential impact of student loan debt and generational factors on homeownership rates.
@@ -58,7 +63,7 @@ Where:<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs. fitted values plot in [Figure 2](#figure-2) shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.
 
-![Figure 2: Linearity Assumption Satisfied: Residuals vs. Fitted Plot shows no strong curvature of patterns](images/residuals1.png){#figure-2}
+![Figure 2: Linearity Assumption Satisfied: Residuals vs. Fitted Plot shows no strong curvature of patterns](images/residuals1.png){.lightbox #figure-2}
 
 #### 4b. Testing for Independence
 
@@ -72,13 +77,13 @@ Where:<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable.  Although we noted a minor curvature in the linearity assumption, [Figure 3](#figure-3) shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.
 
-![Figure 3: Homoscedasticity Assumption Satisfied: Residuals are generally well-dispersed around the horizontal line](images/homosced1.png){#figure-3}
+![Figure 3: Homoscedasticity Assumption Satisfied: Residuals are generally well-dispersed around the horizontal line](images/homosced1.png){.lightbox #figure-3}
 
 #### 4d. Testing for Normality
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in [Figure 4](#figure-4). The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.
 
-![Figure 4: Normality Assumption Satisfied: Residuals generally align with the 45-degree reference line](images/normality2.png){#figure-4}
+![Figure 4: Normality Assumption Satisfied: Residuals generally align with the 45-degree reference line](images/normality2.png){.lightbox #figure-4}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We also performed the Shapiro-Wilk test for normality and got a test statistics of 0.99 and a p-value of 0.86 which suggest that the residuals are approximately normally distributed [@shapiro]. Since the p-value is well above the conventional significance level of 0.05, there is no significant evidence to reject the null hypothesis of normality. This supports the assumption that the residuals follow a normal distribution.
 
@@ -103,7 +108,7 @@ Where:<br>
 the correlation matrix reveals that `percent_mortgage` exhibits a moderate negative correlation of approximately -0.50 with the other variables. In contrast, the correlations among the remaining variables are notably higher, with values of 0.88 or above. This pattern suggests that while `percent_mortgage` is somewhat inversely related to the other variables, the high correlations among the latter indicate substantial multicollinearity within the dataset. 
 
 
-![Figure 5: Correlation Matrix of Explanatory Variables: Displays strong pairwise correlations](images/correlationmatrix.png){#figure-5}
+![Figure 5: Correlation Matrix of Explanatory Variables: Displays strong pairwise correlations](images/correlationmatrix.png){.lightbox #figure-5}
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This high multicollinearity is a common issue in survey-based observational studies, where variables are often interrelated due to underlying socio-economic factors [@observational]. Such interdependencies reflect the inherent complexity of real-world data, where variables may be influenced by common factors or may capture overlapping aspects of the phenomena being studied. Despite efforts to mitigate multicollinearity by experimenting with different subsets of variables and dropping some from the analysis, these adjustments did not substantially reduce the multicollinearity problem. This persistent issue suggests that the high degree of correlation among the variables is an inherent characteristic of the data, making it difficult to isolate and interpret the individual effects of each variable.
 

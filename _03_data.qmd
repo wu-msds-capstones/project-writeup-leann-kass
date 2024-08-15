@@ -15,7 +15,7 @@
 | `year`               	 | Survey year from 1989-2022 in ncrements of 3 years                                                                                                                                                                                               	 |
 | `age_group`                 	 | Age groups: 18-34, 35-44, 45-54, 55-64, 65-74, 75+                                                                                                                                                                                      |
 | `percent_mortgage`            	 | Percent of mortgage debt an individual within the age group holds on average                                                                                                                            	 |
-| `percent_education_loan`    	 | Percent of education loan debt an indiviudual within the age groups holds on average                                                                                                           	 |
+| `percent_education_loan`    	 | Percent of education loan debt an individual within the age groups holds on average                                                                                                           	 |
 :Table 1 - Survey of Consumer Finances 1989-2022: a normally triennial cross-sectional survey of U.S. families showcasing family holdings of debt by selected characteristics of families and type of debt. 
 
 <br><br>

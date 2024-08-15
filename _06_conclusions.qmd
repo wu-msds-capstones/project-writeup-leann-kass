@@ -1,145 +1,17 @@
 # Conclusions
-In this study, we sought to illuminate how differences in student loan debt between older and current generations impact homeownership trends, a question of growing importance given the escalating student debt crisis. Our investigation has provided valuable insights into the evolving landscape of student debt and its implications for homeownership.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addressing our research question—how do differences in student loan debt between older and current generations affect homeownership trends?—our study offers both insightful and nuanced perspectives. The historical context and the analysis reveal a complex relationship between student loan debt and homeownership rates. Our findings indicate that student loan debt at graduation is a significant factor influencing homeownership rates. The data shows a clear increase in student loan debt across generations, with Millennials bearing the highest levels, which is likely contributing to the challenges they face in achieving homeownership.
 
-Final Results:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis revealed a marked increase in average graduation debt from Baby Boomers to Millennials, with Millennials bearing the highest levels of debt. This rise in debt aligns with a trend of increasing financial burden on recent graduates. Our examination of homeownership rates indicated significant fluctuations influenced by economic events, such as the 2008 financial crisis, yet an overall upward trend in recent years.
 
-Our analysis revealed a marked increase in average graduation debt from Baby Boomers to Millennials, with Millennials bearing the highest levels of debt. This rise in debt aligns with a trend of increasing financial burden on recent graduates. Our examination of homeownership rates indicated significant fluctuations influenced by economic events, such as the 2008 financial crisis, yet an overall upward trend in recent years.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Linear Regression model provided a good fit with an R-squared value of 0.712 and significant predictors such as mortgage debt, though the results were tempered by issues such as multicollinearity and the limitations of aggregated data. The Random Forest model outperformed the linear regression model in predictive accuracy, with an R-squared value of 0.745 and demonstrated that student loan-related variables, particularly `debt_at_grad` and `percent_education_loan`, were the most influential factors affecting homeownership rates.
 
-The Linear Regression model provided a good fit with an R-squared value of 0.712 and significant predictors such as mortgage debt, though the results were tempered by issues such as multicollinearity and the limitations of aggregated data. The Random Forest model outperformed the linear regression model in predictive accuracy, with an R-squared value of 0.745 and demonstrated that student loan-related variables, particularly debt_at_grad and percent_education_loan, were the most influential factors affecting homeownership rates.
 
-Confidence in Results:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While the Random Forest model provided more robust results, the linear regression model’s findings were also valuable, highlighting the complexity of the relationships between debt and homeownership. The models collectively suggest that high levels of student loan debt are a barrier to homeownership, though challenges like multicollinearity and data limitations need to be addressed. The confidence in our results is bolstered by the consistency between the two modeling approaches, despite the inherent limitations of the data.
 
-While the Random Forest model provided more robust results, the linear regression model's findings were also valuable, highlighting the complexity of the relationships between debt and homeownership. The models collectively suggest that high levels of student loan debt are a significant barrier to homeownership, though challenges like multicollinearity and data limitations need to be addressed. The confidence in our results is bolstered by the consistency between the two modeling approaches, despite the inherent limitations of the data.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through our linear regression and Random Forest analyses, we confirmed that `debt_at_grad` has a less pronounced but still notable effect. `Percent_education_loan`, while less influential than mortgage debt, also plays a role, suggesting that education loan debt does impact homeownership trends to a degree. Interestingly, `generation_order`, representing the sequence of generations, was found to be the least significant predictor of homeownership rates. While generational trends and experiences might shape broader economic and social patterns, the specific generational cohort an individual belongs to does not substantially explain variations in homeownership rates compared to the financial burden of student loans and mortgages.
 
-Contribution to Existing Research:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As illustrated in [Figure 7](#figure-7), the variables `percent_education_loan` and `debt_at_grad` emerge as the most influential factors in predicting the homeownership rate. This highlights the significant role that student loan debt plays in determining an individual’s likelihood of owning a home. The substantial impact of `percent_education_loan` suggests that the proportion of education-related debt an individual carries is a determinant of homeownership. Similarly, `debt_at_grad` indicates that the amount of debt incurred by graduation also affects homeownership prospects.
 
-Our research contributes to the existing body of knowledge by highlighting the increasing burden of student loan debt on Millennials and its implications for homeownership. This study aligns with and extends previous findings that student debt affects financial stability and homeownership. By employing both linear regression and Random Forest models, we offer a comprehensive view of how debt influences homeownership and provide a nuanced understanding of this relationship in the context of evolving generational financial pressures.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It is crucial to acknowledge that student loan debt is not the sole determinant of homeownership trends. Inflation, for instance, has affected purchasing power and contributed to rising housing costs, which can make homeownership more challenging for many. Additionally, extensive evidence highlights how student loan debt creates barriers in mortgage eligibility and credit scores. According to a study by the Federal Reserve Board, a $1,000 increase in student loan debt is associated with a 1.8 percent decrease in the homeownership rate for public four-year college graduates, resulting in a delay in purchasing a home [@ChicagoJournal]. Furthermore and as addressed above, despite our efforts to mitigate bias, the potential for underrepresentation of certain demographics in the survey samples remains a concern. Student loan debt can exacerbate racial disparities. Racial wealth and income gaps are rooted in historical discriminatory housing policies - meaning that Black students, in particular, may face greater financial risks in pursuing higher education [@race]. Not adequately capturing the experiences of these underrepresented groups can affect our research and must be taken into consideration when evaluating our results. 
 
-Future Directions:
-
-Future research could benefit from longitudinal studies to track the impact of student loan debt on homeownership over time, which would provide clearer insights into causal relationships. Addressing data limitations by incorporating more granular and diverse datasets, and employing advanced techniques like Principal Component Analysis to handle multicollinearity, could enhance the robustness of future analyses. Additionally, exploring the impact of other financial variables, such as housing market trends and changes in loan policies, could provide a more holistic understanding of homeownership dynamics.
-
-Conclusion and Recommendations:
-
-This research highlights the growing financial challenges faced by younger generations and their impact on traditional financial milestones like homeownership. While the findings underscore the significant role of student loan debt, they also suggest areas for policy intervention and further research. Targeted student loan relief programs, improved financial literacy initiatives, and more robust data collection efforts are recommended to address these challenges and support future generations in achieving homeownership and financial stability.
-
-In summary, our study provides critical insights into the financial pressures on Millennials compared to previous generations and contributes to ongoing discussions about student loan debt and economic stability. Future research in this area should focus on longitudinal data and advanced analytical techniques to further refine our understanding and guide effective policy solutions.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The rise in debt at graduation over the generations suggests that newer graduates are starting their post-college lives with heavier financial burdens. Higher student loan debt can directly impact their ability to save for a down payment and secure mortgages, potentially delaying their entry into homeownership.
-
-
-
-
-### Random Forest Conclusion
-
-As illustrated in Figure 7, the variables percent_education_loan and debt_at_grad emerge as the most influential factors in predicting the homeownership rate. This highlights the significant role that student loan debt plays in determining an individual's likelihood of owning a home. The substantial impact of percent_education_loan suggests that the proportion of education-related debt an individual carries is a critical determinant of homeownership. Similarly, debt_at_grad indicates that the amount of debt incurred by graduation also significantly affects homeownership prospects.
-
-The prominence of these variables implies that higher levels of student loan debt could be a considerable barrier to homeownership. This financial burden may limit individuals' ability to save for a down payment, manage monthly mortgage payments, or qualify for favorable loan terms. Consequently, the burden of student loans may hinder long-term financial stability and reduce the likelihood of achieving homeownership.
-
-Addressing the challenges associated with student loan debt could be pivotal in improving homeownership rates. Policy interventions aimed at reducing education-related debt or providing targeted financial assistance might alleviate some of the barriers identified in this analysis and promote greater access to homeownership.
-
-
-
-
-
-
-
-
-
-Conversely, generation_order ranks as the least significant feature in predicting homeownership rates. This finding suggests that the generational cohort to which an individual belongs—whether Baby Boomer, Gen X, Millennials, or another group—has minimal impact on their likelihood of owning a home when compared to more direct financial factors, such as student loan debt.
-
-This result indicates that, according to the model, the generational sequence alone does not substantially influence homeownership rates. While generational trends and experiences might shape broader economic and social patterns, the specific cohort to which an individual belongs appears less relevant in this context than the tangible financial burdens they face.
-
-The minimal significance of generation_order highlights the importance of focusing on financial factors that more directly affect homeownership, such as debt levels, income, and savings. It underscores that while generational trends might provide context, the financial challenges individuals face are more decisive in determining their ability to achieve homeownership.
-
-This insight emphasizes the need for targeted policies and interventions that address financial barriers directly, rather than focusing solely on generational characteristics. By prioritizing measures that alleviate student loan debt and improve financial stability, stakeholders can more effectively support homeownership aspirations across different generational cohorts.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-In addressing our research question—how do differences in student loan debt between older and current generations affect homeownership trends?—our study offers both insightful and nuanced perspectives. The historical context and the analysis reveal a complex relationship between student loan debt and homeownership rates. Our findings indicate that student loan debt at graduation (`debt_at_grad`) is a significant factor influencing homeownership rates. The data shows a clear increase in student loan debt across generations, with Millennials bearing the highest levels, which is likely contributing to the challenges they face in achieving homeownership. Despite the substantial debt load carried by recent graduates, the impact of debt at graduation on homeownership is relatively moderate.
-Through linear regression and Random Forest analyses, we confirmed that `debt_at_grad` has a less pronounced but still notable effect. `Percent_education_loan`, while less influential than mortgage debt, also plays a role, suggesting that education loan debt does impact homeownership trends to a degree. Interestingly, `generation_order`, representing the sequence of generations, was found to be the least significant predictor of homeownership rates. This indicates that, within the context of our model, generational cohort alone does not substantially explain variations in homeownership rates compared to the financial burden of student loans and mortgages.
-It is crucial to acknowledge that student loan debt is not the sole determinant of homeownership trends. Inflation, for instance, has affected purchasing power and contributed to rising housing costs, which can make homeownership more challenging for many. Additionally, extensive evidence highlights how student loan debt creates barriers in mortgage eligibility and credit scores. According to a study by the Federal Reserve Board, a $1,000 increase in student loan debt is associated with a 1.8 percent decrease in the homeownership rate for public four-year college graduates, resulting in a delay in purchasing a home. Furthermore and as addressed above, despite our efforts to mitigate bias, the potential for underrepresentation of certain demographics in the survey samples remains a concern. Student loan debt can exacerbate racial disparities. Racial wealth and income gaps are rooted in historical discriminatory housing policies - meaning that Black students, in particular, may face greater financial risks in pursuing higher education. Not adequately capturing the experiences of these underrepresented groups can affect our research and must be taken into consideration when evaluating our results. 
-In summary, while student loan debt does impact homeownership trends, it is just one of several factors contributing to the complexity of financial decisions related to homeownership. The rising debt levels faced by Millennials and Gen Z are significant but must be considered alongside other financial elements. Our research underscores the need for a holistic view when analyzing homeownership trends and suggests that addressing the broader financial challenges faced by younger generations may be crucial in facilitating increased homeownership rates.
-
-
-
-
-We can reference this in our conclusion/limitations: 
-https://housingmatters.urban.org/articles/how-student-loan-debt-affects-racial-homeownership-gap
-
-“Extensive evidence underscores how debt affects mortgage eligibility and credit score, erecting clear barriers to homeownership. A study by the Federal Reserve Board found that a $1,000 increase in student loan debt lowers the homeownership rate by about 1.8 percent for public four-year college goers; this amounts to an average delay in about four months for attaining homeownership.
-Student loan debt may reproduce and exacerbate the racial homeownership gap. Enduring racial disparities in wealth and income—which were, in part, created through decades of racist and discriminatory housing policies that blocked wealth building for many families—mean a greater proportion of Black students need to take on a greater and more enduring financial risk to pursue higher education. Therefore, reducing the impact of student loans on mortgage eligibility could be a critical component of ensuring a more equitable housing landscape.” 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In summary, while student loan debt does impact homeownership trends, it is just one of several factors contributing to the complexity of financial decisions related to homeownership. The rising debt levels faced by Millennials and Gen Z are significant but must be considered alongside other financial elements such as debt levels, income and savings. Our research underscores the need for a holistic view when analyzing homeownership trends and suggests that addressing the broader financial challenges faced by younger generations may be crucial in facilitating increased homeownership rates. This insight also emphasizes the need for targeted policies and interventions that address financial barriers directly, rather than focusing solely on generational characteristics. By prioritizing measures that alleviate student loan debt and improve financial stability, stakeholders can more effectively support homeownership aspirations across different generational cohorts.
