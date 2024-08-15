@@ -55,6 +55,9 @@ div.csl-indent {
 <link href="capstone_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="capstone_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="capstone_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="capstone_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="capstone_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="capstone_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -146,10 +149,7 @@ window.Quarto = {
   <li><a href="#model-fit-1" id="toc-model-fit-1" class="nav-link" data-scroll-target="#model-fit-1">Model Fit</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a>
-  <ul class="collapse">
-  <li><a href="#random-forest-conclusion" id="toc-random-forest-conclusion" class="nav-link" data-scroll-target="#random-forest-conclusion">Random Forest Conclusion</a></li>
-  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul>
 </nav>
 </div>
@@ -173,9 +173,9 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="data-acquisition">Data Acquisition</h2>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The acquisition of student loan data and homeownership data proved challenging due to several factors. A significant lack of publicly available data, especially on student loans dating back to 1990, was compounded by the unavailability of the necessary raw data on government portals and academic repositories. The data we encountered was predominantly aggregated by age group, with limited access to detailed, disaggregated datasets that would allow for more granular analysis. Furthermore, many of the existing studies that addressed related topics did not provide explicit citations or source details for their data, making it difficult to trace the origins and verify the reliability of the information used in previous research. This lack of transparency and accessibility posed significant obstacles to obtaining the comprehensive and historical data required for our study.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To perform our analysis, we utilized the data from the Federal Reserve and Census surveys within the 1989-2022 time frame. The Federal Reserve survey <span class="citation" data-cites="federal2024">(<a href="#ref-federal2024" role="doc-biblioref">Governors of the Federal Reserve System, 2020</a>)</span> consisted of age groups, the percentage of those who had a mortgage and the percentage of those with education loans, and was stored in various tabs in an excel spreadsheet. The Census survey <span class="citation" data-cites="Census2019">(<a href="#ref-Census2019" role="doc-biblioref">Bureau, 2024</a>)</span>, also stored in various tabs in an excel spreadsheet, included age groups, total number of people who were surveyed and the number of homeowners within each age group. To further explore our research question and to supplement our existing tables, we found data on the amount of debt students had at the time of their graduation <span class="citation" data-cites="Studentdebt2023">(<a href="#ref-Studentdebt2023" role="doc-biblioref">McLoughlin, 2023</a>)</span>. This table included graduation year, amount of debt at graduation, average starting salary out of college and the debt to income ratio. The original data structure can be seen in <a href="#figure-1">Figure 1</a> with explanation of the features in the Data Dictionary below.</p>
-<div id="figure-1" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/erd1.png" class="img-fluid figure-img"></p>
+<p><a href="images/erd1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 1: Entity-Relationship Diagram showing original features extracted from survey and student debt datasets"><img src="images/erd1.png" class="img-fluid figure-img" alt="Figure 1: Entity-Relationship Diagram showing original features extracted from survey and student debt datasets"></a></p>
 <figcaption>Figure 1: Entity-Relationship Diagram showing original features extracted from survey and student debt datasets</figcaption>
 </figure>
 </div>
@@ -218,7 +218,7 @@ Original Data Dictionary - Features, Descriptions, and Sources (Click to Expand)
 </tr>
 <tr class="even">
 <td><code>percent_education_loan</code></td>
-<td>Percent of education loan debt an indiviudual within the age groups holds on average</td>
+<td>Percent of education loan debt an individual within the age groups holds on average</td>
 </tr>
 </tbody>
 </table>
@@ -444,9 +444,9 @@ Final Data Dictionary - Features and Descriptions (Click to Expand)
 <h4 class="anchored" data-anchor-id="a.-testing-for-linearity">4a. Testing for Linearity</h4>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linearity assumption requires that the relationship between the independent variables and the dependent variable is linear. To assess this, we plotted the residuals (errors) against the predicted values to check for any patterns. By plotting residuals versus fitted values (or predictors), we checked for any systematic patterns. If the residuals display a clear pattern or trend, it suggests that the linear relationship assumption might be violated. Ideally, residuals should scatter randomly around zero, indicating that the linear model is appropriate.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs.&nbsp;fitted values plot in <a href="#figure-2">Figure 2</a> shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.</p>
-<div id="figure-2" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/residuals1.png" class="img-fluid figure-img"></p>
+<p><a href="images/residuals1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure 2: Linearity Assumption Satisfied: Residuals vs.&nbsp;Fitted Plot shows no strong curvature of patterns"><img src="images/residuals1.png" class="img-fluid figure-img" alt="Figure 2: Linearity Assumption Satisfied: Residuals vs.&nbsp;Fitted Plot shows no strong curvature of patterns"></a></p>
 <figcaption>Figure 2: Linearity Assumption Satisfied: Residuals vs.&nbsp;Fitted Plot shows no strong curvature of patterns</figcaption>
 </figure>
 </div>
@@ -460,9 +460,9 @@ Final Data Dictionary - Features and Descriptions (Click to Expand)
 <section id="c.-testing-for-homoscedasticity" class="level4">
 <h4 class="anchored" data-anchor-id="c.-testing-for-homoscedasticity">4c. Testing for Homoscedasticity</h4>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable. Although we noted a minor curvature in the linearity assumption, <a href="#figure-3">Figure 3</a> shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.</p>
-<div id="figure-3" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/homosced1.png" class="img-fluid figure-img"></p>
+<p><a href="images/homosced1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure 3: Homoscedasticity Assumption Satisfied: Residuals are generally well-dispersed around the horizontal line"><img src="images/homosced1.png" class="img-fluid figure-img" alt="Figure 3: Homoscedasticity Assumption Satisfied: Residuals are generally well-dispersed around the horizontal line"></a></p>
 <figcaption>Figure 3: Homoscedasticity Assumption Satisfied: Residuals are generally well-dispersed around the horizontal line</figcaption>
 </figure>
 </div>
@@ -470,9 +470,9 @@ Final Data Dictionary - Features and Descriptions (Click to Expand)
 <section id="d.-testing-for-normality" class="level4">
 <h4 class="anchored" data-anchor-id="d.-testing-for-normality">4d. Testing for Normality</h4>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in <a href="#figure-4">Figure 4</a>. The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.</p>
-<div id="figure-4" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/normality2.png" class="img-fluid figure-img"></p>
+<p><a href="images/normality2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure 4: Normality Assumption Satisfied: Residuals generally align with the 45-degree reference line"><img src="images/normality2.png" class="img-fluid figure-img" alt="Figure 4: Normality Assumption Satisfied: Residuals generally align with the 45-degree reference line"></a></p>
 <figcaption>Figure 4: Normality Assumption Satisfied: Residuals generally align with the 45-degree reference line</figcaption>
 </figure>
 </div>
@@ -518,9 +518,9 @@ Final Data Dictionary - Features and Descriptions (Click to Expand)
 </table>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Half of our features had a VIF value exceeding 10, signaling a significant concern <span class="citation" data-cites="VIF">(<a href="#ref-VIF" role="doc-biblioref">University, 2018a</a>)</span>. To further test this, we analyzed the condition number, which resulted in 241,000. There isn’t a simple definition of what counts as a small and large condition number, however, a condition value larger than 1,000 generally indicates strong multicollinearity <span class="citation" data-cites="conditionnumber">(<a href="#ref-conditionnumber" role="doc-biblioref">Chen, 2024</a>)</span>.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As we can see in <a href="#figure-5">Figure 5</a>, the correlation matrix reveals that <code>percent_mortgage</code> exhibits a moderate negative correlation of approximately -0.50 with the other variables. In contrast, the correlations among the remaining variables are notably higher, with values of 0.88 or above. This pattern suggests that while <code>percent_mortgage</code> is somewhat inversely related to the other variables, the high correlations among the latter indicate substantial multicollinearity within the dataset.</p>
-<div id="figure-5" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/correlationmatrix.png" class="img-fluid figure-img"></p>
+<p><a href="images/correlationmatrix.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure 5: Correlation Matrix of Explanatory Variables: Displays strong pairwise correlations"><img src="images/correlationmatrix.png" class="img-fluid figure-img" alt="Figure 5: Correlation Matrix of Explanatory Variables: Displays strong pairwise correlations"></a></p>
 <figcaption>Figure 5: Correlation Matrix of Explanatory Variables: Displays strong pairwise correlations</figcaption>
 </figure>
 </div>
@@ -556,16 +556,16 @@ Final Data Dictionary - Features and Descriptions (Click to Expand)
 <section id="trends-over-time" class="level2">
 <h2 class="anchored" data-anchor-id="trends-over-time">Trends Over Time</h2>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis of graduation debt reveals a clear upward trajectory in average graduation debt levels over time for each successive generation, as shown in <a href="#figure-5">Figure 5</a>. For the Baby Boomers, graduates had relatively low levels of student loan debt, which remained stable and below $5,000 through the 1970s and early 1980s. In contrast, Generation X experienced a noticeable increase in debt levels starting in the late 1980s, with a steady rise through the 1990s, peaking around $15,000 by the early 2000s. This trend continues with Millennials, who faced the highest levels of debt at graduation. Starting in the early 2000s, the average debt for this generation saw a steep increase, surpassing $20,000 and reaching nearly $30,000 by 2015. This escalation in average student loan debt across generations highlights a growing financial burden on recent graduates, with Millennials bearing the highest debt load. The data suggest significant changes in higher education financing, economic conditions, and possibly policy impacts over the decades.</p>
-<div id="figure-5" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/debt_over_time.png" class="img-fluid figure-img"></p>
+<p><a href="images/debt_over_time.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure 5: Millennials faced the highest levels of debt at graduation compared to Baby Boomers and Generation X."><img src="images/debt_over_time.png" class="img-fluid figure-img" alt="Figure 5: Millennials faced the highest levels of debt at graduation compared to Baby Boomers and Generation X."></a></p>
 <figcaption>Figure 5: Millennials faced the highest levels of debt at graduation compared to Baby Boomers and Generation X.</figcaption>
 </figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The plot in <a href="#figure-6">Figure 6</a> illustrates homeownership rates from 1989 to 2022. The initial rate starts at around 47.5% and experiences a slight dip shortly after. From the early 1990s, there is a significant upward trend, peaking at around 62.5% by the mid-2000s. This peak occurred during a significant decade for mortgage rates, particularly influenced by the 2008 financial crisis <span class="citation" data-cites="mortgagerates2022">(<a href="#ref-mortgagerates2022" role="doc-biblioref">Campisi, 2022</a>)</span>. After reaching its peak, there is a noticeable decline starting in the late 2000s, likely influenced by the housing market crash and the global financial crisis around 2007-2008. From the mid-2010s onwards, there is a noticeable upward trend, with the homeownership rate climbing steadily to approximately 65% by 2022. This recent increase might be due to various factors, including economic recovery and an increase in housing demand.</p>
-<div id="figure-6" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/homeownership_over_time.png" class="img-fluid figure-img"></p>
+<p><a href="images/homeownership_over_time.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure 6: Fluctuations in Homeownership Rates from 1989 to 2022: Homeownership rate has increased steadily since 1989, with a decline in the late 2000s, and an upward trend from the mid-2010s onwards"><img src="images/homeownership_over_time.png" class="img-fluid figure-img" alt="Figure 6: Fluctuations in Homeownership Rates from 1989 to 2022: Homeownership rate has increased steadily since 1989, with a decline in the late 2000s, and an upward trend from the mid-2010s onwards"></a></p>
 <figcaption>Figure 6: Fluctuations in Homeownership Rates from 1989 to 2022: Homeownership rate has increased steadily since 1989, with a decline in the late 2000s, and an upward trend from the mid-2010s onwards</figcaption>
 </figure>
 </div>
@@ -759,9 +759,9 @@ Final Data Dictionary - Features and Descriptions (Click to Expand)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded <code>percent_mortgage</code> from this visualization due to its dominance as the most significant feature.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As illustrated in <a href="#figure-7">Figure 7</a>, the variables <code>percent_education_loan</code> and <code>debt_at_grad</code> emerge as the top most influential factors in predicting the homeownership rate. The importance of <code>percent_education_loan</code> (0.1162) and <code>debt_at_grad</code> (0.0936) indicates that the amount of student loan debt significantly affects an individual’s likelihood of owning a home. This finding suggests that high levels of student loan debt can be a substantial barrier to homeownership, likely due to the financial strain it imposes on individuals, thereby limiting their ability to save for or afford a home.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In contrast, <code>generation_order</code> has the lowest importance score (0.0385) among the features analyzed. This result implies that the generational cohort of an individual—such as Baby Boomer, Gen X, or Millennials—has minimal influence on predicting homeownership rates in comparison to more direct financial factors. The features <code>average_start_salary</code> (0.0727) and <code>avg_debt_to_income</code> (0.0891) also contribute to the model, though their impact is less pronounced than that of student loan-related variables. This suggests that while starting salary and debt-to-income ratios are relevant factors in homeownership decisions, they are not as significant as the financial burden imposed by student loans.</p>
-<div id="figure-7" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/features.png" class="img-fluid figure-img"></p>
+<p><a href="images/features.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure 7: Generational cohort is the least significant predictor of homeownership rate."><img src="images/features.png" class="img-fluid figure-img" alt="Figure 7: Generational cohort is the least significant predictor of homeownership rate."></a></p>
 <figcaption>Figure 7: Generational cohort is the least significant predictor of homeownership rate.</figcaption>
 </figure>
 </div>
@@ -772,34 +772,15 @@ Final Data Dictionary - Features and Descriptions (Click to Expand)
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
-<p>In this study, we sought to illuminate how differences in student loan debt between older and current generations impact homeownership trends, a question of growing importance given the escalating student debt crisis. Our investigation has provided valuable insights into the evolving landscape of student debt and its implications for homeownership.</p>
-<p>Final Results:</p>
-<p>Our analysis revealed a marked increase in average graduation debt from Baby Boomers to Millennials, with Millennials bearing the highest levels of debt. This rise in debt aligns with a trend of increasing financial burden on recent graduates. Our examination of homeownership rates indicated significant fluctuations influenced by economic events, such as the 2008 financial crisis, yet an overall upward trend in recent years.</p>
-<p>The Linear Regression model provided a good fit with an R-squared value of 0.712 and significant predictors such as mortgage debt, though the results were tempered by issues such as multicollinearity and the limitations of aggregated data. The Random Forest model outperformed the linear regression model in predictive accuracy, with an R-squared value of 0.745 and demonstrated that student loan-related variables, particularly debt_at_grad and percent_education_loan, were the most influential factors affecting homeownership rates.</p>
-<p>Confidence in Results:</p>
-<p>While the Random Forest model provided more robust results, the linear regression model’s findings were also valuable, highlighting the complexity of the relationships between debt and homeownership. The models collectively suggest that high levels of student loan debt are a significant barrier to homeownership, though challenges like multicollinearity and data limitations need to be addressed. The confidence in our results is bolstered by the consistency between the two modeling approaches, despite the inherent limitations of the data.</p>
-<p>Contribution to Existing Research:</p>
-<p>Our research contributes to the existing body of knowledge by highlighting the increasing burden of student loan debt on Millennials and its implications for homeownership. This study aligns with and extends previous findings that student debt affects financial stability and homeownership. By employing both linear regression and Random Forest models, we offer a comprehensive view of how debt influences homeownership and provide a nuanced understanding of this relationship in the context of evolving generational financial pressures.</p>
-<p>Future Directions:</p>
-<p>Future research could benefit from longitudinal studies to track the impact of student loan debt on homeownership over time, which would provide clearer insights into causal relationships. Addressing data limitations by incorporating more granular and diverse datasets, and employing advanced techniques like Principal Component Analysis to handle multicollinearity, could enhance the robustness of future analyses. Additionally, exploring the impact of other financial variables, such as housing market trends and changes in loan policies, could provide a more holistic understanding of homeownership dynamics.</p>
-<p>Conclusion and Recommendations:</p>
-<p>This research highlights the growing financial challenges faced by younger generations and their impact on traditional financial milestones like homeownership. While the findings underscore the significant role of student loan debt, they also suggest areas for policy intervention and further research. Targeted student loan relief programs, improved financial literacy initiatives, and more robust data collection efforts are recommended to address these challenges and support future generations in achieving homeownership and financial stability.</p>
-<p>In summary, our study provides critical insights into the financial pressures on Millennials compared to previous generations and contributes to ongoing discussions about student loan debt and economic stability. Future research in this area should focus on longitudinal data and advanced analytical techniques to further refine our understanding and guide effective policy solutions.</p>
-<p>The rise in debt at graduation over the generations suggests that newer graduates are starting their post-college lives with heavier financial burdens. Higher student loan debt can directly impact their ability to save for a down payment and secure mortgages, potentially delaying their entry into homeownership.</p>
-<section id="random-forest-conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="random-forest-conclusion">Random Forest Conclusion</h3>
-<p>As illustrated in Figure 7, the variables percent_education_loan and debt_at_grad emerge as the most influential factors in predicting the homeownership rate. This highlights the significant role that student loan debt plays in determining an individual’s likelihood of owning a home. The substantial impact of percent_education_loan suggests that the proportion of education-related debt an individual carries is a critical determinant of homeownership. Similarly, debt_at_grad indicates that the amount of debt incurred by graduation also significantly affects homeownership prospects.</p>
-<p>The prominence of these variables implies that higher levels of student loan debt could be a considerable barrier to homeownership. This financial burden may limit individuals’ ability to save for a down payment, manage monthly mortgage payments, or qualify for favorable loan terms. Consequently, the burden of student loans may hinder long-term financial stability and reduce the likelihood of achieving homeownership.</p>
-<p>Addressing the challenges associated with student loan debt could be pivotal in improving homeownership rates. Policy interventions aimed at reducing education-related debt or providing targeted financial assistance might alleviate some of the barriers identified in this analysis and promote greater access to homeownership.</p>
-<p>Conversely, generation_order ranks as the least significant feature in predicting homeownership rates. This finding suggests that the generational cohort to which an individual belongs—whether Baby Boomer, Gen X, Millennials, or another group—has minimal impact on their likelihood of owning a home when compared to more direct financial factors, such as student loan debt.</p>
-<p>This result indicates that, according to the model, the generational sequence alone does not substantially influence homeownership rates. While generational trends and experiences might shape broader economic and social patterns, the specific cohort to which an individual belongs appears less relevant in this context than the tangible financial burdens they face.</p>
-<p>The minimal significance of generation_order highlights the importance of focusing on financial factors that more directly affect homeownership, such as debt levels, income, and savings. It underscores that while generational trends might provide context, the financial challenges individuals face are more decisive in determining their ability to achieve homeownership.</p>
-<p>This insight emphasizes the need for targeted policies and interventions that address financial barriers directly, rather than focusing solely on generational characteristics. By prioritizing measures that alleviate student loan debt and improve financial stability, stakeholders can more effectively support homeownership aspirations across different generational cohorts.</p>
-<p>In addressing our research question—how do differences in student loan debt between older and current generations affect homeownership trends?—our study offers both insightful and nuanced perspectives. The historical context and the analysis reveal a complex relationship between student loan debt and homeownership rates. Our findings indicate that student loan debt at graduation (<code>debt_at_grad</code>) is a significant factor influencing homeownership rates. The data shows a clear increase in student loan debt across generations, with Millennials bearing the highest levels, which is likely contributing to the challenges they face in achieving homeownership. Despite the substantial debt load carried by recent graduates, the impact of debt at graduation on homeownership is relatively moderate. Through linear regression and Random Forest analyses, we confirmed that <code>debt_at_grad</code> has a less pronounced but still notable effect. <code>Percent_education_loan</code>, while less influential than mortgage debt, also plays a role, suggesting that education loan debt does impact homeownership trends to a degree. Interestingly, <code>generation_order</code>, representing the sequence of generations, was found to be the least significant predictor of homeownership rates. This indicates that, within the context of our model, generational cohort alone does not substantially explain variations in homeownership rates compared to the financial burden of student loans and mortgages. It is crucial to acknowledge that student loan debt is not the sole determinant of homeownership trends. Inflation, for instance, has affected purchasing power and contributed to rising housing costs, which can make homeownership more challenging for many. Additionally, extensive evidence highlights how student loan debt creates barriers in mortgage eligibility and credit scores. According to a study by the Federal Reserve Board, a $1,000 increase in student loan debt is associated with a 1.8 percent decrease in the homeownership rate for public four-year college graduates, resulting in a delay in purchasing a home. Furthermore and as addressed above, despite our efforts to mitigate bias, the potential for underrepresentation of certain demographics in the survey samples remains a concern. Student loan debt can exacerbate racial disparities. Racial wealth and income gaps are rooted in historical discriminatory housing policies - meaning that Black students, in particular, may face greater financial risks in pursuing higher education. Not adequately capturing the experiences of these underrepresented groups can affect our research and must be taken into consideration when evaluating our results. In summary, while student loan debt does impact homeownership trends, it is just one of several factors contributing to the complexity of financial decisions related to homeownership. The rising debt levels faced by Millennials and Gen Z are significant but must be considered alongside other financial elements. Our research underscores the need for a holistic view when analyzing homeownership trends and suggests that addressing the broader financial challenges faced by younger generations may be crucial in facilitating increased homeownership rates.</p>
-<p>We can reference this in our conclusion/limitations: https://housingmatters.urban.org/articles/how-student-loan-debt-affects-racial-homeownership-gap</p>
-<p>“Extensive evidence underscores how debt affects mortgage eligibility and credit score, erecting clear barriers to homeownership. A study by the Federal Reserve Board found that a $1,000 increase in student loan debt lowers the homeownership rate by about 1.8 percent for public four-year college goers; this amounts to an average delay in about four months for attaining homeownership. Student loan debt may reproduce and exacerbate the racial homeownership gap. Enduring racial disparities in wealth and income—which were, in part, created through decades of racist and discriminatory housing policies that blocked wealth building for many families—mean a greater proportion of Black students need to take on a greater and more enduring financial risk to pursue higher education. Therefore, reducing the impact of student loans on mortgage eligibility could be a critical component of ensuring a more equitable housing landscape.”</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addressing our research question—how do differences in student loan debt between older and current generations affect homeownership trends?—our study offers both insightful and nuanced perspectives. The historical context and the analysis reveal a complex relationship between student loan debt and homeownership rates. Our findings indicate that student loan debt at graduation is a significant factor influencing homeownership rates. The data shows a clear increase in student loan debt across generations, with Millennials bearing the highest levels, which is likely contributing to the challenges they face in achieving homeownership.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis revealed a marked increase in average graduation debt from Baby Boomers to Millennials, with Millennials bearing the highest levels of debt. This rise in debt aligns with a trend of increasing financial burden on recent graduates. Our examination of homeownership rates indicated significant fluctuations influenced by economic events, such as the 2008 financial crisis, yet an overall upward trend in recent years.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Linear Regression model provided a good fit with an R-squared value of 0.712 and significant predictors such as mortgage debt, though the results were tempered by issues such as multicollinearity and the limitations of aggregated data. The Random Forest model outperformed the linear regression model in predictive accuracy, with an R-squared value of 0.745 and demonstrated that student loan-related variables, particularly <code>debt_at_grad</code> and <code>percent_education_loan</code>, were the most influential factors affecting homeownership rates.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While the Random Forest model provided more robust results, the linear regression model’s findings were also valuable, highlighting the complexity of the relationships between debt and homeownership. The models collectively suggest that high levels of student loan debt are a barrier to homeownership, though challenges like multicollinearity and data limitations need to be addressed. The confidence in our results is bolstered by the consistency between the two modeling approaches, despite the inherent limitations of the data.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through our linear regression and Random Forest analyses, we confirmed that <code>debt_at_grad</code> has a less pronounced but still notable effect. <code>Percent_education_loan</code>, while less influential than mortgage debt, also plays a role, suggesting that education loan debt does impact homeownership trends to a degree. Interestingly, <code>generation_order</code>, representing the sequence of generations, was found to be the least significant predictor of homeownership rates. While generational trends and experiences might shape broader economic and social patterns, the specific generational cohort an individual belongs to does not substantially explain variations in homeownership rates compared to the financial burden of student loans and mortgages.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As illustrated in <a href="#figure-7">Figure 7</a>, the variables <code>percent_education_loan</code> and <code>debt_at_grad</code> emerge as the most influential factors in predicting the homeownership rate. This highlights the significant role that student loan debt plays in determining an individual’s likelihood of owning a home. The substantial impact of <code>percent_education_loan</code> suggests that the proportion of education-related debt an individual carries is a determinant of homeownership. Similarly, <code>debt_at_grad</code> indicates that the amount of debt incurred by graduation also affects homeownership prospects.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It is crucial to acknowledge that student loan debt is not the sole determinant of homeownership trends. Inflation, for instance, has affected purchasing power and contributed to rising housing costs, which can make homeownership more challenging for many. Additionally, extensive evidence highlights how student loan debt creates barriers in mortgage eligibility and credit scores. According to a study by the Federal Reserve Board, a $1,000 increase in student loan debt is associated with a 1.8 percent decrease in the homeownership rate for public four-year college graduates, resulting in a delay in purchasing a home <span class="citation" data-cites="ChicagoJournal">(<a href="#ref-ChicagoJournal" role="doc-biblioref">Mezza et al., 2020</a>)</span>. Furthermore and as addressed above, despite our efforts to mitigate bias, the potential for underrepresentation of certain demographics in the survey samples remains a concern. Student loan debt can exacerbate racial disparities. Racial wealth and income gaps are rooted in historical discriminatory housing policies - meaning that Black students, in particular, may face greater financial risks in pursuing higher education <span class="citation" data-cites="race">(<a href="#ref-race" role="doc-biblioref">Fallon, 2022</a>)</span>. Not adequately capturing the experiences of these underrepresented groups can affect our research and must be taken into consideration when evaluating our results.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In summary, while student loan debt does impact homeownership trends, it is just one of several factors contributing to the complexity of financial decisions related to homeownership. The rising debt levels faced by Millennials and Gen Z are significant but must be considered alongside other financial elements such as debt levels, income and savings. Our research underscores the need for a holistic view when analyzing homeownership trends and suggests that addressing the broader financial challenges faced by younger generations may be crucial in facilitating increased homeownership rates. This insight also emphasizes the need for targeted policies and interventions that address financial barriers directly, rather than focusing solely on generational characteristics. By prioritizing measures that alleviate student loan debt and improve financial stability, stakeholders can more effectively support homeownership aspirations across different generational cohorts.</p>
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
@@ -826,6 +807,9 @@ Datalab, A. (2021). <em>Understanding Durbin-Watson Test</em>. <a href="https://
 </div>
 <div id="ref-CFR" class="csl-entry" role="listitem">
 Editors, CFR. org. (2024). <em>Is Rising Student Debt Harming the u.s. Economy?</em> <a href="https://www.cfr.org/backgrounder/us-student-loan-debt-trends-economic-impact">https://www.cfr.org/backgrounder/us-student-loan-debt-trends-economic-impact</a>
+</div>
+<div id="ref-race" class="csl-entry" role="listitem">
+Fallon, K. (2022). <em>How Student Loan Debt Affects the Racial Homeownership Gap</em>. <a href="https://housingmatters.urban.org/articles/how-student-loan-debt-affects-racial-homeownership-gap">https://housingmatters.urban.org/articles/how-student-loan-debt-affects-racial-homeownership-gap</a>
 </div>
 <div id="ref-Upjohn" class="csl-entry" role="listitem">
 Gicheva, D., &amp; Thompson, J. (2015). <em>The Effects of Student Loans on Long-Term Household Financial Stability</em>. <a href="https://research.upjohn.org/cgi/viewcontent.cgi?filename=8&amp;article=1249&amp;context=up_press&amp;type=additional">https://research.upjohn.org/cgi/viewcontent.cgi?filename=8&amp;article=1249&amp;context=up_press&amp;type=additional</a>
@@ -1421,6 +1405,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
