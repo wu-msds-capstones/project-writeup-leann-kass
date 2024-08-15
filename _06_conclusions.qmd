@@ -1,8 +1,85 @@
 # Conclusions
+In this study, we sought to illuminate how differences in student loan debt between older and current generations impact homeownership trends, a question of growing importance given the escalating student debt crisis. Our investigation has provided valuable insights into the evolving landscape of student debt and its implications for homeownership.
+
+Final Results:
+
+Our analysis revealed a marked increase in average graduation debt from Baby Boomers to Millennials, with Millennials bearing the highest levels of debt. This rise in debt aligns with a trend of increasing financial burden on recent graduates. Our examination of homeownership rates indicated significant fluctuations influenced by economic events, such as the 2008 financial crisis, yet an overall upward trend in recent years.
+
+The Linear Regression model provided a good fit with an R-squared value of 0.712 and significant predictors such as mortgage debt, though the results were tempered by issues such as multicollinearity and the limitations of aggregated data. The Random Forest model outperformed the linear regression model in predictive accuracy, with an R-squared value of 0.745 and demonstrated that student loan-related variables, particularly debt_at_grad and percent_education_loan, were the most influential factors affecting homeownership rates.
+
+Confidence in Results:
+
+While the Random Forest model provided more robust results, the linear regression model's findings were also valuable, highlighting the complexity of the relationships between debt and homeownership. The models collectively suggest that high levels of student loan debt are a significant barrier to homeownership, though challenges like multicollinearity and data limitations need to be addressed. The confidence in our results is bolstered by the consistency between the two modeling approaches, despite the inherent limitations of the data.
+
+Contribution to Existing Research:
+
+Our research contributes to the existing body of knowledge by highlighting the increasing burden of student loan debt on Millennials and its implications for homeownership. This study aligns with and extends previous findings that student debt affects financial stability and homeownership. By employing both linear regression and Random Forest models, we offer a comprehensive view of how debt influences homeownership and provide a nuanced understanding of this relationship in the context of evolving generational financial pressures.
+
+Future Directions:
+
+Future research could benefit from longitudinal studies to track the impact of student loan debt on homeownership over time, which would provide clearer insights into causal relationships. Addressing data limitations by incorporating more granular and diverse datasets, and employing advanced techniques like Principal Component Analysis to handle multicollinearity, could enhance the robustness of future analyses. Additionally, exploring the impact of other financial variables, such as housing market trends and changes in loan policies, could provide a more holistic understanding of homeownership dynamics.
+
+Conclusion and Recommendations:
+
+This research highlights the growing financial challenges faced by younger generations and their impact on traditional financial milestones like homeownership. While the findings underscore the significant role of student loan debt, they also suggest areas for policy intervention and further research. Targeted student loan relief programs, improved financial literacy initiatives, and more robust data collection efforts are recommended to address these challenges and support future generations in achieving homeownership and financial stability.
+
+In summary, our study provides critical insights into the financial pressures on Millennials compared to previous generations and contributes to ongoing discussions about student loan debt and economic stability. Future research in this area should focus on longitudinal data and advanced analytical techniques to further refine our understanding and guide effective policy solutions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 The rise in debt at graduation over the generations suggests that newer graduates are starting their post-college lives with heavier financial burdens. Higher student loan debt can directly impact their ability to save for a down payment and secure mortgages, potentially delaying their entry into homeownership.
-
-
 
 
 
