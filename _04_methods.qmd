@@ -1,0 +1,153 @@
+---
+lightbox: true
+---
+
+
+# Methods
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In our dataset, there were relatively few features to choose from that could be associated with homeownership and student debt. Initially, we selected specific features and employed linear regression models to evaluate the influence of each feature on homeownership rates. To explore more intricate, non-linear relationships among the features, we then applied a Random Forest machine learning model. This approach allowed us to build upon the findings from our linear regression analysis and assess the relative importance of each feature. These methodologies together provide a comprehensive framework for understanding the potential impact of student loan debt and generational factors on homeownership rates.
+
+### 1. Materials List (Software used)
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following section details the software and libraries utilized in our analysis. The tools listed were instrumental in processing data, performing statistical analyses, and generating visualizations. The specific software and versions used are as follows:
+
+| Software/Library                           | Version                 |  Purpose |
+|---------|------|-----------------------|
+| Python         | 3.11.5     | Used for scripting and data analysis |
+| Pandas              | 2.0.3    | Data manipulation and analysis, particularly for handling structured data|
+| NumPy        | 1.24.3    |  Numerical computing, used for array operations and mathematical functions |
+| Statsmodel | 0.14.0   |  Implementation of statistical models, specifically used for ordinary least squares (linear regression) model |
+| Skikit-learn              | 1.3.0    | Machine learning library, used for implementing a random forest model|
+| SciPy                            | 1.11.1     | Used for statistical analysis and scientific computing|
+| Matplotlib           | 3.7.2 | Visualization library, used to create static  visualizations|
+|Seaborn |          0.12.2  |  Visualization library built on Matplotlib, used for creating attractive and informative statistical graphics|
+| RStudio | 2023.06.2+561 | Used for creating additional visualizations outside of the Python environment|
+| ggplot2 |  3.4.0 | 	Visualization library in R, used for creating complex and multi-layered plots |
+: Table 5: Purpose of software and libraries used {.striped .hover}
+
+
+
+### 2. Data Exploration and Initial Analysis
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, our dataset comprised 144 rows, covering Traditionalist, Baby Boomer, Generation X, Millennial, and Gen Z data. Initially, we intended to incorporate trends for Generation Z into our analysis. However, upon integrating all our datasets, we discovered that the available data for Generation Z was insufficient for a robust analysis of their student debt and homeownership rates. Including Generation Z data would have risked distorting the analysis of Baby Boomers, Generation X, and Millennials. Consequently, we decided to exclude Generation Z data from our analysis.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, while our survey datasets from the Census and Federal Reserve included detailed trends for Traditionalists, our student debt dataset only covered graduation years from 1970 onward. Since Traditionalists were born in 1945 or earlier and we assumed an average college graduation age of 21, they were not included in the student debt data. Given that the available dataset did not capture their college graduation years, we had to exclude Traditionalists from our analysis.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Following preliminary data cleaning and the focus on the Baby Boomer, Millennial, and Gen X cohorts, the dataset was refined to 92 rows, which were subsequently used for analysis. This reduction was essential to ensure the relevance and accuracy of the data in examining the targeted generational groups. While analyzing a small dataset can be manageable and insightful, it also comes with significant limitations related to statistical power, model complexity, and generalizability.
+
+
+
+#### Analyzing Trends Over Time
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initially, we concentrated on examining the overall trend of student loan debt at graduation across different generations, specifically Baby Boomers, Generation X, and Millennials. To facilitate this analysis, we calculated the average graduation year for each entry in our dataset, covering graduates as far back as 1967. Additionally, we assessed the general trend in homeownership rates over the years. However, since our homeownership data only dates back to 1989, it presents a challenge in directly comparing the homeownership rates of Baby Boomers with our graduation debt trend.
+
+
+### 3. Identification of Significant Features
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As mentioned earlier, there were only a handful of features that we could employ in our analysis. In order to determine whether student debt affected homeownership trends, we created a variable to hold the homeownership rate, using the following formula:
+
+<div text-align="center">$$ \frac{to}{ts} * 100 = hr $$ </div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this context, <i>to</i> represents the total number of survey respondents who own a home, corresponding to our total_owner variable. This is divided by <i>ts</i>, which represents the total number of households surveyed, corresponding to our total_surveyed variable. The resulting variable, <i>hr</i>, calculates the proportion of surveyed households that are owner-occupied. This variable was essential for analyzing the correlation between student debt levels and homeownership rates, offering insights into the potential impact of financial burdens on the likelihood of homeownership.
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In our linear regression and random forest models, the dependent variable was `homeownership_rate`, while the independent variables included `debt_at_grad`, `avg_debt_to_income`, `avg_start_salary`, `percent_mortgage`, `percent_education_loan`, and `generation_order`.
+
+### 4. Building a Linear Regression Model
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To examine the relationship between homeownership rates and average debt at graduation across generations, we utilized a linear regression model. While our primary focus is to shed light on the impact of student loan debt by generation on homeownership rates, we included additional features, mentioned above, in our model to enhance its robustness and accuracy. We then created training and testing datasets with a 70%/30% split and utilized the statsmodel library to perform Ordinary Least Squares (OLS) regression to evaluate the performance of the model.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the results of a linear regression analysis to be valid, certain assumptions about the data must be met. These assumptions include linearity, independence, homoscedasticity, normality, and lack of multicollinearity. We investigate each in the following sections.
+
+#### 4a. Testing for Linearity
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linearity assumption requires that the relationship between the independent variables and the dependent variable is linear. To assess this, we plotted the residuals (errors) against the predicted values to check for any patterns. By plotting residuals versus fitted values (or predictors), we checked for any systematic patterns. If the residuals display a clear pattern or trend, it suggests that the linear relationship assumption might be violated. Ideally, residuals should scatter randomly around zero, indicating that the linear model is appropriate.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals vs. fitted values plot in [Figure 4](#figure-4) shows a generally random scatter, but there is a very slight parabolic tendency present. Despite this minor curvature, the pattern is not strong enough to warrant a departure from a linear regression model.
+
+![Figure 4: Linearity Assumption Satisfied: Residuals vs. Fitted Plot shows no strong curvature of patterns](images/residuals1.png){.lightbox #figure-4}
+
+#### 4b. Testing for Independence
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The independence assumption stipulates that the residuals are independent of each other. To test for independence, we used the Durbin-Watson statistic, which tests for autocorrelation in the residuals. The Durbin-Watson statistic ranges from 0 to 4. A value close to 2 suggests no autocorrelation. If the value is significantly less than 2, it indicates positive autocorrelation, while a value significantly greater than 2 indicates negative autocorrelation.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis yielded a Durbin-Watson statistic of 1.77. This value is somewhat close to 2, suggesting that while there is a tendency towards positive autocorrelation, it is not extreme. In practice, DW values close to 2 (within a range of about 1.5 to 2.5) are often considered acceptable [@durbinwatson].
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given that the Durbin-Watson statistic indicated some positive correlation, we conducted the Breusch-Godfrey test to confirm and assess the extent of autocorrelation. The test yielded a statistic of 0.948 and a p-value of 0.330. Since this p-value exceeds the conventional significance threshold of 0.05, we conclude that there is no statistically significant evidence of autocorrelation in the residuals. This suggests that the residuals are likely independent, supporting the assumption of independence.
+
+#### 4c. Testing for Homoscedasticity
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The homoscedasticity assumption requires that residuals have constant variance across all levels of the independent variable.  Although we noted a minor curvature in the linearity assumption, [Figure 5](#figure-5) shows no pronounced pattern of variance around the horizontal line, indicating that the homoscedasticity assumption is generally met.
+
+![Figure 5: Homoscedasticity Assumption Satisfied: Residuals are generally well-dispersed around the horizontal line](images/homosced1.png){.lightbox #figure-5}
+
+#### 4d. Testing for Normality
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The normality assumption requires that the residuals are normally distributed. To assess this, we created a Q-Q plot of the residuals, seen in [Figure 6](#figure-6). The points on the Q-Q plot slightly deviate but generally follow the 45-degree line, indicating that the residuals are approximately normally distributed.
+
+![Figure 6: Normality Assumption Satisfied: Residuals generally align with the 45-degree reference line](images/normality2.png){.lightbox #figure-6}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We also performed the Shapiro-Wilk test for normality and got a test statistics of 0.99 and a p-value of 0.86 which suggest that the residuals are approximately normally distributed [@shapiro]. Since the p-value is well above the conventional significance level of 0.05, there is no significant evidence to reject the null hypothesis of normality. This supports the assumption that the residuals follow a normal distribution.
+
+#### 4e. Testing for Multicollinearity
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multicollinearity occurs when independent variables are highly correlated, which can distort the estimation of regression coefficients [@multicollinearity]. We evaluated multicollinearity using the Variance Inflation Factor (VIF) from the statsmodel library. 
+
+| Feature                                | Value                 |
+|---------------------------------------|-----------------------|
+| `debt_at_grad`             | 26.534943     |
+| `avg_start_salary`              | 21.435287    |
+| `avg_debt_to_income`        | 28.121863    |
+| `percent_mortgage` | 1.411813   |
+| `percent_education_loan`              | 7.590111    |
+| `generation_order`                            | 7.403381     |
+: Table 6: Variance Inflations Factors for half of the selected features exceed 10, signaling high multicollinearity {.striped .hover}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Half of our features had a VIF value exceeding 10, signaling a significant concern [@VIF]. To further test this, we analyzed the condition number, which resulted in 241,000. There isn't a simple definition of what counts as a small and large condition number, however, a condition value larger than 1,000 generally indicates strong multicollinearity [@conditionnumber].
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As we can see in [Figure 7](#figure-7), 
+the correlation matrix reveals that `percent_mortgage` exhibits a moderate negative correlation of approximately -0.50 with the other variables. In contrast, the correlations among the remaining variables are notably higher, with values of 0.88 or above. This pattern suggests that while `percent_mortgage` is somewhat inversely related to the other variables, the high correlations among the latter indicate substantial multicollinearity within the dataset. 
+
+
+![Figure 7: Correlation Matrix of Explanatory Variables: Displays strong pairwise correlations](images/correlationmatrix.png){.lightbox #figure-7}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This high multicollinearity is a common issue in survey-based observational studies, where variables are often interrelated due to underlying socio-economic factors [@observational]. Such interdependencies reflect the inherent complexity of real-world data, where variables may be influenced by common factors or may capture overlapping aspects of the phenomena being studied. Despite efforts to mitigate multicollinearity by experimenting with different subsets of variables and dropping some from the analysis, these adjustments did not substantially reduce the multicollinearity problem. This persistent issue suggests that the high degree of correlation among the variables is an inherent characteristic of the data, making it difficult to isolate and interpret the individual effects of each variable.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consequently, disentangling the unique contributions of each variable becomes challenging, as their high correlations obscure the individual effects and complicate the interpretation of their relationships. This issue can compromise the reliability and interpretability of our linear regression model by leading to unstable coefficient estimates and inflated standard errors. Although the other assumptions of the model are satisfied, the presence of multicollinearity necessitates cautious interpretation of our results.
+
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, to ensure the validity of our model, we measure the following values:
+
+* R-squared
+* Adjusted R-squared
+* Mean Absolute Error (MAE)
+* Mean Squared Error (MSE)
+* Root Mean Squared Error (RMSE)
+* F-statistic
+
+### 5. Building a Random Forest Model
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given the limitations identified in the linear regression model, we opted to perform a Random Forest analysis to further investigate the relationship between homeownership rates and various predictor variables. The primary motivation for this choice was to address some of the challenges and assumptions inherent in linear regression that may impact the robustness and interpretability of the results. Random Forest models, being ensemble methods based on decision trees, are less sensitive to multicollinearity and do not require the assumptions of linearity, homoscedasticity, or normality of residuals. This makes them a more flexible and robust alternative when dealing with correlated predictors. Overall, the Random Forest model provides an opportunity to validate and complement the findings from our linear regression analysis, offering a more comprehensive approach to analyzing the predictors of homeownership rates and mitigating some of the limitations observed in the linear model.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We utilized Scikit-learn’s RandomForest library to train and test the dataset on a 70%/30% split. Additionally, we plotted the features to determine the importance of the various features.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To ensure the validity of our model and compare the fit with our linear regression model, we measure the following values:
+
+* R-squared
+* Adjusted R-squared
+* Mean Absolute Error (MAE)
+* Mean Squared Error (MSE)
+* Root Mean Squared Error (RMSE)
+
+
+
+
+

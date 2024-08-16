@@ -1,1 +1,157 @@
+---
+lightbox: true
+---
+
 # Results
+
+## Trends Over Time
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our analysis of graduation debt reveals a clear upward trajectory in average graduation debt levels over time for each successive generation, as shown in [Figure 8](#figure-8). For the Baby Boomers, graduates had relatively low levels of student loan debt, which remained stable and below $5,000 through the 1970s and early 1980s. In contrast, Generation X experienced a noticeable increase in debt levels starting in the late 1980s, with a steady rise through the 1990s, peaking around $15,000 by the early 2000s. This trend continues with Millennials, who faced the highest levels of debt at graduation. Starting in the early 2000s, the average debt for this generation saw a steep increase, surpassing $20,000 and reaching nearly $30,000 by 2015. This escalation in average student loan debt across generations highlights a growing financial burden on recent graduates, with Millennials bearing the highest debt load. The data suggest significant changes in higher education financing, economic conditions, and possibly policy impacts over the decades.
+
+
+![Figure 8: Millennials faced the highest levels of debt at graduation compared to Baby Boomers and Generation X.](images/debt_over_time.png){.lightbox #figure-8}
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The plot in [Figure 9](#figure-9) illustrates homeownership rates from 1989 to 2022. The initial rate starts at around 47.5% and experiences a slight dip shortly after. From the early 1990s, there is a significant upward trend, peaking at around 62.5% by the mid-2000s. This peak occurred during a significant decade for mortgage rates, particularly influenced by the 2008 financial crisis [@mortgagerates2022]. After reaching its peak, there is a noticeable decline starting in the late 2000s, likely influenced by the housing market crash and the global financial crisis around 2007-2008. From the mid-2010s onwards, there is a noticeable upward trend, with the homeownership rate climbing steadily to approximately 65% by 2022. This recent increase might be due to various factors, including economic recovery and an increase in housing demand.
+
+![Figure 9: Fluctuations in Homeownership Rates from 1989 to 2022: Homeownership rate has increased steadily since 1989, with a decline in the late 2000s, and an upward trend from the mid-2010s onwards](images/homeownership_over_time.png){.lightbox #figure-9}
+
+
+
+
+
+## Linear Regression Model
+
+### Model Fit
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To evaluate the effectiveness of the linear regression model in predicting the target variable, we examined several key performance metrics. These metrics provide insight into the model's accuracy, fit, and overall statistical significance.
+
+##### Model test statistics:
+
+| Metric                                | Value                 |
+|---------------------------------------|-----------------------|
+| R-squared             | 0.712     |
+| Adjusted R-squared              |  0.681    |
+| Mean Absolute Error (MAE)       | 10.5018    |
+| Mean Squared Error (MSE) |  130.3077   |
+| Root Mean Squared Error (RMSE)              | 11.4152    |
+| F-statistic                             |  23.43    |
+| P-value (F-statistic)                            | 9.63e-14    |
+
+: Table 7: Linear Regression model demonstrates a relatively good fit  {.striped .hover}
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The metrics displayed in Table 3 indicate the performance of the linear regression model. It demonstrates a relatively good fit, with an R-squared value of 0.712, indicating that 71.2% of the variability in homeownership rates is explained by the predictors. The Adjusted R-squared of 0.681 accounts for the number of predictors and indicates that the model remains robust even when adjusted for predictor complexity.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Mean Absolute Error (MAE) of 10.5018 represents the average magnitude of prediction errors, providing a straightforward measure of prediction accuracy. The Mean Squared Error (MSE) of 130.3077 and Root Mean Squared Error (RMSE) of 11.4152 further quantify the error magnitude, with RMSE being particularly useful for understanding error in the units of the target variable. Additionally, the F-statistic of 23.43, with a p-value of 9.63e-14, indicates that the overall model is statistically significant, meaning the predictors collectively contribute meaningfully to explaining the variability in the target variable.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These metrics collectively demonstrate that the linear regression model has a good fit and effectively captures the relationship between the predictors and the target variable, though there may still be room for improvement in model performance by addressing multicollinearity.
+
+
+
+
+##### Coefficient Results
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To understand the influence of each feature on homeownership rate, we examined the coefficients and corresponding p-values of the linear regression model. The coefficients indicate the strength and direction of the relationship between each feature and homeownership rate, while the p-values assess the statistical significance of these relationships.
+
+| Feature             | Coefficient  | P-Value
+|---------------------|----------------------------|-------------|
+| `generation_order`    | -5.4525                 |   0.317 |
+| `avg_debt_to_income`     |  -0.7455                   |       0.124   |
+| `debt_at_grad`         | 0.0016                 |    0.063 |
+| `percent_education_loan`      | 0.7697                    |   0.054 |
+| `avg_start_salary ` | -0.0013                   | 0.025  |
+| `percent_mortgage`        |  0.6844                  |  0.000 |
+
+
+
+: Table 8: Linear regression coefficients ranked from least to most statistically significant {.striped .hover}
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We anticipated that `debt_at_grad`, `percent_education_loan`, and `generation_order` would be the most influential features. However, the observed relationships were not as straightforward as expected. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient for `debt_at_grad` indicates a modest positive relationship with homeownership rate, suggesting that increased graduation debt is associated with higher homeownership rates. However, the p-value for this coefficient exceeds conventional significance levels, casting uncertainty on its precise impact. Similarly, the coefficient for `percent_education_loan` indicates an unexpected positive association between education loan debt and homeownership rates. This counterintuitive result may be due to several factors, including high multicollinearity, sampling issues, or specific economic conditions influencing the observed relationship. For instance, it may suggest that individuals with higher education debt, despite the financial burden, could achieve higher earning potential, enabling them to afford homeownership.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In contrast, the coefficient for `generation_order` exhibits a negative relationship, indicating that the generational cohort to which an individual belongs may be inversely related to homeownership rates. Despite being the largest negative coefficient, the lack of statistical significance suggests that this effect is not robust within the framework of this model. This result could be influenced by various factors, including high multicollinearity among the features included in the regression model.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The coefficient analysis reveals that `percent_mortgage` exhibits the highest positive and statistically significant effect, with a coefficient of 0.6844 and a p-value of 0. This finding aligns with practical expectations, as mortgage debt is a critical determinant of homeownership. The variables `avg_start_salary` and `avg_debt_to_income` were included to refine the model. Notably, `avg_start_salary` has a slight negative association with homeownership rates, suggesting that higher starting salaries might correlate with lower homeownership, though this effect is minor. Additionally, while `avg_debt_to_income` shows a negative trend, its p-value indicates that this relationship is not statistically significant at the 0.05 level, suggesting potential weakness or confounding factors.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overall, the coefficients offer a nuanced view of how differences in student loan debt between older and current generations affect homeownership trends but do not provide a definitive answer. To achieve a more definitive understanding of the impact of student loan debt on homeownership trends, several methodological improvements could be employed. Longitudinal studies, which track individuals over time, would allow for a clearer examination of how changes in student loan debt influence homeownership. Additionally, addressing multicollinearity through variable selection or principal component analysis, enhancing data quality, and incorporating larger, more diverse samples would strengthen the reliability of findings.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Random Forest Model
+
+### Model Fit
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this model analysis, we utilized the same dependent and independent variables as our linear regression model and a similar 70% training and 30% testing split.
+
+
+##### Model test statistics:
+
+| Metric                                | Value                 |
+|---------------------------------------|-----------------------|
+| Mean Squared Error (MSE) |  75.7782   |
+| R-squared             | 0.7452     |
+| Adjusted R-squared              |  0.6724    |
+| Mean Absolute Error (MAE)       | 6.5159    |
+| Root Mean Squared Error (RMSE)              | 8.7051    |
+
+: Table 9: Random Forest model demonstrates a better fit than linear regression model {.striped .hover}
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;he Mean Squared Error was 75.78, far better than our linear regression MSE score of 130.30. Although an MSE of 75.78 suggests some level of error in the predictions, it is a useful benchmark for comparing the model’s performance with our linear regression model. The R-squared value was 0.745, which signifies that approximately 74.5% of the variability in homeownership rates can be explained by the model. The Adjusted R-squared is slightly lower than the R-squared, reflecting the adjustment for the number of predictors. This suggests that while the model is still strong, the inclusion of additional variables has not significantly improved the model's explanatory power. Overall, the Random Forest model outperforms the linear regression model in terms of R-squared, MAE, MSE, and RMSE, indicating better prediction accuracy and fit to the data.
+
+
+
+
+##### Feature Importance Results
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To better understand the factors influencing homeownership rates, we analyzed the importance of various features using a Random Forest model. The feature importance table below provides a quantitative measure of how much each feature contributes to the prediction of homeownership rates.
+
+| Feature             | Importance  | 
+|---------------------|----------------------------|
+| `generation_order`         | 0.03846002578869567                 |  
+| `avg_start_salary ` | 0.0726717567809253                  |
+| `avg_debt_to_income`     |  0.08913656748564287           | 
+| `debt_at_grad`        | 0.09359463522665826              |
+| `percent_education_loan`      | 0.11617657198613383                | 
+| `percent_mortgage`    | 0.5899604427319441               | 
+
+
+
+:Table 10: debt_at_grad and percent_education_loan rank as the top two most important features, after percent_mortgage {.striped .hover}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To aid in visualizing the importance of different features, we created a plot of their respective importances. We excluded `percent_mortgage` from this visualization due to its dominance as the most significant feature. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As illustrated in [Figure 10](#figure-10), the variables `percent_education_loan` and `debt_at_grad` emerge as the top most influential factors in predicting the homeownership rate. The importance of `percent_education_loan` (0.1162) and `debt_at_grad` (0.0936) indicates that the amount of student loan debt significantly affects an individual’s likelihood of owning a home. This finding suggests that high levels of student loan debt can be a substantial barrier to homeownership, likely due to the financial strain it imposes on individuals, thereby limiting their ability to save for or afford a home.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In contrast, `generation_order` has the lowest importance score (0.0385) among the features analyzed. This result implies that the generational cohort of an individual—such as Baby Boomer, Gen X, or Millennials—has minimal influence on predicting homeownership rates in comparison to more direct financial factors. The features `average_start_salary` (0.0727) and `avg_debt_to_income` (0.0891) also contribute to the model, though their impact is less pronounced than that of student loan-related variables. This suggests that while starting salary and debt-to-income ratios are relevant factors in homeownership decisions, they are not as significant as the financial burden imposed by student loans.
+
+
+![Figure 10: Generational cohort is the least significant predictor of homeownership rate.](images/features.png){.lightbox #figure-10}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Overall, the feature importance analysis underscores the dominant role of student loan debt in influencing homeownership likelihood. The results highlight that financial factors, particularly those related to student loans and debt, are critical in understanding and predicting homeownership trends.
+

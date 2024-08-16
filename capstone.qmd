@@ -1,20 +1,24 @@
 ---
-title: "Capstone Project"
-subtitle: Subtitle
+title: "Generational Differences in Student Loan Debt and Implications on Homeownership Trends"
+subtitle: MSDS Capstone 2024
 authors:
-  - Bob
-  - Jane
+  - Leann Kim
+  - Kassandra Traieh
 title-block-banner: true
 format: 
   html:
     theme:
       light: lightly
       dark: darkly
+toc: true
+bibliography: _07_references.bib
+csl: apa.csl
+tbl-cap-location: bottom
 ---
 
 {{< include _01_intro.qmd >}}
-{{< include _02_background.qmd >}}
-{{< include _03_methods.qmd >}}
-{{< include _04_data.qmd >}}
+{{< include _03_data.qmd >}}
+{{< include _04_methods.qmd >}} 
 {{< include _05_results.qmd >}}
 {{< include _06_conclusions.qmd >}}
+
